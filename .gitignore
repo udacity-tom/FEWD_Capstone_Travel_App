@@ -1,2 +1,20 @@
+#dependencies
+node_modules
+
+#non-necessary testing files
+coverage
+
+#production build
+dist
+
+#API keyes
+.env
+
 #dev workspace
 FEWD_Capstone_Travel_App.code-workspace
+
+#misc development files
+misc
+REQUIREMENTS.md
+api_servers.md
+rubic-capstone.pdf
