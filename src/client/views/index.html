@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content= "width-device-width, initial-scale=1.0">
+        <title>NLP Text Analysis</title>
+    </head>
+    <body>
+        <header>
+            <div class="headerTitle">
+                <h1 class="page_title">Natural Language Processing</h1>    
+            </div> 
+            <nav id="nav">
+                <div class="nav-link">
+                    Home
+                </div>
+                <div class="nav-link">
+                    About
+                </div>
+             </nav>
+        </header>
+        <main>
+            <section class="input-card">
+                <h1>Intro Text </h1>
+                <section class="introText">
+                    <p>This website processes either <code>text input</code> or a URL (Uniform Resource Locator) pointing to a text article.</p>
+                    <br>
+                    <p>The text will be analysed by the Meaning Cloud online APIs to determine various factors about it's content and a Sentiment Analysis will be presented on the page below.</p>
+                </section>
+                    <section class="inputform">
+                        <form class="form" onsubmit="return handleSubmit(event)">
+                            <section id="theSwitch">
+                                <label class="switch-text">Text</label>
+                                <label class="switch" >
+                                    <input type ="checkbox" id="inputAreaType" onClick="Client.changeInputArea()" value=false>
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="switch-text">URL</label>
+                            </section>
+                            <section id="inputArea">
+                                <button class="button inputURL" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" >Analyze URL</button>
+                                <textarea id="url"  class="inputURL" name="input" rows="5" cols="60" placeholder="http://URL-Uniform-Resource-Locator"></textarea>
+                                <button class="button inputText" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" >Analyse Text</button>
+                                <textarea id="text" class="inputText" name=input rows="5" cols="60" placeholder="Input text to analyse"></textarea>
+                            </section>
+                        </form>
+                    </section> <!--close input form-->
+            </section>
+            <section class="results">
+                <strong>Sentiment Analysis:</strong>
+                <p>The Meaning Cloud API returned the following summary results for the submitted text/URL</p>
+                <table>
+                    <tbody>
+                        <br>
+                        <tr>
+                            <td>Agreement Level:&nbsp;</td>
+                            <td id="agreement"></td>
+                        </tr>
+                        <tr>
+                            <td>Confidence Level:&nbsp;</td>
+                            <td id="confidence"></td>
+                        </tr>
+                        <tr>
+                            <td>Irony Level:&nbsp;</td>
+                            <td id="irony"></td>
+                        </tr>
+                        <tr>
+                            <td>Subjectivity Level:&nbsp;</td>
+                            <td id="subjectivity"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p></p>
+                <button id="error" class="error"></button>
+            </section>
+        </main>
+        <footer>
+            <p class="logoText">This website uses the APIs from </p>
+            <a href="https://www.meaningcloud.com/">
+                <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->
+                <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo">
+            </a>
+        </footer>
+    </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("inputAreaType").checked = false
+            const urlInput = document.getElementById("url").value = ""
+            const textInput = document.getElementById("text").value = ""
+        })
+    </script>
+    <script>
+        if('serviceWorker' in navigator){
+            //Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</html>

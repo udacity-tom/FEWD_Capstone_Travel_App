@@ -1,0 +1,33 @@
+$background-color: #E76A4B;
+$text-color: #023047;
+$input-form: #eed595;
+$white-color: #000000;
+$fontSize: 16px;
+
+body {
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: $fontSize;
+}
+
+main {
+    flex: 2;
+    margin-top: 50px;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 4em;
+
+}
+
+.page_title {
+    text-align: center;
+}
+

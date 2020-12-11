@@ -1,0 +1,27 @@
+$text-color: #219ebc;
+
+header {
+    display: grid;
+    grid-template-columns: 50% auto 10%;
+    // justify-content: space-between;
+    color: $text-color;
+    padding: 10px 40px;
+    background-color: white;
+}
+
+.headerTitle {
+    grid-column-start: 1;
+    font-size: .75em;
+    color: $text-color;
+
+}
+
+nav {
+    grid-column-start: 3;
+    display: flex;
+}
+
+.nav {
+    margin: 10px;
+
+}

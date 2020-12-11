@@ -1,0 +1,147 @@
+$switch-color:#219ebc;
+$Intro-color: #ffb703;
+$text-color: #219ebc;
+$button-text: #ffffff;
+$button-backg: #4caf50;
+
+@mixin displayShadow($dispersion) {
+    box-shadow: 0 5px $dispersion black;
+}
+
+.headerTitle {
+    margin-top: 40px;
+}
+
+form {
+    border-radius: 3px;
+    padding: 40px;
+    margin-top: 6em;
+    margin: 0 auto;
+}
+
+.inputURL {
+    display: none;
+}
+.inputText {
+    display: block;
+}
+
+.introText {
+    font-size: 1.5em;
+}
+
+.error {
+    display: none;
+}
+
+#text, #url {
+    padding-top: 50px;
+}
+
+#inputArea {
+    display: flex;
+}
+
+textarea {
+    margin-left: 50px;
+}
+
+#theSwitch {
+    display: flex;
+    label {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .switch-text {
+    font-size: 2em;
+    text-align: center;
+    padding: 5px;
+    }
+}
+
+.button {
+    margin-top: 20px;
+    width: 250px;
+    height: 100px;
+    border: none;
+    border-radius: 25px;
+    font-size: 2em;
+    color: $button-text;
+    background-color: $button-backg;
+
+    &:hover {
+        font-size: 2em;
+        color: $button-backg;
+        background-color: $button-text;
+        @include displayShadow(10px);
+    }
+}
+
+.results {
+    font-size: 1.5em;
+}
+
+$buttonHeight: 34px;
+$buttonCenter: 26px;
+
+// For switch definition 
+// Based on the following link
+//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: $buttonHeight;
+    text-align: center;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    webkit-tansition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: $buttonCenter;
+    width: $buttonCenter;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: $switch-color;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px $switch-color;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX($buttonCenter);
+    -ms-transform: translateX($buttonCenter);
+    transform: translateX($buttonCenter);
+}
+
+.slider.round {
+    border-radius: $buttonHeight;
+}
+.slider.round:before {
+    border-radius: 50%;
+}

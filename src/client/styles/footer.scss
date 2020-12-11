@@ -1,0 +1,16 @@
+@mixin displayShadow($dispersion) {
+    box-shadow: 0 10px $dispersion black;
+}
+
+footer {
+    background-color: white;
+}
+
+.logo {
+    padding: 40px;
+}
+
+.logoText {
+    padding: 20px;
+    font-size: 2em;
+}
