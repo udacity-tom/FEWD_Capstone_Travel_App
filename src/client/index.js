@@ -1,11 +1,12 @@
-import 'regenerator-runtime/runtime';
+storeimport 'regenerator-runtime/runtime';
 //import Js functions used in app
-// import { handleSubmit } from './js/formHandler'
-// import { changeInputArea } from './js/changeInputType'
-// import { updateUI } from './js/updateUI'
-// import { checkURLInput } from './js/checkURLInput'
-// import { notifyError } from './js/notifyError'
-// import { clearUI } from './js/clearUI'
+import { formHandler } from './js/formHandler'
+import { getGeonames } from './js/getGeonames'
+import { updateUI } from './js/updateUI'
+import { storeTrips } from './js/storeTrips'
+import { todoList } from './js/todoList'
+import { clearUI } from './js/clearUI'
+import { errorHandling } from './js/errorHandling'
 // import { processInput } from './js/processInput'
 // import { postData } from './js/postData'
 
@@ -24,13 +25,12 @@ console.log("Entry point reloaded!");
 
 //export js files for use in app
 export {
-    // handleSubmit,
-    // changeInputArea,
-    // meaningCloudLogo,
-    // updateUI,
-    // checkURLInput,
-    // notifyError,
-    // clearUI,
-    // processInput,
+    formHandler,
+    getGeonames,
+    updateUI,
+    storeTrips,
+    todoList,
+    clearUI,
+    errorHandling
     // postData
 }
