@@ -26,6 +26,7 @@ console.log("Entry point reloaded!");
 
 //export js files for use in app
 export {
+    clickHandler,
     formHandler,
     getGeonames,
     updateUI,

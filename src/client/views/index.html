@@ -17,22 +17,25 @@
                 <section class="introText">
                     <p>My Trip.</p>
                 </section>
+                <section id="errors">
+                    <!-- Shows errors when they occur -->
+                </section>
                     <section class="inputform">
                         <form class="form">
                             <section id="inputArea">
-                                <input id="sLocation"  class="inputStart" name="input" rows="5" cols="60" placeholder="Starting Location"></input>
-                                <input id="fLocation" class="inputFinal" name="input" rows="5" cols="60" placeholder="Final Location"></input>
-                                <input id="date" type="date" class="inputFinal" name="input" rows="5" cols="60" placeholder="Input text to analyse"></input>
+                                <input id="startLocation"  class="inputStart" name="input" rows="5" cols="60" value="" placeholder="Starting Location"></input>
+                                <input id="finalLocation" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Final Location"></input>
+                                <input id="date" type="date" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Input text to analyse"></input>
                                 <button class="button" type="submit" name="" value="submit">Submit Search</button>
                             </section>
                         </form>
                     </section> <!--close input form-->
             </section>
             <section class="results">
-                <strong>Sentiment Analysis:</strong>
+                <!-- <strong>Sentiment Analysis:</strong>
                 <p>The Meaning Cloud API returned the following summary results for the submitted text/URL</p>
            
-                <p></p>
+                <p></p> -->
                 <button id="error" class="error"></button>
             </section>
         </main>
@@ -40,15 +43,20 @@
             <p class="logoText">This website uses the APIs from PixaBay, </p>
             <a href="https://www.meaningcloud.com/">
                 <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->
-                <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo">
+                <!-- <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo"> -->
             </a>
         </footer>
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById("inputAreaType").checked = false
-            const urlInput = document.getElementById("url").value = ""
-            const textInput = document.getElementById("text").value = ""
+            // document.getElementById("inputAreaType").checked = false
+
+            //Clears input form on reload
+            //TODO: UNCOMMENT AFTER TESTING
+            const errors = document.getElementById("errors").value = "";
+            // const startLocation = document.getElementById("startLocation").value = "";
+            // const finalLocation = document.getElementById("finalLocation").value = "";
+            // const date = document.getElementById("date").value = "";
         })
     </script>
     <script>
