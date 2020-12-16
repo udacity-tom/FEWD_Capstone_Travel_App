@@ -1,4 +1,4 @@
-storeimport 'regenerator-runtime/runtime';
+// storeimport 'regenerator-runtime/runtime';
 //import Js functions used in app
 import { formHandler } from './js/formHandler'
 import { getGeonames } from './js/getGeonames'
@@ -14,8 +14,8 @@ import { errorHandling } from './js/errorHandling'
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/header.scss'
-import './styles/nav.scss'
-import './styles/form.scss'
+// import './styles/nav.scss'
+import './styles/input-card.scss'
 import './styles/footer.scss'
 
 // import meaning-cloud-logo from './meaning-cloud-logo.png';

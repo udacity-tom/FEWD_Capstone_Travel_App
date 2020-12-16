@@ -1,0 +1,80 @@
+$switch-color:#219ebc;
+$Intro-color: #ffb703;
+$text-color: #219ebc;
+$button-text: #ffffff;
+$button-backg: #4caf50;
+
+@mixin displayShadow($dispersion) {
+    box-shadow: 0 5px $dispersion black;
+}
+
+form {
+    border-radius: 3px;
+    padding: 40px;
+    margin-top: 6em;
+    margin: 0 auto;
+}
+
+.input-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inputURL {
+    display: none;
+}
+.inputText {
+    display: block;
+}
+.introTitle {
+    justify-content: center;
+}
+
+.introText {
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.error {
+    display: none;
+}
+
+#text, #url {
+    padding-top: 50px;
+}
+
+#inputArea {
+    display: flex;
+}
+
+#sLocation, #fLocation {
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+.button {
+    margin-top: 20px;
+    width: 250px;
+    height: 100px;
+    border: none;
+    border-radius: 25px;
+    font-size: 2em;
+    color: $button-text;
+    background-color: $button-backg;
+
+    &:hover {
+        font-size: 2em;
+        color: $button-backg;
+        background-color: $button-text;
+        @include displayShadow(10px);
+    }
+}
+
+.results {
+    font-size: 1.5em;
+}
+
+

@@ -32,22 +32,28 @@ app.listen(port, function() {
     console.log(`Travel App listening on ${port}`);
 })
 
-
-
-// app.get(port, )
-
-
 //Endpoint for data submission for new API request
 app.post('/process', processRequest);
 
+//Processes the request from the client for data
 function processRequest(req, res) {
     console.log("Request for new Travel Plans recieved.")
     const dataDestination = createDataSet(req);
+    getAllData(geo,dataDestination);
 }
 
+//Will create the data set to send to the three APIs
 function createDataSet(dataRecieved){
-    
+
+
 }
 
-// function getAllData(dataService, dataSet)
+//Gets the data from the APIs based on the data set created.
+function getAllData(dataService, dataSet) {
+
+}
+
+function returnDataToClient(dataToReturn){
+
+}
 
