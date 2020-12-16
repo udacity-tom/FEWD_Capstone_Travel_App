@@ -1,5 +1,6 @@
 // storeimport 'regenerator-runtime/runtime';
 //import Js functions used in app
+import { clickHandler } from './js/clickHandler'
 import { formHandler } from './js/formHandler'
 import { getGeonames } from './js/getGeonames'
 import { updateUI } from './js/updateUI'
