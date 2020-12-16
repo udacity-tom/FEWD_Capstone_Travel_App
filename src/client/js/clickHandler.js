@@ -11,17 +11,22 @@ function clickHandler(event) {
     // }
 
     const processSubmitData = () => {
+        // document.getElementById("errors").value = "";
+        Client.clearError();
         console.log("in processsubmitData");
         const errData = {
             code: "998",
             msg: "Check all inputs are correctly entered and filled out. "
         }
-
         if((startLocation.value == "" | finalLocation.value == "" | date.value == "") ) {
-            console.log("Error: errData");
+            console.log("Input Error: Data missing or incorrect!");
             Client.errorHandling(errData);
         } else {
-            document.getElementById("errors").value = "";
+            const returnedData =  Client.axiosPost('/process', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value })
+        
+            
+            // console.log("in the else condition of error checking.")
+            // document.getElementById("errors").value = "";
         }
     
         
@@ -31,11 +36,6 @@ function clickHandler(event) {
         else if (clickTarget.value == "addTrip") addTrip();
         else if (clickTarget.value == "deleteTrip") deleteTrip();
     }
-    
-
-
-
-
 }
 
 

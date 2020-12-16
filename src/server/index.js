@@ -51,10 +51,10 @@ app.post('/process', processRequest);
 
 //Processes the request from the client for data
 function processRequest(req, res) {
-    console.log("Request for new Travel Plans recieved.")
+    console.log("Request for new Travel Plans recieved.", req.body)
     // const sLocation = req.
-    const dataDestination = createDataSet(req);
-    getAllData(geo,dataDestination);
+    // const dataDestination = createDataSet(req);
+    // getAllData(geo,dataDestination);
 }
 
 //Will create the data set to send to the three APIs

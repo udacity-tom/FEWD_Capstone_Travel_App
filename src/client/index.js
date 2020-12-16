@@ -7,7 +7,9 @@ import { updateUI } from './js/updateUI'
 import { storeTrips } from './js/storeTrips'
 import { todoList } from './js/todoList'
 import { clearUI } from './js/clearUI'
+import { clearError } from './js/clearError'
 import { errorHandling } from './js/errorHandling'
+import { axiosPost } from './js/axiosPost'
 // import { processInput } from './js/processInput'
 // import { postData } from './js/postData'
 
@@ -33,6 +35,8 @@ export {
     storeTrips,
     todoList,
     clearUI,
-    errorHandling
+    clearError,
+    errorHandling,
+    axiosPost
     // postData
 }
