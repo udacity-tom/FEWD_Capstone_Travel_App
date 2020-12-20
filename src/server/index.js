@@ -43,7 +43,7 @@ app.use(bodyParser.json());
 //setup home page
 const port = 8081;
 app.get('/', function(req, res) {
-    resolve.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
+    res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
     console.log('Homepage delivered');
 })
 
@@ -54,10 +54,7 @@ app.listen(port, function() {
 
 //Endpoint for data submission for new API request
 app.post('/process', processRequest);
-
-
 // const getGeonames = async () => {
-
 // }
 
 //wbit example URLs
@@ -66,34 +63,58 @@ const city = 'city=winterthur';
 const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
 console.log("16day", wbit16URL);
 
-const axiosPost = async (url = '', data = {}) => {
-    console.log("data in axiospost",data);
+const axiosGet = async (req, res) => {
+    // console.log("url in axiospost",url);
     //TODO: CLEAR THE UI INPUT
-    const response = await axios.post('http://localhost:8081'+url, data)
-    .then(function (response){
-        console.log("axios response to server request",response);
-        return response
-    })
-    .catch( (error) => {
-        console.log("Axios errror", error);
-    })
+    res = await axios.get(req)
+    try {
+        const response = await res;
+        return response;
+    } catch(error) {
+        console.log('Data error on Wbit', error);
+        return error;
+    }
+
+
+
+
+
+    // .then(async function (res){
+    //     const response = await res;
+    //     // console.log("axios server call response to server request",response);
+    //     console.log("wbit server call response for objects", response.data.data[0]);
+    //     return response.data;
+    // })
+    // .catch( (error) => {
+    //     console.log("Axios errror", error);
+    // })
 }
 
 
 // function getWeatherbitInfo(finalLocation){
     const weatherAtFinalLoc = async (finalLocation) => {
-        const response = await axiosPost(wbit16URL);
-        console.log("wbit response", response);
+        const response = await axiosGet(wbit16URL);
+        // console.log("wbit response", response);
+        // console.log("wbit response for objects", response.data.data[0]);
+        return response;
     }
 // }
 // https://api.weatherbit.io/v2.0/current?city=london&country=uk&units=S&key=303a4822c70643128b8e41ecf09670f0
 
 //Processes the request from the client for data
 function processRequest(req, res) {
-    console.log("Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
+    // console.log("Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
     const {startLocation, finalLocation, date}  = req.body;
-    console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date);
-    weatherAtFinalLoc();
+    // console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date);
+    // const response = await weatherAtFinalLoc();
+    axiosGet(wbit16URL)
+    .then(function (response) {
+        console.log("processREqust:wbit response", response)
+    })
+//     .then(function(response) {
+//     console.log("processREqust:wbit response for objects", response.data.data[0])
+// })
+        
 
     // const dataDestination = createDataSet(req);
     // getAllData(geo,dataDestination);
