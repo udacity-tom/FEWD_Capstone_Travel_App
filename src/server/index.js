@@ -64,30 +64,17 @@ const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
 console.log("16day", wbit16URL);
 
 const axiosGet = async (req, res) => {
-    // console.log("url in axiospost",url);
+    // console.log("url in axiospost", req);
     //TODO: CLEAR THE UI INPUT
     res = await axios.get(req)
     try {
         const response = await res;
-        return response;
+        console.log("axiosGet response is: ", response.data);
+        return response.data;
     } catch(error) {
         console.log('Data error on Wbit', error);
         return error;
     }
-
-
-
-
-
-    // .then(async function (res){
-    //     const response = await res;
-    //     // console.log("axios server call response to server request",response);
-    //     console.log("wbit server call response for objects", response.data.data[0]);
-    //     return response.data;
-    // })
-    // .catch( (error) => {
-    //     console.log("Axios errror", error);
-    // })
 }
 
 
@@ -95,8 +82,8 @@ const axiosGet = async (req, res) => {
     const weatherAtFinalLoc = async (finalLocation) => {
         const response = await axiosGet(wbit16URL);
         // console.log("wbit response", response);
-        // console.log("wbit response for objects", response.data.data[0]);
-        return response;
+        console.log("wbit response for objects", response.data.data[0])
+        return response.data;
     }
 // }
 // https://api.weatherbit.io/v2.0/current?city=london&country=uk&units=S&key=303a4822c70643128b8e41ecf09670f0
@@ -107,10 +94,16 @@ function processRequest(req, res) {
     const {startLocation, finalLocation, date}  = req.body;
     // console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date);
     // const response = await weatherAtFinalLoc();
-    axiosGet(wbit16URL)
-    .then(function (response) {
-        console.log("processREqust:wbit response", response)
+    req = wbit16URL;
+    axiosGet(req, res)
+    .then(function(data) {
+        res.send(data);
     })
+    // .then(function (response) {
+    //     console.log("processREqust:wbit response", response.data)
+        
+    // })
+    
 //     .then(function(response) {
 //     console.log("processREqust:wbit response for objects", response.data.data[0])
 // })

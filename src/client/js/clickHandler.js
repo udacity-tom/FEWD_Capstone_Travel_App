@@ -10,7 +10,7 @@ function clickHandler(event) {
     //     console.log("We are start, finish location and date: ", startLocation.value, finalLocation.value, date.value)
     // }
 
-    const processSubmitData = () => {
+    const processSubmitData = async () => {
         // document.getElementById("errors").value = "";
         Client.clearError();
         console.log("in processsubmitData");
@@ -22,7 +22,8 @@ function clickHandler(event) {
             console.log("Input Error: Data missing or incorrect!");
             Client.errorHandling(errData);
         } else {
-            const returnedData =  Client.axiosPost('/process', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value })
+            let returnedData =  await Client.axiosPost('/process', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value });
+            console.log("Data from server request", returnedData);
         
             
             // console.log("in the else condition of error checking.")
