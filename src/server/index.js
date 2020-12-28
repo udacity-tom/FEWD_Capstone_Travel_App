@@ -69,7 +69,7 @@ const axiosGet = async (req, res) => {
     res = await axios.get(req)
     try {
         const response = await res;
-        console.log("axiosGet response is: ", response.data);
+        // console.log("axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
         console.log('Data error on Wbit', error);
@@ -99,18 +99,6 @@ function processRequest(req, res) {
     .then(function(data) {
         res.send(data);
     })
-    // .then(function (response) {
-    //     console.log("processREqust:wbit response", response.data)
-        
-    // })
-    
-//     .then(function(response) {
-//     console.log("processREqust:wbit response for objects", response.data.data[0])
-// })
-        
-
-    // const dataDestination = createDataSet(req);
-    // getAllData(geo,dataDestination);
 }
 
 //Will create the data set to send to the three APIs

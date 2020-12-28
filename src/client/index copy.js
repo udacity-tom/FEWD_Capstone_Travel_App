@@ -10,7 +10,7 @@ import { clearUI } from './js/clearUI'
 import { clearError } from './js/clearError'
 import { errorHandling } from './js/errorHandling'
 import { axiosPost } from './js/axiosPost'
-import { crs } from './js/crs'
+// import { crs } from '/library/crs.min.js'
 // import { processInput } from './js/processInput'
 // import { postData } from './js/postData'
 
@@ -39,6 +39,6 @@ export {
     clearError,
     errorHandling,
     axiosPost,
-    crs
+    // crs
     // postData
 }
