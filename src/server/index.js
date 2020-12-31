@@ -31,8 +31,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
-// const fetch = require('node-fetch');
-// const axios = require('node-axios');
 
 //setup server to use express, json, cors
 const app = express();
@@ -58,21 +56,39 @@ app.post('/process', processRequest);
 // }
 
 //wbit example URLs
-const country = '&country=ch';
-const city = 'city=winterthur';
-const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
-console.log("16day", wbit16URL);
+// const country = '&country=ch';
+// const country = ''
+// const city = 'city=winterthur';
+// const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
+// console.log("16day", wbit16URL);
+
+function getWbitURL(location, countryCode, date) {
+    const wbitDailyPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
+    const wbitCurrentPrefixURL = "https://api.weatherbit.io/v2.0/current/city?"; //current->city 
+    const wbit16dayPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
+    
+    const country = '&country='+countryCode;
+// const country = ''
+    const city = 'city='+location;
+    const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
+    console.log("16day", wbit16URL);
+    return wbit16URL;
+};
+
+
 
 const axiosGet = async (req, res) => {
     // console.log("url in axiospost", req);
     //TODO: CLEAR THE UI INPUT
     res = await axios.get(req)
+    console.log("Request made!")
     try {
         const response = await res;
+        console.log("API Response recieved!")
         // console.log("axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
-        console.log('Data error on Wbit', error);
+        console.log('Data error on API', error);
         return error;
     }
 }
@@ -90,9 +106,13 @@ const axiosGet = async (req, res) => {
 
 //Processes the request from the client for data
 function processRequest(req, res) {
-    // console.log("Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
-    const {startLocation, finalLocation, date}  = req.body;
-    // console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date);
+
+    console.log("Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
+    const {startLocation, finalLocation, date, country}  = req.body;
+    console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date, "country:", country);
+    const wbit16URL = getWbitURL(finalLocation, country, date);
+
+
     // const response = await weatherAtFinalLoc();
     req = wbit16URL;
     axiosGet(req, res)

@@ -42,6 +42,10 @@ form {
     display: flex;
 }
 
+#not-shown {
+    display: none;
+}
+
 textarea {
     margin-left: 50px;
 }

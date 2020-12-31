@@ -5,9 +5,10 @@ function clickHandler(event) {
     const startLocation = document.getElementById("startLocation");
     const finalLocation = document.getElementById("finalLocation");
     const date = document.getElementById("date");
+    const country = document.getElementById("country-select");
     // if (clickTarget.nodeName == "BUTTON" && clickTarget.value == "submit") {
     //     console.log("Yes, I'm the submit button, button value is:", clickTarget.value);
-    //     console.log("We are start, finish location and date: ", startLocation.value, finalLocation.value, date.value)
+        console.log("We are start, finish location and date: ", startLocation.value, finalLocation.value, date.value, country.value);
     // }
 
     const processSubmitData = async () => {
@@ -22,7 +23,7 @@ function clickHandler(event) {
             console.log("Input Error: Data missing or incorrect!");
             Client.errorHandling(errData);
         } else {
-            let returnedData =  await Client.axiosPost('/process', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value });
+            let returnedData =  await Client.axiosPost('/process', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value, country: country.value });
             console.log("Data from server request", returnedData);
         
             

@@ -1,3 +1,7 @@
+CRS.js License text 
+
+Web: https://github.com/country-regions
+
 The MIT License (MIT)
 
 Copyright (c) 2014 Benjamin Keen
