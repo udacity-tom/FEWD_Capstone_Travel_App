@@ -25,7 +25,7 @@ import './styles/footer.scss'
 // import meaning-cloud-logo from './meaning-cloud-logo.png';
 // import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
 
-console.log("Entry point reloaded!");
+console.log("Entry point reloaded! Site was re-loaded.");
 
 //export js files for use in app
 export {

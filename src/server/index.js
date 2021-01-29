@@ -15,10 +15,7 @@ const pixPrefixURL = "https://pixabay.com/api/?q=";
 const wbitDailyPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
 const wbitCurrentPrefixURL = "https://api.weatherbit.io/v2.0/current/city?"; //current->city 
 const wbit16dayPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
-
-
 // https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=API_KEY
-
 
 const geoSuffixURL = "";
 const pixSuffixURL = "";
@@ -52,43 +49,81 @@ app.listen(port, function() {
 
 //Endpoint for data submission for new API request
 app.post('/process', processRequest);
-// const getGeonames = async () => {
-// }
 
-//wbit example URLs
+//Endpoint for city search parameters GeoNames API (uses axiosGet)
+app.post('/cityName', checkCityName);
+
+const getGeonames = async () => {
+}
+
+// wbit example URLs
 // const country = '&country=ch';
-// const country = ''
+// const country = '';
 // const city = 'city=winterthur';
 // const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
 // console.log("16day", wbit16URL);
 
-function getWbitURL(location, countryCode, date) {
+
+//gets weather for 16days, current weatehr, historical weather, daily weather?
+//uses axiosGet as three seperate requests
+//gets weather at current location
+function getWbitURL(location, countryCode, date, longtitude, lattitude) {
     const wbitDailyPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
     const wbitCurrentPrefixURL = "https://api.weatherbit.io/v2.0/current/city?"; //current->city 
     const wbit16dayPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
-    
+    // TODO: 26-1-21 setup the results as eitehr SI Units or Imperiel ->const units = SI or Imperial;
     const country = '&country='+countryCode;
+    let wbit16URL = "";
 // const country = ''
-    const city = 'city='+location;
-    const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
-    console.log("16day", wbit16URL);
+// TODO: Put a switch in here to get a daily hour by hour weather as well, finish getGeoURL
+    if(location){
+        const city = 'city='+location;
+        wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
+        console.log("location is true", wbit16URL);
+    } else {
+        const lon = 'lon='+longtitude;
+        const lat = 'lat='>lattitude;
+        wbit16URL = `${wbit16dayPrefixURL}${lat}&${lon}&key=${wbit_key}`;
+    }
+    
+    
+    console.log("Wbit 16day URL", wbit16URL);
+    // console.log("the value is",String(city));
+    // axiosGet(req, res, 
+
+    // const wbit16Day = axiosGet(wbit16URL, res, "wbit16URL")
+    // .then(function(wbit16Day){
+    //     return wbit16Day;
+    // })
+
     return wbit16URL;
 };
 
+function getGeoURL(startLocation, startCountry, finalLocation, finalCountry){
+    const geoPrefixURL = "http://api.geonames.org/searchJSON?q=";
+    const geoSuffixURL = "&maxRows=1";
+    const geoURLStart = `${geoPrefixURL}${startLocation}&key=${geo_key}${geoSuffixURL}`;
+    console.log("Geo URL is: ",geoURLStart);
+    return geoURLStart;
+}
+
+function getGeoURLCity(location, country){
+
+}
 
 
-const axiosGet = async (req, res) => {
-    // console.log("url in axiospost", req);
+const axiosGet = async (req, res, getRequestType) => {
+    console.log("url in axiospost", req);
     //TODO: CLEAR THE UI INPUT
     res = await axios.get(req)
-    console.log("Request made!")
+    console.log(`${getRequestType} Request made!`)
     try {
         const response = await res;
-        console.log("API Response recieved!")
-        // console.log("axiosGet response is: ", response.data);
+        console.log(`API ${getRequestType} Response received!`)
+        console.log("axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
-        console.log('Data error on API', error);
+        console.log(`Data error on ${getRequestType} API request`, error);
         return error;
     }
 }
@@ -106,25 +141,37 @@ const axiosGet = async (req, res) => {
 
 //Processes the request from the client for data
 function processRequest(req, res) {
-
     console.log("Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
-    const {startLocation, finalLocation, date, country}  = req.body;
-    console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date, "country:", country);
-    const wbit16URL = getWbitURL(finalLocation, country, date);
-
-
+    const {startLocation, finalLocation, date, startCountry, finalCountry}  = req.body;
+    console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date, "startCountry:", startCountry, "finalCountry", finalCountry);
+   
+    const wbit16URL = getWbitURL(finalLocation, finalCountry, date);
     // const response = await weatherAtFinalLoc();
     req = wbit16URL;
-    axiosGet(req, res)
+    axiosGet(req, res, String(req))
     .then(function(data) {
         res.send(data);
     })
+    // getWbitURL(req,res)
+    // res.send(getWbitURL(finalLocation, country, date));
 }
 
 //Will create the data set to send to the three APIs
 
+//function to query current city location uses geonames API
+function checkCityName(req, res) {
+    console.log("City name request for", req.body.startLocation );
+    console.log("req.body is: ", req.body);
+    const {startLocation, finalLocation, date, startCountry, finalCountry}  = req.body;
 
+    req = getGeoURL(startLocation, startCountry, finalLocation, finalCountry);
+    console.log("req before axios function is",req);
+    axiosGet(req, res, String(req))
+    .then(function(data) {
+        res.send(data);
+    })
 
+}
 
 
 

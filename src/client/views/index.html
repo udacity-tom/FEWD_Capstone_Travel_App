@@ -24,12 +24,19 @@
                         <form class="form">
                             <section id="inputArea">
                                 <input id="startLocation"  class="inputStart" name="input" rows="5" cols="60" value="" placeholder="Starting Location"></input>
-                                <input id="finalLocation" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Final Location"></input>
+                                <label for="startCountry-select">Please Select Country</label>
+    <select id="startCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
+    <select  id="not-shown"></select>
+
+                                <input id ="finalLocation" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Final Location"></input>
+                                <input id ="citySearch" class="inputFinal" name="input" rows="5" cols="60" placeholder="Search for a city!"></input>
+                                <button class="button" value="citySearch" data-value="citySearch">Search</button>
+                                <label for="finalCountry-select">Please Select Country</label>
+    <select id="finalCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
+    <select  id="not-shown"></select>
                                 <input id="date" type="date" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Input Date"></input>
                                 <!-- <input id="country" type="text" name="input" -->
-                                <label for="country-select">Please Select Country</label>
-    <select id="country-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
-    <select  id="not-shown"></select>
+<!-- TODO: Add units button                                <button class="units" -->
                                 <button class="button" type="submit" name="" value="submit">Submit Search</button>
                             </section>
                         </form>
@@ -44,7 +51,7 @@
             </section>
         </main>
         <footer>
-            <p class="logoText">This website uses the APIs from PixaBay, </p>
+            <p class="logoText">This website uses the APIs from PixaBay, GeoNames and Weatherbit. </p>
             <a href="https://www.meaningcloud.com/">
                 <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->
                 <!-- <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo"> -->
