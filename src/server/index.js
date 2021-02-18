@@ -101,9 +101,9 @@ function getWbitURL(location, countryCode, date, longtitude, lattitude) {
 
 function getGeoURL(startLocation, startCountry, finalLocation, finalCountry){
     const geoPrefixURL = "http://api.geonames.org/searchJSON?";
-    const geoSearchURL = "name_startsWith="
     const geoSuffixURL = "&maxRows=10";
-    const geoURLStart = `${geoPrefixURL}${geoSearchURL}${startLocation}&username=${geo_key}${geoSuffixURL}`;
+    const geoExtraParam = "name_startsWith=";
+    const geoURLStart = `${geoPrefixURL}${geoExtraParam}${startLocation}&username=${geo_key}${geoSuffixURL}`;
     console.log("Geo URL is: ",geoURLStart);
     return geoURLStart;
 }
@@ -121,7 +121,7 @@ const axiosGet = async (req, res, getRequestType) => {
     try {
         const response = await res;
         console.log(`API ${getRequestType} Response received!`)
-        // console.log("axiosGet response is: ", response.data);
+        console.log("axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
         console.log(`Data error on ${getRequestType} API request`, error);
@@ -169,7 +169,6 @@ function checkCityName(req, res) {
     console.log("req before axios function is",req);
     axiosGet(req, res, String(req))
     .then(function(data) {
-        // console.log("res is",res);
         res.send(data);
     })
 

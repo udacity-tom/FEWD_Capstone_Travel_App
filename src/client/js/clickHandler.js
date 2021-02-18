@@ -9,7 +9,6 @@ function clickHandler(event) {
     const finalCountry = document.getElementById("finalCountry-select");
     const citySearch = document.getElementById("citySearch");
     const userActiveElement = document.activeElement.id;
-    const geoNamesCitySearch = document.getElementById("geoNamesCitySearch");
     // const keybEvent = document.querySelector("input");
 
     // if (clickTarget.nodeName == "BUTTON" && clickTarget.value == "submit") {
@@ -18,6 +17,12 @@ function clickHandler(event) {
     // }
 
     function checkCityInputIsActive () {
+
+        // console.log("keybEvent is", keybEvent);
+        // console.log("keybEvent.onfocus ", keybEvent.onfocus);
+        //         console.log("keybEvent.id ", keybEvent.id);
+                // console.log("document.activeElement",document.activeElement);
+        // if(keybEvent.id == "citySearch") {
             if(userActiveElement == "citySearch") {
                 
             // TODO: 26.1.21 add event monitor to check the citysearch input is active and that there are 
@@ -34,11 +39,8 @@ function clickHandler(event) {
     checkCityInputIsActive();
 
     function processCitySearch() {
-        if (citySearch != ''){
-            console.log("in processCitySearch()");
-            processSubmitData();
-        
-        }
+        console.log("in processCitySearch()");
+
     }
 
     function checkInput() {
@@ -65,29 +67,29 @@ function clickHandler(event) {
         }
         // console.log("Data from server request", returnedData);
         // if(checkCityInputIsActive()){
-        if(true){
-            console.log("submitting to endpoint /cityname");
-            let returnedData =  await Client.axiosPost('/cityName', {startLocation: citySearch.value,finalLocation: finalLocation.value, date: date.value, startCountry: startCountry.value, finalCountry:finalCountry.value });
-            console.log("Data from server request", returnedData);
-            const searchResponse = document.createDocumentFragment();
-            // const newElement = document.createElement('option');
-            // geoNamesCitySearch.appendChild(newElement);
-            console.log("geonames array has",returnedData.data.geonames.length);
-            for (let i = 0; i < returnedData.data.geonames.length; i++) {
-                // console.log("i is ",i);
-                console.log(returnedData.data.geonames[i].name,",",returnedData.data.geonames[i].countryCode);
-                // const optionBegin = "<option value=""
-                const newElement = document.createElement('option');
-                newElement.value = i;
-                newElement.innerText = returnedData.data.geonames[i].name+", "+returnedData.data.geonames[i].countryCode+" ("+returnedData.data.geonames[i].toponymName+")";
-                searchResponse.appendChild(newElement);
-            }
-            while(geoNamesCitySearch.firstChild){
-                geoNamesCitySearch.removeChild(geoNamesCitySearch.firstChild);
+            if(true){
+                console.log("submitting to endpoint /cityname");
+                let returnedData =  await Client.axiosPost('/cityName', {startLocation: citySearch.value,finalLocation: finalLocation.value, date: date.value, startCountry: startCountry.value, finalCountry:finalCountry.value });
+                console.log("Data from server request", returnedData);
+                const searchResponse = document.createDocumentFragment();
+                // const newElement = document.createElement('option');
+                // geoNamesCitySearch.appendChild(newElement);
+                console.log("geonames array has",returnedData.data.geonames.length);
+                for (let i = 0; i < returnedData.data.geonames.length; i++) {
+                    // console.log("i is ",i);
+                    console.log(returnedData.data.geonames[i].name,",",returnedData.data.geonames[i].countryCode);
+                    // const optionBegin = "<option value=""
+                    const newElement = document.createElement('option');
+                    newElement.value = i;
+                    newElement.innerText = returnedData.data.geonames[i].name+", "+returnedData.data.geonames[i].countryCode+" ("+returnedData.data.geonames[i].toponymName+")";
+                    searchResponse.appendChild(newElement);
                 }
-            geoNamesCitySearch.appendChild(searchResponse);
-            // console.log(returnedData.data.geonames[0].countryCode)
-        }
+                while(geoNamesCitySearch.firstChild){
+                    geoNamesCitySearch.removeChild(geoNamesCitySearch.firstChild);
+                    }
+                geoNamesCitySearch.appendChild(searchResponse);
+                // console.log(returnedData.data.geonames[0].countryCode)
+            }
         if( checkInput() ) {
             
             // let returnedData =  await Client.axiosPost('/cityName', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value, startCountry: startCountry.value, finalCountry:finalCountry.value });
