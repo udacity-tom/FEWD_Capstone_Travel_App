@@ -30,12 +30,30 @@
 
                                 <input id ="finalLocation" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Final Location"></input>
                                 <input id ="citySearch" class="inputFinal" name="input" rows="5" cols="60" placeholder="Search for a city!"></input>
-                                <select id="geoNamesCitySearch"></select>
-                                <button class="button" value="citySearch" data-value="citySearch">Search</button>
+                                <section id="loading">
+                                    <!-- show loading gif when loading data from API -->
+                                </section>
+                                <!-- <select id="geoNamesCitySearch">
+                                    <option>City search results appear here. Select one!</option>
+                                </select> -->
+                                <div id=geoNamesCitySearch">
+                                    <ul id="searchList"  style="display: none;">
+                                    </ul>
+                                </div>
+
+
+
+                                <!-- <button class="button" value="citySearch" data-value="citySearch">Search</button> -->
                                 <label for="finalCountry-select">Please Select Country</label>
     <select id="finalCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
     <select  id="not-shown"></select>
-                                <input id="date" type="date" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Input Date"></input>
+                            <div>
+                                <label for="dateInput">
+                                    <span class="field-label">Date of Departure</span>
+                                </label>
+                                <input id="date" type="date" class="inputFinal" name="dateInput" value="" min="2021-02-01" required placeholder="DD/MM/YYYY" aria-hidden="false"></einput>
+                                <span class="validity"></span>
+                            </div>
                                 <!-- <input id="country" type="text" name="input" -->
 <!-- TODO: Add units button                                <button class="units" -->
                                 <button class="button" type="submit" name="" value="submit">Submit Search</button>
@@ -91,3 +109,5 @@
 </html>
 
 <!-- For popup support the library popper.js from https://popper.js.org has been used -->
+<!-- For date support https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
+<!-- Additional Date Support https://www.smashingmagazine.com/printed-books/form-design-patterns/ -->

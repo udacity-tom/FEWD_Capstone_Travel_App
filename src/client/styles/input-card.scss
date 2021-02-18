@@ -36,6 +36,24 @@ form {
     font-size: 1.5em;
 }
 
+label {
+    display: flex;
+    align-items: center;
+  }
+  
+  span::after {
+    padding-left: 5px;
+  }
+  
+  input:invalid + span::after {
+    content: '✖';
+  }
+  
+  input:valid+span::after {
+    content: '✓';
+  }
+
+
 .error {
     display: none;
 }
@@ -57,6 +75,22 @@ form {
     display: none;
 }
 
+.searchList {
+    margin: 5px;
+    width: 250px;
+    // height: 100px;
+    border: 1px;
+    // font-size: 2em;
+    color: $button-backg;
+    background-color: $button-text;
+    &:hover {
+        // font-size: 2em;
+        margin: 5px;
+        color: $button-text;
+        background-color: $button-backg;
+        // @include displayShadow(10px);
+    }
+}
 
 .button {
     margin-top: 20px;

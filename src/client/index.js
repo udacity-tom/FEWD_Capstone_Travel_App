@@ -24,6 +24,7 @@ import './styles/footer.scss'
 
 // import meaning-cloud-logo from './meaning-cloud-logo.png';
 // import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
+import loadingGif from './views/img/loading.gif'
 
 console.log("Entry point reloaded! Site was re-loaded.");
 
