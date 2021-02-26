@@ -104,7 +104,7 @@ function getGeoURL(startLocation, startCountry, finalLocation, finalCountry){
     const geoSuffixURL = "&maxRows=10";
     const geoExtraParam = "name_startsWith=";
     const geoURLStart = `${geoPrefixURL}${geoExtraParam}${startLocation}&username=${geo_key}${geoSuffixURL}`;
-    console.log("Geo URL is: ",geoURLStart);
+    console.log("(server) Geo URL is: ",geoURLStart);
     return geoURLStart;
 }
 
@@ -114,14 +114,14 @@ function getGeoURLCity(location, country){
 
 
 const axiosGet = async (req, res, getRequestType) => {
-    console.log("url in axiospost", req);
+    // console.log("(server) url in axiospost", req);
     //TODO: CLEAR THE UI INPUT
     res = await axios.get(req)
-    console.log(`${getRequestType} Request made!`)
+    // console.log(`(server) ${getRequestType} Request made! `)
     try {
         const response = await res;
-        console.log(`API ${getRequestType} Response received!`)
-        console.log("axiosGet response is: ", response.data);
+        console.log(`(server) API ${getRequestType} Response received!`)
+        console.log("(server) axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
         console.log(`Data error on ${getRequestType} API request`, error);
