@@ -1,4 +1,4 @@
-$background-color: #E76A4B;
+$background-color: #FFFFFF; //was #E76A4B;
 $text-color: #023047;
 $input-form: #eed595;
 $white-color: #000000;
@@ -33,6 +33,7 @@ section {
 
 h1 {
     font-size: 4em;
+    margin-left: 15px;
 
 }
 
@@ -40,3 +41,9 @@ h1 {
     text-align: center;
 }
 
+.introText {
+    margin-left: 20px;
+}
+
+::-webkit-calendar-picker-indicator { 
+    background: orange; }

@@ -15,7 +15,7 @@
             <section class="input-card">
                 <h1 class="introTitle" >Intro Text</h1>
                 <section class="introText">
-                    <p>My Trip.</p>
+                    <p class="introText">My Trip.</p>
                 </section>
                 <section id="errors">
                     <!-- Shows errors when they occur -->
@@ -23,40 +23,91 @@
                     <section class="inputform">
                         <form class="form">
                             <section id="inputArea">
-                                <input id="startLocation"  class="inputStart" name="input" rows="5" cols="60" value="" placeholder="Starting Location"></input>
-                                <label for="startCountry-select">Please Select Country</label>
-    <select id="startCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
-    <select  id="not-shown"></select>
-
-                                <input id ="finalLocation" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="Final Location"></input>
-                                <input id ="citySearch" class="inputFinal" name="input" rows="5" cols="60" placeholder="Search for a city. Type at least 3 characters."></input>
-                                <section id="loading">
+                                <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart" name="input" rows="5" cols="60" value="" placeholder="  Starting Location" autofocus autocomplete="off"></input>
+                                <div id="tooltipSL" role="tooltip" style="display: none;">
+                                    <div>
+                                        <div>Search for a city.</div>
+                                        <div>Type the first 3 or more characters.</div>
+                                        <div>Hit 'Enter' to search</div>
+                                    </div>
+                                    <div id="arrowSL" data-popper-arrow></div>
+                                </div>
+                                <!-- <section id="loading-startLocation"> -->
                                     <!-- show loading gif when loading data from API -->
-                                </section>
+                                <!-- </section> -->
+                                <div id=geoNamesCitySearch">
+                                    <ul id="startLocation-searchList"  style="display: none;" value="none">
+                                    </ul>
+                                </div>
+                                <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input>
+                                <!-- <label for="startCountry-select">Please Select Country</label>
+    <select id="startCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
+    <select  id="not-shown"></select> -->
+
+                                <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="  Final Location" autocomplete="off"></input>
+                                <div id="tooltipFL" role="tooltip" style="display: none;">
+                                    <div>Search for a city. Type at least 3 characters.</div>
+                                    <div>Please input at least 3 characters</div>
+                                    <div id="arrowFL" data-popper-arrow></div>
+                                </div>
+                                <!-- <section id="loading-finalLocation"> -->
+                                    <!-- show loading gif when loading data from API -->
+                                <!-- </section> -->
+                                <div id=geoNamesCitySearch">
+                                    <ul id="finalLocation-searchList"  style="display: none;" value="none">
+                                    </ul>
+                                </div>
+                              
+                                <!-- <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input> -->
+                                <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" placeholder="  Country of Final Location" autocomplete="off"></input>
+                                <!-- <input id ="citySearch" class="inputFinal" name="input" rows="5" cols="60" placeholder="Search for a city. Type at least 3 characters."></input> -->
+                                
                                 <!-- <select id="geoNamesCitySearch">
                                     <option>City search results appear here. Select one!</option>
                                 </select> -->
-                                <div id=geoNamesCitySearch">
-                                    <ul id="searchList"  style="display: none;">
+                                <!-- <div id=geoNamesCitySearch">
+                                    <ul id="searchList"  style="display: none;" value="none">
                                     </ul>
-                                </div>
+                                </div> -->
 
 
 
                                 <!-- <button class="button" value="citySearch" data-value="citySearch">Search</button> -->
-                                <label for="finalCountry-select">Please Select Country</label>
+                                <!-- <label for="finalCountry-select">Please Select Country</label>
     <select id="finalCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
-    <select  id="not-shown"></select>
-                            <div>
-                                <label for="dateInput">
-                                    <span class="field-label">Date of Departure</span>
-                                </label>
-                                <input id="date" type="date" class="inputFinal" name="dateInput" value="" min="2021-02-01" required placeholder="DD/MM/YYYY" aria-hidden="false"></einput>
-                                <span class="validity"></span>
+    <select  id="not-shown"></select> -->
+                            <div class="dateField">
+                                <div class="inputDep">
+                                    <label for="dateInput">
+                                        <span class="field-label">Date of Departure</span>
+                                    </label>
+                                    <input id="dateDep" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD1" name="dateInput" autocomplete="off">
+                                    <div id="tooltipD1" role="tooltip" style="display: none;">
+                                        <div>Set Date for departure.</div>
+                                        <div>Press the 'Enter' key to open Calander view</div>
+                                        <div id="arrowD1" data-popper-arrow></div>
+                                    </div>
+                                </div>
+                                <div class="inputRet" id="inputRet" aria-describedby="tooltipD2">
+                                    <label for="dateInput" >
+                                        <span class="field-label" >Date of Return</span>
+                                    </label>
+                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" autocomplete="off">
+                                    <div id="tooltipD2" role="tooltip" style="display: none;">
+                                        <div>Set Date for return.</div>
+                                        <div>Press the 'Enter' key to open Calander view</div>
+                                        <div id="arrowD2" data-popper-arrow></div>
+                                    </div>
+                                </div>
+                                
+                                
                             </div>
                                 <!-- <input id="country" type="text" name="input" -->
 <!-- TODO: Add units button                                <button class="units" -->
-                                <button class="button" type="submit" name="" value="submit">Submit Search</button>
+                                
+                            <div class="buttonHolder">
+                                <button id="submitButton" class="button" type="button" value="submit" name="">Submit Search</button>
+                            </div>
                             </section>
                         </form>
                     </section> <!--close input form-->
@@ -87,6 +138,7 @@
             // const startLocation = document.getElementById("startLocation").innerHTML = "";
             // const finalLocation = document.getElementById("finalLocation").innerHTML = "";
             // const date = document.getElementById("date").value = "";
+            // document.main; 
         })
     </script>
     <script>
@@ -111,3 +163,4 @@
 <!-- For popup support the library popper.js from https://popper.js.org has been used -->
 <!-- For date support https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
 <!-- Additional Date Support https://www.smashingmagazine.com/printed-books/form-design-patterns/ -->
+<!-- Loading gif from https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif as 10-02-21 -->

@@ -11,6 +11,8 @@ import { clearError } from './js/clearError'
 import { errorHandling } from './js/errorHandling'
 import { axiosPost } from './js/axiosPost'
 import { crs } from './js/crs'
+import { createPopper } from "@popperjs/core";
+// import { updateCityName } from './js/updateCityName'
 // import { processInput } from './js/processInput'
 // import { postData } from './js/postData'
 
@@ -21,6 +23,7 @@ import './styles/header.scss'
 // import './styles/nav.scss'
 import './styles/input-card.scss'
 import './styles/footer.scss'
+import './styles/popup.scss'
 
 // import meaning-cloud-logo from './meaning-cloud-logo.png';
 // import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
@@ -40,6 +43,7 @@ export {
     clearError,
     errorHandling,
     axiosPost,
-    crs
+    crs, 
+    createPopper
     // postData
 }

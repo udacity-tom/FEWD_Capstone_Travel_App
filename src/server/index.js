@@ -4,12 +4,14 @@ dotenv.config();
 
 //Add store for collected data
 const dataStore = [];
+const currentInput = {};
 
 //API keys for axios requests
 const geo_key = process.env.API_KEY_GEO;
 const pix_key = process.env.API_KEY_PIX;
 const wbit_key = process.env.API_KEY_WBIT;
 
+//API URL construction elements
 const geoPrefixURL = "http://api.geonames.org/searchJSON?q=";
 const pixPrefixURL = "https://pixabay.com/api/?q=";
 const wbitDailyPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
@@ -99,18 +101,23 @@ function getWbitURL(location, countryCode, date, longtitude, lattitude) {
     return wbit16URL;
 };
 
-function getGeoURL(startLocation, startCountry, finalLocation, finalCountry){
+function getGeoURL(location){
+    console.log("Server:Line 105 passed parameter", location);
     const geoPrefixURL = "http://api.geonames.org/searchJSON?";
     const geoSuffixURL = "&maxRows=10";
     const geoExtraParam = "name_startsWith=";
-    const geoURLStart = `${geoPrefixURL}${geoExtraParam}${startLocation}&username=${geo_key}${geoSuffixURL}`;
-    console.log("(server) Geo URL is: ",geoURLStart);
+    const geoURLStart = `${geoPrefixURL}${geoExtraParam}${location}&username=${geo_key}${geoSuffixURL}`;
+    console.log("(server line110) Geo URL is: ",geoURLStart);
     return geoURLStart;
 }
 
 function getGeoURLCity(location, country){
 
 }
+
+// function getPixaBay(country, city) {
+//     const 
+// }
 
 
 const axiosGet = async (req, res, getRequestType) => {
@@ -142,9 +149,9 @@ const axiosGet = async (req, res, getRequestType) => {
 
 //Processes the request from the client for data
 function processRequest(req, res) {
-    console.log("Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
+    console.log("(Server:Line 152)Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
     const {startLocation, finalLocation, date, startCountry, finalCountry}  = req.body;
-    console.log("Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date, "startCountry:", startCountry, "finalCountry", finalCountry);
+    console.log("(Server:Line 154)Destructured req.body", "startLocation:",startLocation, "finalLocation:", finalLocation, "date:",date, "startCountry:", startCountry, "finalCountry", finalCountry);
    
     const wbit16URL = getWbitURL(finalLocation, finalCountry, date);
     // const response = await weatherAtFinalLoc();
@@ -161,11 +168,11 @@ function processRequest(req, res) {
 
 //function to query current city location uses geonames API
 function checkCityName(req, res) {
-    console.log("City name request for", req.body.startLocation );
-    console.log("req.body is: ", req.body);
-    const {startLocation, finalLocation, date, startCountry, finalCountry}  = req.body;
+    console.log("(Server: Line 171) City name request for", req.body.location );
+    console.log("(Server: Line 172)req.body is: ", req.body);
+    const {location}  = req.body;
 
-    req = getGeoURL(startLocation, startCountry, finalLocation, finalCountry);
+    req = getGeoURL(location);
     console.log("req before axios function is",req);
     axiosGet(req, res, String(req))
     .then(function(data) {
