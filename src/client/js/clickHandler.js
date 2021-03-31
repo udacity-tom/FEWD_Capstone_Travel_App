@@ -38,6 +38,12 @@ function clickHandler(event) {
     const citySearch = document.getElementById("citySearch");
     const userActiveElement = document.activeElement.id;
     
+    function popCreator() {
+        
+    }
+
+
+
     function createPopups () {
         const startLocation = document.getElementById("startLocation");
         const finalLocation = document.getElementById("finalLocation");
@@ -145,8 +151,30 @@ function clickHandler(event) {
         console.log("StoreSelectedCity suggested cities", suggestedCities);
         console.log("StoreSelectedCity searchResults", searchResults);
     }
+
+    const getPixaBayImage = async (cityName, countryName) => {
+        let returnedData = await Client.axiosPost('/getPix', {city: cityName, country: countryName});
+        
+        
+        // console.log("getPixaBayImage request processed", returnedData);
+        console.log("getpixaimage first link", returnedData.data.hits[0].largeImageURL);
+        //get first URL for image and return
+        return returnedData.data.hits[0].largeImageURL;
+    }
+
+    function setBackgroundImage(url, inputFieldToCheck) {
+        console.log("setBackgrounImage Line 158", url);
+        // const imageBackground = url;
+        const inputForm = document.getElementById('background');
+        console.log("setBackgroundImage ", inputForm);
+        // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
+        inputForm.setAttribute("style","background: url("+url+")"+ "center center / cover no-repeat;object-fit: cover; overflow: hidden; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;");
+    }
+
+
     //Calls endpoint on server app to get list of cities from Geonames API
     const getGeoNamesCitySuggestions = async (cityName) => {
+        
         //TODO preliminary code to save API calls with reference to storeSelectedCity()
         // console.log("SuggestdCities ", suggestedCities);
         // if(suggestedCities != {}) console.log("suggestedCities.config.data",suggestedCities.config.data);
@@ -237,39 +265,7 @@ function clickHandler(event) {
     //             newImage.src = "./img/loading.gif";
     //             newImage.setAttribute('style', 'width: 50px; height:50px;');
     //             newLoad.appendChild(newImage);
-    //             loadingIcon.appendChild(newLoad);
-                
-    //             while(loadingIcon.firstChild) {
-    //                 loadingIcon.removeChild(loadingIcon.firstChild)
-    //             }
-    //             const searchResponse = document.createDocumentFragment();
-    //             const searchList = document.getElementById('searchList');
-    //             //creates list items in a fragrment of cities found beginning with user search
-    //             for (let i = 0; i < returnedData.data.geonames.length; i++) {
-    //                 // const newElement = document.createElement('option');
-    //                 const listElement = document.createElement('li');                   
-    //                 listElement.value = i;
-    //                 listElement.innerText = returnedData.data.geonames[i].name+", "+returnedData.data.geonames[i].countryCode+" ("+returnedData.data.geonames[i].toponymName+")";
-    //                 listElement.className = "searchList";
-    //                 listElement.dataset.id = "The obj";//stringify(returnedData.data.geonames[i]);
-    //                 // const cityList = "cityList";
-    //                 listElement.id = i;
-    //                 searchResponse.appendChild(listElement);
-    //             }  //html fragment is created
-                
-    //             //remove list elements of searchlist from previous searchs
-    //             while(searchList.firstChild){
-    //                 searchList.removeChild(searchList.firstChild);
-    //                 }
-    //             if(checkCityInputIsActive()){
-    //                 searchList.appendChild(searchResponse);
-    //                 searchList.setAttribute('style', 'position: absolute; display: block; background-color: white; outline: 1px;');
-    //             }  else { 
 
-    //                searchList.setAttribute('style','position: absolute; display: none; background-color: white; outline: 1px;');
-
-    //             }
-    //         }
     //     if( checkInput() ) {
     //         // let returnedData =  await Client.axiosPost('/cityName', {startLocation: startLocation.value,finalLocation: finalLocation.value, date: date.value, startCountry: startCountry.value, finalCountry:finalCountry.value });
     //         // console.log("Data from server request", returnedData);
@@ -307,8 +303,8 @@ function clickHandler(event) {
     function showDateInput() {
         let enKey = document.createEvent("enKey");
         console.log("showDateInput");
-        enterKey[initKeyboardEvent]("keydown", true, true, window, false, false, false, false, 13, 0);
-        document.dispatchEvent(enterKey)
+        // enterKey[initKeyboardEvent]("keydown", true, true, window, false, false, false, false, 13, 0);
+        // document.dispatchEvent(enterKey)
     }
 
     //create search city list closure
@@ -318,12 +314,28 @@ function clickHandler(event) {
 
     //INFO when run will reference clicked City from GeoNames API listed on screen and update input fields
     function updateCityName (geonamesCityObject, inputFieldToCheck) {
+        getPixaBayImage(geonamesCityObject.name, geonamesCityObject.countryCode)
+        .then( function(data) {
+            if(data){
+                console.log("Data was returned", data);
+                return data;
+            }
+            console.log("Data was not returned")
+        })
+        .then( function(data) {
+            setBackgroundImage(data, inputFieldToCheck);
+
+        });
         const inputLocation = document.getElementById(inputFieldToCheck);
         const countryLocation = inputFieldToCheck+"Country";
         const inputCountry = document.getElementById(countryLocation);
         inputLocation.value = geonamesCityObject.name;
         inputCountry.value = geonamesCityObject.countryName+", "+geonamesCityObject.countryCode;
-        hideSuggestedCities(inputFieldToCheck);
+        // hideSuggestedCities(inputFieldToCheck);
+       
+            
+        //Save city data to object.
+        
     }
 
     function checkClickedCity() {
@@ -367,7 +379,7 @@ function clickHandler(event) {
                         getPossibleCities();
                         // cityClickChecker();
                         // if(cityClickChecker() !=)
-                    }, 750);
+                    }, 500);
 
                 } 
                 // else if (inputLocation.value.length < 3 && inputLocation.value.length != 1) {       
@@ -376,6 +388,10 @@ function clickHandler(event) {
             });
             
         }
+
+
+
+
 
     //INFO Created as alternative for search method to find city based on user input
     function addSearchButton() {
