@@ -6,11 +6,6 @@
         <title>My Travel App</title>
     </head>
     <body id="background">
-        <header>
-            <div class="headerTitle">
-                <h1 class="page_title">My Travel App</h1>    
-            </div> 
-        </header>
         <main>
             <section class="input-card">
                 <h1 class="introTitle" >Intro Text</h1>
@@ -106,7 +101,7 @@
 <!-- TODO: Add units button                                <button class="units" -->
                                 
                             <div class="buttonHolder">
-                                <button id="submitButton" class="button" type="button" value="submit" name="">Submit Search</button>
+                                <button id="submitButton" class="button" type="button" value="submit" name="">Submit Trip</button>
                             </div>
                             </section>
                         </form>
@@ -119,13 +114,18 @@
                 <p></p> -->
                 <button id="error" class="error"></button>
             </section>
+            <section id="tripsPlanned">
+
+            </section>
         </main>
         <footer>
-            <p class="logoText">This website uses the APIs from PixaBay, GeoNames and Weatherbit. </p>
+            <p class="footerText">This website uses APIs: </p>
+            <p class="footerText">PixaBay, GeoNames and Weatherbit. </p>
             <a href="https://www.meaningcloud.com/">
                 <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->
                 <!-- <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo"> -->
             </a>
+            <p class="author">All Other Content Copyright T. Smith</p>
         </footer>
     </body>
     <script>
@@ -164,3 +164,4 @@
 <!-- For date support https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
 <!-- Additional Date Support https://www.smashingmagazine.com/printed-books/form-design-patterns/ -->
 <!-- Loading gif from https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif as 10-02-21 -->
+<!-- Image storage code modified from https://hacks.mozilla.org/2012/02/saving-images-and-files-in-localstorage/ -->

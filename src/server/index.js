@@ -117,7 +117,7 @@ function getPixaURL(city, country) {
     console.log("(Server:line117) Passed parameters are ", city, country);
     const pixPrefixURL = "https://pixabay.com/api?";
     const pixSuffixURL = "&q=";
-    const pixExtraParam = "&image_type=photo&per_page=3";
+    const pixExtraParam = "&image_type=photo&per_page=10";
     const pixaURL = `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${city}`;
     // console.log("(Server: line 117) city, country submitted", city, country);
     console.log("pixa URL is", pixaURL);
@@ -197,50 +197,32 @@ function checkCityName(req, res) {
 async function getPixaBayImage(req, res) {
     console.log("(Server: line 198) data submitted", req.body);
     let {city, country} = req.body;
-    // let city2 = country;
-    // let country2 = country;
-    // req2 = await getPixaURL(country2, country);
     req = await getPixaURL(city, country);
     console.log("URL Submittied",req);
     axiosGet(req, res, String(req))
-
-    // let data2 = await axiosGet(req2,res,String(req));
-    // (data.total == 0 ? data = data2 : data = data)
-    // .then(function(data) {
-    // console.log("(server: line204)pix response is", data);
-    // (data.total == 0 ? getPixaBayImageFallback({city, country},res) : res.send(data));
     .then(function(data) {
         console.log("(server: line209)getPixBayImage() res.send");
         res.send(data);
     })
-
-    // }
-    // .then(function(data) {
-    //     console.log("(server: line209)getPixBayImage() res.send");
-    //     res.send(data);
-    // })
-    
-    // if(axiosGet(req, res))
-    // console.log()
 }
 
-function getPixaBayImageFallback(req, res) {
-    console.log("getPixaBayImageFallback req", req);
-    let country = req.country;
-    console.log("(server: line 220) req.body.country", country, req.country);
-    let city = req.country;
-    console.log("(server: line 222) req.body.city", city, req.city);
-    req = getPixaURL(city, country);
-    console.log("(Server, line 229) Second URL Submitted", req);
-    axiosGet(req, res, String(req))
-    .then(function(data) {
-        console.log("(Server: line232 pix response is", data.total);
-        return(data);
-    })
-    .then(function(data) {
-            return(data);
-        })
-}
+// function getPixaBayImageFallback(req, res) {
+//     console.log("getPixaBayImageFallback req", req);
+//     let country = req.country;
+//     console.log("(server: line 220) req.body.country", country, req.country);
+//     let city = req.country;
+//     console.log("(server: line 222) req.body.city", city, req.city);
+//     req = getPixaURL(city, country);
+//     console.log("(Server, line 229) Second URL Submitted", req);
+//     axiosGet(req, res, String(req))
+//     .then(function(data) {
+//         console.log("(Server: line232 pix response is", data.total);
+//         return(data);
+//     })
+//     .then(function(data) {
+//             return(data);
+//         })
+// }
 
 // if(data.total == 0){
 //     getPixaBayImage(country, country);

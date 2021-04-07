@@ -12,6 +12,9 @@ import { errorHandling } from './js/errorHandling'
 import { axiosPost } from './js/axiosPost'
 import { crs } from './js/crs'
 import { createPopper } from "@popperjs/core";
+import { keypressed } from "./js/keypressed";
+// import { main } from "./js/main";
+import { getPixaBay } from './js/getPixabay'
 // import { updateCityName } from './js/updateCityName'
 // import { processInput } from './js/processInput'
 // import { postData } from './js/postData'
@@ -44,6 +47,15 @@ export {
     errorHandling,
     axiosPost,
     crs, 
-    createPopper
+    createPopper,
+    keypressed,
+    // main, 
+    getPixaBay
     // postData
 }
+
+//Function to run main.js
+
+(function () {
+
+})()
