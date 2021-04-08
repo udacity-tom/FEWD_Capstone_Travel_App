@@ -10,7 +10,10 @@ function formHandler(ev) {
     const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
     console.log("clickNodeName ", clickNodeName);
     if (clickNodeName == "BUTTON") {
-        if (clickValue == "submit") Client.processSubmitData();
+        if (clickValue == "submit") {
+            Client.checkError();
+            Client.addTrip(); //processSubmitData()
+        }
         // else if (clickValue == "citySearch") processCitySearch();
         else if (clickValue == "addTrip") addTrip();//button adds a new trip
         else if (clickValue == "deleteTrip") deleteTrip();//button deletes trip from store

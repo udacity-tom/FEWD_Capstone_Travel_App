@@ -9,7 +9,7 @@ const getPixaBay = async (cityName, countryName) => {
     }
     // TODO: check for portrait image, skip to next (to first landscape image)
     
-    const rndInt = Math.floor(Math.random() * returnedData.data.totalHits);
+    const rndInt = Math.floor(Math.random() * returnedData.data.hits.length);
 
     //TODO: potentially omit any portrait pictures by looking at the height
     if(returnedData.data.imageHeight > returnedData.data.imageWidth)

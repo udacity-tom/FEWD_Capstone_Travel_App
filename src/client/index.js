@@ -7,6 +7,7 @@ import { updateUI } from './js/updateUI'
 import { storeTrips } from './js/storeTrips'
 import { todoList } from './js/todoList'
 import { clearUI } from './js/clearUI'
+import { checkError } from './js/checkError'
 import { clearError } from './js/clearError'
 import { errorHandling } from './js/errorHandling'
 import { axiosPost } from './js/axiosPost'
@@ -14,6 +15,7 @@ import { crs } from './js/crs'
 import { createPopper } from "@popperjs/core";
 import { keypressed } from "./js/keypressed";
 // import { main } from "./js/main";
+
 import { getPixaBay } from './js/getPixabay'
 // import { updateCityName } from './js/updateCityName'
 // import { processInput } from './js/processInput'
@@ -44,6 +46,7 @@ export {
     todoList,
     clearUI,
     clearError,
+    checkError,
     errorHandling,
     axiosPost,
     crs, 
