@@ -3,8 +3,10 @@
 }
 
 footer {
+    flex-shrink: 0;
     justify-content: center;
     background-color: white;
+    margin-top: auto;
 }
 
 .logo {
@@ -15,8 +17,9 @@ footer {
     padding: 20px;
     font-size: 1.5em;
     text-align: center;
-    text-wrap: normal;
+    word-wrap: normal;
 }
 .author {
+    // justify-content: center;
     padding: 20px;
 }

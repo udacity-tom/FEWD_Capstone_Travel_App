@@ -1,4 +1,4 @@
-function storeTrips() {
+function storeTrips(tripObject) {
 
 //Add local storage for trips
 

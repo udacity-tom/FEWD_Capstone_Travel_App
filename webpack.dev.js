@@ -15,6 +15,11 @@ module.exports = {
         libraryTarget: 'var', 
         library: 'Client',
     },
+    target: 'node',
+
+    externals: {
+        express: 'express',
+    },
     module: {
         rules: [
             {

@@ -1,14 +1,15 @@
 function formHandler(ev) {
     //INFO: collects form click event. returns event
-    console.log("FormHandler event", ev);
+    // console.log("FormHandler event", ev);
     // event.preventDefault();
     const clickTarget = ev.target;
-    console.log("clickTarget ", clickTarget);
+    // console.log("clickTarget ", clickTarget);
     // console.log("event ", ev);
     const activeElement = document.activeElement;
+    // console.log("formhandler, activeelement length")
     const clickNodeName = clickTarget.nodeName;
     const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
-    console.log("clickNodeName ", clickNodeName);
+    // console.log("clickNodeName ", clickNodeName);
     if (clickNodeName == "BUTTON") {
         if (clickValue == "submit") {
             Client.checkError();
@@ -19,21 +20,24 @@ function formHandler(ev) {
         else if (clickValue == "deleteTrip") deleteTrip();//button deletes trip from store
         
     } else if (clickNodeName == "LI") {
-        console.log("formhandler li clicked updateUI will run");
+        // console.log("formhandler li clicked updateUI will run");
         // const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
         Client.updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
         console.log("formhandler after updating UI, going to hide the li's", inputId);
         // hideSuggestedCities(inputId);
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
-    } else if (activeElement.id != undefined && activeElement.id != null && activeElement.id == "startLocation" || activeElement.id == "finalLocation") {
+    } else if (activeElement.value.length >= 3 && activeElement.id != undefined && activeElement.id != null && activeElement.id == "startLocation" || activeElement.id == "finalLocation") {
+        Client.getGeonames(document.activeElement);
+        
         return true;
     } else {
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
 
         return false;
-    }
+    } 
+    // else if (activeElement == "INPUT" && )
     // else if (clickNodeName == "INPUT") {
     //     if(getClickTarget().type == "#startLocation") {
     //         if(keypressed(ev) === "Enter")getPossibleCities();

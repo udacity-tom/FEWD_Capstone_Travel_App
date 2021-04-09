@@ -4,10 +4,9 @@ import { getGeonames } from "./getGeonames";
 
 function keypressed(ev) {
     // event.preventDefault();
-    const rndInt = Math.floor(Math.random() * 10);
-    console.log("random ", rndInt);
-    console.log("keypressed eventn value passed is",ev);
-    console.log("Active element ", document.activeElement);
+    
+    // console.log("keypressed eventn value passed is",ev);
+    // console.log("Active element ", document.activeElement);
     const keypressValue = ev;
     let delay;
     // const clickTarget = event.target;

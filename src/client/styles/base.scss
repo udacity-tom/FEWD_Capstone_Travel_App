@@ -1,4 +1,4 @@
-$background-color: #FFFFFF; //was #E76A4B;
+$background-color: none; //was #E76A4B;FFFFFF
 $text-color: #023047;
 $input-form: #eed595;
 $white-color: #000000;
@@ -10,11 +10,15 @@ body, main, section,form, footer {
 }
 
 main, section {
+    flex: 1 0 auto;
     justify-content: center;
 }
 
 
-body {
+body, html {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background-color: $background-color;
     // min-height: 100vh;
     font-size: $fontSize;
@@ -34,7 +38,7 @@ section {
 h1 {
     font-size: 4em;
     padding-left: 15px;
-    background-color: white;
+    background-color: $background-color;
 
 }
 
@@ -45,9 +49,15 @@ h1 {
 
 .introText {
     padding-left: 20px;
-    background-color: white;
+    background-color: $background-color;
 }
 
 ::-webkit-calendar-picker-indicator { 
     background-color: orange; }
 
+#background {
+    background:  url("../views/img/envio-30.jpg") center / cover no-repeat ;
+}
+
+
+// background: white url("../views/img/loading.gif") right no-repeat;

@@ -17,8 +17,6 @@ const getGeonames = async (activeElement) => {
     suggestedCities = await getGeoNamesCitySuggestions(activeElement.value);
     console.log("getGeonames suggestedCities", suggestedCities);
     showSuggestedCities(suggestedCities, activeElement.id);
-
-
 }
 
 const getGeoNamesCitySuggestions = async (cityName) => {
@@ -60,11 +58,5 @@ const loadingIcon = document.getElementById(location);
 loadingIcon.classList.remove("loadingIcon")
 }
 
-
-// function getGeonames() {
-// console.log("getGeonames called");
-
-
-// }
 
 export {getGeonames}
