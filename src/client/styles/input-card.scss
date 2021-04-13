@@ -53,7 +53,7 @@ label {
     content: '✓';
   }
 @mixin displayShadow($dispersion) {
-    box-shadow: 5px 5px $dispersion gray;
+    box-shadow: 10px 5px $dispersion rgba(0,0,0, 1.2);
 }
 // $nav-color: #219ebc;
 // $nav-backg: #ffffff;
@@ -95,6 +95,7 @@ label {
 
 .dateField {
     display: flex;
+    flex-direction: column;
     justify-content:space-between;
 }
 
@@ -107,9 +108,17 @@ label {
     opacity: 0;
 }
 
+.inputComplete {
+    background: rgba(11, 156, 49, 1);
+}
+
+.inputIncomplete {
+    background: rgba(156, 11, 49, 1);
+}
 
 
 .inputDep, .inputRet {
+    justify-content: space-between;
     label {
         font-size: 18px;
     }

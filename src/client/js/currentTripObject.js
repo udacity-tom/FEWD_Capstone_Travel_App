@@ -6,14 +6,15 @@ function currentTripObject(tripObject) {
         sessionStorage.setItem("currentTrip",JSON.stringify({
             startLocationGeoObj: {},
             finalLocationGeoObj: {},
-            dateDep: new Date(),
-            dateRet: new Date(),
+            dateDep: "",
+            dateRet: "",
             startLocationPixaURL: "",
             finalLocationPixaURL: "",
             startLocationWbitCurrentObj: {},
             finalLocationWbitCurrentObj: {},
             startLocationWbitForecastObj: {},
             finalLocationWbitForecastObj: {},
+            dateEntered: new Date(),
             completed: false
         }));
     }

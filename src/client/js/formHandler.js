@@ -11,27 +11,44 @@ function formHandler(ev) {
     const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
     // console.log("clickNodeName ", clickNodeName);
     if (clickNodeName == "BUTTON") {
-        if (clickValue == "submit") {
+        // console.log("clicknodename", clickNodeName);
+        // console.log("clickNodeName.value", clickNodeName.value);
+        // console.log("activeElement", activeElement);
+        // console.log("event.Target", event.target);
+        if (clickTarget.value == "submit") {
             Client.checkError();
-            Client.addTrip(); //processSubmitData()
+            Client.addTrip(Client.getCurrentTrip()); //processSubmitData()
         }
         // else if (clickValue == "citySearch") processCitySearch();
-        else if (clickValue == "addTrip") addTrip();//button adds a new trip
-        else if (clickValue == "deleteTrip") deleteTrip();//button deletes trip from store
-        
+        else if (activeElement.value == "addTrip") addTrip();//button adds a new trip
+        else if (activeElement.value == "deleteTrip") deleteTrip();//button deletes trip from store
     } else if (clickNodeName == "LI") {
-        // console.log("formhandler li clicked updateUI will run");
-        // const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
         Client.updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
-        console.log("formhandler after updating UI, going to hide the li's", inputId);
-        // hideSuggestedCities(inputId);
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
+        //handles 'click' search of city name on geonames
     } else if (activeElement.value.length >= 3 && activeElement.id != undefined && activeElement.id != null && activeElement.id == "startLocation" || activeElement.id == "finalLocation") {
+        console.log("current length of activeElement", activeElement.value.length);
         Client.getGeonames(document.activeElement);
         
         return true;
-    } else {
+    } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") {
+            const dateInputID = activeElement.id;
+            const dateInput = document.getElementById(activeElement.id);
+            // dateRet = document.getElementById("dateRet");
+            if (dateInput.value != "") {
+                dateInput.classList.remove("inputIncomplete");
+                dateInput.classList.add("inputComplete");
+
+                Client.currentTripObject({dateInputID: dateInput.value})
+                }
+            
+            console.log("Date is active!!");
+            // if ()
+
+
+    }
+    else {
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
 

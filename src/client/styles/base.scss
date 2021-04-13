@@ -1,4 +1,4 @@
-$background-color: none; //was #E76A4B;FFFFFF
+$background-color: rgba(0,0,0, 0.7); //was #E76A4B;FFFFFF
 $text-color: #023047;
 $input-form: #eed595;
 $white-color: #000000;
@@ -19,7 +19,7 @@ body, html {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: $background-color;
+    // background-color: $background-color;
     // min-height: 100vh;
     font-size: $fontSize;
 }
@@ -38,7 +38,7 @@ section {
 h1 {
     font-size: 4em;
     padding-left: 15px;
-    background-color: $background-color;
+    // background-color: $background-color;
 
 }
 
@@ -47,9 +47,19 @@ h1 {
     
 }
 
-.introText {
-    padding-left: 20px;
-    background-color: $background-color;
+.author {
+    text-align: center;
+}
+
+.introText, .introTitle {
+    // max-width: 400px;
+    text-align: center;
+    color: #EEEEEE;
+    // padding-left: 20px;
+    text-shadow: 3px 0px 12px rgba(0,0,0, 6);
+    overflow: hidden;
+
+    // background-color: $background-color;
 }
 
 ::-webkit-calendar-picker-indicator { 

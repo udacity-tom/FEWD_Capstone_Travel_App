@@ -39,24 +39,6 @@ function currentTripObject(tripObject) {
     console.log("sessionStorage currentTrip value after save is ", JSON.parse(localStorage.currentTrip));
     
     
-    
-    // let currentInput = {
-    //     startLocation: "", //
-    //     startCountry: "",
-    //     startLong: 0.0,
-    //     startLat: 0.0,
-    //     finalLocation: "",
-    //     finalCountry: "",
-    //     dateDep: new Date(),
-    //     dateRet: new Date(),
-    //     pixaStartCity: "",
-    //     pixaStartCountry: "",
-    //     pixaFinalCity: "",
-    //     pixaFinalCountry: "",
-    //     completed: false
-    // };
-    
-    
 
     function updateCurrentInput(tripObject){
         let currentTrip = sampleTrip;

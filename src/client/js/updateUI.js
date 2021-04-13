@@ -28,6 +28,10 @@ function updateUI(geonamesCityObject, inputFieldToCheck) {
     const inputCountry = document.getElementById(countryLocation);
     inputLocation.value = geonamesCityObject.name;
     inputCountry.value = geonamesCityObject.countryName+", "+geonamesCityObject.countryCode;
+    inputLocation.classList.remove("inputIncomplete");
+    inputCountry.classList.remove("inputIncomplete");
+    inputLocation.classList.add("inputComplete");
+    inputCountry.classList.add("inputComplete");
     // hideSuggestedCities(inputFieldToCheck);
     
     //Save city data to object.

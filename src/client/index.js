@@ -12,6 +12,9 @@ import { clearError } from './js/clearError';
 import { errorHandling } from './js/errorHandling';
 import { axiosPost } from './js/axiosPost';
 import { getWeatherbit } from './js/getWeatherbit';
+import { addTrip } from './js/addTrip';
+import { getCurrentTrip } from './js/getCurrentTrip';
+import { onDateChange } from './js/onDateChange';
 
 // import { crs } from './js/crs';
 import { createPopper } from "@popperjs/core";
@@ -53,10 +56,12 @@ export {
     errorHandling,
     axiosPost,
     getWeatherbit,
-    // crs, 
+    addTrip,
+    getCurrentTrip,
     createPopper,
     keypressed,
     currentTripObject,
+    onDateChange,
     // main, 
     getPixaBay
     // postData

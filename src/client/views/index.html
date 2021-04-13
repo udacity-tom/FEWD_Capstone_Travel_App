@@ -8,17 +8,17 @@
     <body id="background">
         <main>
             <section class="input-card">
-                <h1 class="introTitle" >Intro Text</h1>
+                <h1 class="introTitle" >iTrip</h1>
                 <section class="introText">
-                    <p class="introText">My Trip.</p>
+                    <p class="introText">Plan & manage your trips-simply with ease.</p>
                 </section>
                 <section id="errors">
-                    <!-- Shows errors when they occur -->
+                    <!-- Shows errors if they occur -->
                 </section>
                     <section id="inputForm" class="inputform">
                         <form class="form">
                             <section id="inputArea">
-                                <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart" name="input" rows="5" cols="60" value="" placeholder="  Starting Location"  autocomplete="off"></input>
+                                <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Starting Location"  autocomplete="off"></input>
                                 <div id="tooltipSL" role="tooltip" style="display: none;">
                                     <div>
                                         <div>Search for a city.</div>
@@ -30,16 +30,16 @@
                                 <!-- <section id="loading-startLocation"> -->
                                     <!-- show loading gif when loading data from API -->
                                 <!-- </section> -->
-                                <div id=geoNamesCitySearch">
+                                <div class=searchResults">
                                     <ul id="startLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
-                                <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input>
+                                <input id="startLocationCountry"  rows="5" cols="60" value="" class= "inputIncomplete" placeholder="  Country of Start Location" autocomplete="off"></input>
                                 <!-- <label for="startCountry-select">Please Select Country</label>
     <select id="startCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
     <select  id="not-shown"></select> -->
 
-                                <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal" name="input" rows="5" cols="60" value="" placeholder="  Final Location" autocomplete="off"></input>
+                                <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Final Location" autocomplete="off"></input>
                                 <div id="tooltipFL" role="tooltip" style="display: none;">
                                     <div>Search for a city. Type at least 3 characters.</div>
                                     <div>Please input at least 3 characters</div>
@@ -48,13 +48,13 @@
                                 <!-- <section id="loading-finalLocation"> -->
                                     <!-- show loading gif when loading data from API -->
                                 <!-- </section> -->
-                                <div id=geoNamesCitySearch">
+                                <div class=searchResults">
                                     <ul id="finalLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
                               
                                 <!-- <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input> -->
-                                <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" placeholder="  Country of Final Location" autocomplete="off"></input>
+                                <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" class= "inputIncomplete" placeholder="  Country of Final Location" autocomplete="off"></input>
                                 <!-- <input id ="citySearch" class="inputFinal" name="input" rows="5" cols="60" placeholder="Search for a city. Type at least 3 characters."></input> -->
                                 
                                 <!-- <select id="geoNamesCitySearch">
@@ -76,7 +76,7 @@
                                     <label for="dateInput">
                                         <span class="field-label">Date of Departure</span>
                                     </label>
-                                    <input id="dateDep" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD1" name="dateInput" autocomplete="off">
+                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput" autocomplete="off" class= "inputIncomplete" onChange="Client.onDateChange">
                                     <div id="tooltipD1" role="tooltip" style="display: none;">
                                         <div>Set Date for departure.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>
@@ -87,7 +87,7 @@
                                     <label for="dateInput" >
                                         <span class="field-label" >Date of Return</span>
                                     </label>
-                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" autocomplete="off">
+                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" autocomplete="off" class= "inputIncomplete">
                                     <div id="tooltipD2" role="tooltip" style="display: none;">
                                         <div>Set Date for return.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>
@@ -119,7 +119,7 @@
             </section>
         </main>
         <footer>
-            <p class="footerText">This website uses APIs: </p>
+            <p class="footerText">This website uses APIs from: </p>
             <p class="footerText">PixaBay, GeoNames and Weatherbit. </p>
             <a href="https://www.meaningcloud.com/">
                 <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->

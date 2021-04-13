@@ -50,8 +50,8 @@ app.listen(port, function() {
 })
 
 //Endpoint for data submission for new API request
-app.post('/process', processRequest);
-
+// app.post('/wbit', getWbit);
+// app.post('/wbit', getWbit);
 //Endpoint for city search parameters GeoNames API (uses axiosGet)
 app.post('/cityName', checkCityName);
 
@@ -104,28 +104,29 @@ function getWbitURL(location, countryCode, date, longtitude, lattitude) {
 };
 
 function getGeoURL(location){
-    console.log("Server:Line 105 passed parameter", location);
+    // console.log("Server:Line 105 passed parameter", location);
     const geoPrefixURL = "http://api.geonames.org/searchJSON?";
     const geoSuffixURL = "&maxRows=10";
     const geoExtraParam = "name_startsWith=";
     const geoURLStart = `${geoPrefixURL}${geoExtraParam}${location}&username=${geo_key}${geoSuffixURL}`;
-    console.log("(server line110) Geo URL is: ",geoURLStart);
+    // console.log("(server line110) Geo URL is: ",geoURLStart);
     return geoURLStart;
 }
 
 function getPixaURL(city, country) {
-    console.log("(Server:line117) Passed parameters are ", city, country);
+    // console.log("(Server:line117) Passed parameters are ", city, country);
     const pixPrefixURL = "https://pixabay.com/api?";
     const pixSuffixURL = "&q=";
     const pixExtraParam = "&image_type=photo&per_page=10";
     const pixaURL = `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${city}`;
     // console.log("(Server: line 117) city, country submitted", city, country);
-    console.log("pixa URL is", pixaURL);
-    if(city == country) {//this check must be at the server level
-        return `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${country}${pixExtraParam}`;    
-    } else {
-        return `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${city}${pixExtraParam}`;
-    }
+    // console.log("pixa URL is", pixaURL);
+    return pixaURL+pixExtraParam;
+    // if(city == country) {//this check must be at the server level
+    //     return `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${country}${pixExtraParam}`;    
+    // } else {
+    //     return `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${city}${pixExtraParam}`;
+    // }
     // const pixaURL = `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${city}+${country}`;
     // console.log("(Server: line 117) city, country submitted", city, country);
     // console.log("pixa URL is", pixaURL);
@@ -184,7 +185,7 @@ function checkCityName(req, res) {
     console.log("(Server: Line 184) City name request for", req.body.location );
     console.log("(Server: Line 185)req.body is: ", req.body);
     const {location}  = req.body;
-
+    // if(location.length < 3) return;
     req = getGeoURL(location);
     console.log("req before axios function is",req);
     axiosGet(req, res, String(req))

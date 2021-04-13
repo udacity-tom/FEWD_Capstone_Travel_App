@@ -24,10 +24,8 @@ function keypressed(ev) {
         // }, 500);
         // getPossibleCities();
         // getGeonames();
-
-        if(document.activeElement.name == "input"){
-
-        Client.getGeonames(document.activeElement);
+        if(document.activeElement.name == "input" && document.activeElement.value.length >=3){
+        Client.getGeonames(document.activeElement);    
     }
         return ev.key;
     }
