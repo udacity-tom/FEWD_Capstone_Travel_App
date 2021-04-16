@@ -1,5 +1,5 @@
 function getCurrentTrip() {
-    return sessionStorage.currentTrip;
+    return JSON.parse(sessionStorage.currentTrip);
 }
 
 export { getCurrentTrip }

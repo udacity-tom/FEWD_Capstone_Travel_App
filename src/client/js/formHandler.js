@@ -1,21 +1,23 @@
-function formHandler(ev) {
+function formHandler(event) {
+    if(Client.getAllTripData()){
+//TODO: get all trips, pass to function to add overlay of existing trips & funcitonality.
+        
+        //display the stored data
+    }
+    console.log("Line 9 formHandler.js Current allTrips object array is", Client.getAllTripData());
+
     //INFO: collects form click event. returns event
     // console.log("FormHandler event", ev);
     // event.preventDefault();
-    const clickTarget = ev.target;
-    // console.log("clickTarget ", clickTarget);
-    // console.log("event ", ev);
+
+//TODO: change this into a switch/case function?    
+    const clickTarget = event.target;
     const activeElement = document.activeElement;
-    // console.log("formhandler, activeelement length")
     const clickNodeName = clickTarget.nodeName;
     const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
-    // console.log("clickNodeName ", clickNodeName);
     if (clickNodeName == "BUTTON") {
-        // console.log("clicknodename", clickNodeName);
-        // console.log("clickNodeName.value", clickNodeName.value);
-        // console.log("activeElement", activeElement);
-        // console.log("event.Target", event.target);
         if (clickTarget.value == "submit") {
+            console.log("Submit button pressed");
             Client.checkError();
             Client.addTrip(Client.getCurrentTrip()); //processSubmitData()
         }
@@ -26,32 +28,21 @@ function formHandler(ev) {
         Client.updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
+        //Put update current object here? Client.currentTripObject(geoObj);//update current trip object 
         //handles 'click' search of city name on geonames
-    } else if (activeElement.value.length >= 3 && activeElement.id != undefined && activeElement.id != null && activeElement.id == "startLocation" || activeElement.id == "finalLocation") {
-        console.log("current length of activeElement", activeElement.value.length);
-        Client.getGeonames(document.activeElement);
-        
+    } else if ( activeElement.value != undefined && activeElement.value != null && (activeElement.id == "startLocation" || activeElement.id == "finalLocation")) {
+        console.log("Line 51 formHandler.js current activeElement is", activeElement.id, "and it has a length of ", activeElement.value.length);
+        if (activeElement.value.length >= 3) { 
+            Client.getGeonames(document.activeElement
+                )};        
         return true;
-    } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") {
-            const dateInputID = activeElement.id;
-            const dateInput = document.getElementById(activeElement.id);
-            // dateRet = document.getElementById("dateRet");
-            if (dateInput.value != "") {
-                dateInput.classList.remove("inputIncomplete");
-                dateInput.classList.add("inputComplete");
-
-                Client.currentTripObject({dateInputID: dateInput.value})
-                }
-            
-            console.log("Date is active!!");
+    } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") { 
+        Client.onDateChange(activeElement.id);
             // if ()
-
-
     }
     else {
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
-
         return false;
     } 
     // else if (activeElement == "INPUT" && )
@@ -66,12 +57,11 @@ function formHandler(ev) {
     //         }
     //     }
     // console.log("In formHandler(), clickTarget",clickTarget);
-    return ev;
+    return event;
 }
 
-
 function hideSuggestedCities(inputFieldToCheck) {
-    console.log("formHandler function hideSuggestedCities()", inputFieldToCheck);
+    // console.log("formHandler function hideSuggestedCities()", inputFieldToCheck);
     const idToHide = inputFieldToCheck+'-searchList';
     document.getElementById(idToHide).setAttribute('style', 'display: none;');
 }

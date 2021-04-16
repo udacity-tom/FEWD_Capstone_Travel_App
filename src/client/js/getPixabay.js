@@ -1,6 +1,3 @@
-
-
-
 const getPixaBay = async (cityName, countryName) => {
     let returnedData = await Client.axiosPost('/getPix', {city: cityName, country: countryName});
     if(returnedData.data.total == 0 ){

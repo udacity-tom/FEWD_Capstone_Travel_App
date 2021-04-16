@@ -5,14 +5,18 @@ $button-text: #ffffff;
 $button-backg: #4caf50;
 
 @mixin displayShadow($dispersion) {
-    box-shadow: 0 5px $dispersion black;
+    box-shadow: 0 10px 10px $dispersion black;
 }
 
 form {
     border-radius: 3px;
-    padding: 40px;
-    margin-top: 6em;
+    // padding: 40px;
+    // margin-top: 6em;
     margin: 0 auto;
+}
+
+.inputform {
+    margin-top: 10px;
 }
 
 .input-card {
@@ -23,17 +27,6 @@ form {
 
 .inputURL {
     display: none;
-}
-.inputText {
-    display: block;
-}
-.introTitle {
-    justify-content: center;
-}
-
-.introText {
-    justify-content: center;
-    font-size: 1.5em;
 }
 
 label {
@@ -67,9 +60,10 @@ label {
 //     padding-right: 17px;
 }
 input, label {
-    outline: 1px;
+    // outline: 1px;
+    // color: rgba(255,255,255, 1.0);
     margin: 10px;
-    border: 1px solid lightgray;
+    // border: 1px solid lightgray;
     padding: 5px;
     width: calc(50%-40px);
     // min-width: 300px;
@@ -80,19 +74,30 @@ input, label {
         // outline: 0;
         // color: $nav-hover;
         // background-color: $nav-hover-backg;
-        @include displayShadow(20px);
+        @include displayShadow(30px);
         // box-shadow: 0 10px 20px #e3170a;
         // box-shadow: 0 10px 20px black;
         border-radius: 5px;
     }
 }
 
-label {
-    border: none;
-    background-color: #ffffff;
+.fieldLabel {
+    // background-color: rgba(0,0,0, 1);
 }
 
+// label {
+//     border: none;
+//     background-color: #ffffff;
+// }
 
+.dateLabel {
+    // padding-top: 160px;
+    position: relative;
+    margin-bottom: -29px;
+    margin-left: 13px;
+    // font-size: ;
+    z-index: 10;
+}
 .dateField {
     display: flex;
     flex-direction: column;
@@ -113,21 +118,26 @@ label {
 }
 
 .inputIncomplete {
-    background: rgba(156, 11, 49, 1);
+    // background: rgba(156, 11, 49, 1);
 }
 
 
 .inputDep, .inputRet {
-    justify-content: space-between;
-    label {
-        font-size: 18px;
-    }
+    align-items: center;
+    // justify-content: space-between;
+    
+    // label {
+    //     font-size: 18px;
+    // }
     // width: 300px;
     // display: flex;
     // justify-content: space-between;
     margin-top: 30px;;
     input {
-        width: 150px;
+        width: 200px;
+        height: 70px;
+        // text-align: baseline;
+        padding-top: 5px;
     }
 }
 

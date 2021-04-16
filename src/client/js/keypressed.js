@@ -1,19 +1,16 @@
-import { clickHandler } from "./clickHandler";
+// import { clickHandler } from "./clickHandler";
 // import { clickHandler.getPossibleCities } from "./clickHandler";
-import { getGeonames } from "./getGeonames";
+// import { getGeonames } from "./getGeonames";
 
 function keypressed(ev) {
     // event.preventDefault();
-    
-    // console.log("keypressed eventn value passed is",ev);
-    // console.log("Active element ", document.activeElement);
     const keypressValue = ev;
     let delay;
     // const clickTarget = event.target;
     // const userActiveElementId = document.activeElement.id;
     // const userActiveElementId = clickTarget.id;
     // console.log("FormHandler.js: Current activeElement.id:'", userActiveElementId, "', Current event.target:", clickTarget.nodeName, ", and its value is: ",clickTarget.value);
-    console.log("keypress handler value", keypressValue.key);
+    // console.log("keypress handler value", keypressValue.key);
     if ( ev.key === "Enter") {
         //for debouncing
         // clearTimeout(delay);    

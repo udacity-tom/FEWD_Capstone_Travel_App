@@ -3,19 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content= "width-device-width, initial-scale=1.0">
-        <title>My Travel App</title>
+        <title>Trip Travel App</title>
     </head>
     <body id="background">
         <main>
-            <section class="input-card">
-                <h1 class="introTitle" >iTrip</h1>
+            <section class="headerTitle">
+                <h1 class="introTitle" >Trip Manager</h1>
                 <section class="introText">
-                    <p class="introText">Plan & manage your trips-simply with ease.</p>
+                    <p class="introText">Plan & manage your trips-simply, with ease.</p>
                 </section>
-                <section id="errors">
+            </section>
+            <!-- <section class="input-card"> -->
+                <div id="errors">
                     <!-- Shows errors if they occur -->
-                </section>
-                    <section id="inputForm" class="inputform">
+                </div>
+                    <div id="inputForm" class="inputform" >
                         <form class="form">
                             <section id="inputArea">
                                 <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Starting Location"  autocomplete="off"></input>
@@ -55,28 +57,14 @@
                               
                                 <!-- <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input> -->
                                 <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" class= "inputIncomplete" placeholder="  Country of Final Location" autocomplete="off"></input>
-                                <!-- <input id ="citySearch" class="inputFinal" name="input" rows="5" cols="60" placeholder="Search for a city. Type at least 3 characters."></input> -->
-                                
-                                <!-- <select id="geoNamesCitySearch">
-                                    <option>City search results appear here. Select one!</option>
-                                </select> -->
-                                <!-- <div id=geoNamesCitySearch">
-                                    <ul id="searchList"  style="display: none;" value="none">
-                                    </ul>
-                                </div> -->
 
-
-
-                                <!-- <button class="button" value="citySearch" data-value="citySearch">Search</button> -->
-                                <!-- <label for="finalCountry-select">Please Select Country</label>
-    <select id="finalCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
-    <select  id="not-shown"></select> -->
                             <div class="dateField">
                                 <div class="inputDep">
-                                    <label for="dateInput">
-                                        <span class="field-label">Date of Departure</span>
-                                    </label>
-                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput" autocomplete="off" class= "inputIncomplete" onChange="Client.onDateChange">
+                                    <!-- <label for="dateInput1" class="fieldLabel">
+                                        <span>Date of Departure</span>
+                                    </label> -->
+                                    <div class="dateLabel">Date of Departure</div>
+                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput1" autocomplete="off" class= "inputIncomplete" onChange="Client.onDateChange">
                                     <div id="tooltipD1" role="tooltip" style="display: none;">
                                         <div>Set Date for departure.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>
@@ -84,10 +72,11 @@
                                     </div>
                                 </div>
                                 <div class="inputRet" id="inputRet" aria-describedby="tooltipD2">
-                                    <label for="dateInput" >
-                                        <span class="field-label" >Date of Return</span>
-                                    </label>
-                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" autocomplete="off" class= "inputIncomplete">
+                                    <!-- <label for="dateInput2" class="fieldLabel" >
+                                        <span  >Date of Return</span>
+                                    </label> -->
+                                    <div class="dateLabel">Date of Return</div>
+                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "inputIncomplete">
                                     <div id="tooltipD2" role="tooltip" style="display: none;">
                                         <div>Set Date for return.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>
@@ -105,7 +94,7 @@
                             </div>
                             </section>
                         </form>
-                    </section> <!--close input form-->
+                    </div > <!--close input form-->
             </section>
             <section class="results">
                 <!-- <strong>Sentiment Analysis:</strong>
@@ -127,6 +116,14 @@
             </a>
             <p class="author">All Other Content Copyright T. Smith</p>
         </footer>
+        <section id="plannedTrips" class="tripOverlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeTrips()">&times;</a>
+
+            <div class="tripsSummary">
+            </div>
+            
+        </section>
+
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

@@ -20,7 +20,7 @@ const getGeonames = async (activeElement) => {
 }
 
 const getGeoNamesCitySuggestions = async (cityName) => {
-    let returnedData = await Client.axiosPost('/cityName', {location: cityName});
+    let returnedData = await Client.axiosPost('/getCityName', {location: cityName});
     console.log("getGeoNamesCitySuggestions in getGeoNames data from Server revieved", returnedData);
     return returnedData;
 }
@@ -59,4 +59,4 @@ loadingIcon.classList.remove("loadingIcon")
 }
 
 
-export {getGeonames}
+export { getGeonames }

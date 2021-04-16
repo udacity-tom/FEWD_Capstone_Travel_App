@@ -15,6 +15,7 @@ import { getWeatherbit } from './js/getWeatherbit';
 import { addTrip } from './js/addTrip';
 import { getCurrentTrip } from './js/getCurrentTrip';
 import { onDateChange } from './js/onDateChange';
+import { getAllTripData } from './js/getAllTripData';
 
 // import { crs } from './js/crs';
 import { createPopper } from "@popperjs/core";
@@ -34,6 +35,8 @@ import './styles/header.scss'
 import './styles/input-card.scss'
 import './styles/footer.scss'
 import './styles/popup.scss'
+import './styles/tripSummary.scss'
+
 
 // import meaning-cloud-logo from './meaning-cloud-logo.png';
 // import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
@@ -62,6 +65,7 @@ export {
     keypressed,
     currentTripObject,
     onDateChange,
+    getAllTripData,
     // main, 
     getPixaBay
     // postData

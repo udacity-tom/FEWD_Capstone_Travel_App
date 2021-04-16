@@ -13,7 +13,10 @@ main, section {
     flex: 1 0 auto;
     justify-content: center;
 }
-
+section {
+    // max-width: 800px;
+    // margin: 50px auto;
+}
 
 body, html {
     display: flex;
@@ -27,13 +30,16 @@ body, html {
 main {
     // width: 80%;
     outline: #000000;
-    margin-top: 50px;
+    // margin-top: 50px;
+    display: flex;
+    // flex-direction: column ;
+    // max-width: auto;
+    flex-flow: column wrap;
+    // justify-content: center;
+    align-items: center;   
 }
 
-section {
-    // max-width: 800px;
-    // margin: 50px auto;
-}
+
 
 h1 {
     font-size: 4em;
@@ -54,13 +60,64 @@ h1 {
 .introText, .introTitle {
     // max-width: 400px;
     text-align: center;
-    color: #EEEEEE;
+    // color: #EEEEEE;
+    color: rgba(255,255,255, 2);
+    // color:rgba(0,0,0, 1.4);
     // padding-left: 20px;
-    text-shadow: 3px 0px 12px rgba(0,0,0, 6);
+    text-shadow: 13px 5px 12px rgba(0,0,0, 1);
     overflow: hidden;
 
     // background-color: $background-color;
 }
+
+.introTitle {
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.introText {
+    display:flex;
+    justify-content: center;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.headerTitle {
+    display: flex;
+    margin-right: 10px;
+    margin-left: 10px;
+    max-height: 250px;
+    // justify-content: center;
+    
+    // align-content: center;
+    // align-items: center;
+    background-color: rgba(0,0,0, 0.4);
+    // background-color: rgba(255,255,255, 0.2);
+    // display: inline-block;
+    border-radius: 10px;
+    // width: 500px;
+    // max-width: 700px;s
+    font-size: .75em;
+    color: $text-color;
+    margin-top: 10px;
+
+    // margin: 100% auto;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0, 0.3);
+}
+$text-color: #219ebc;
+
+header {
+    display: flex;
+    justify-content: center;
+    // grid-template-columns: 50% auto 10%;
+    // justify-content: space-between;
+    color: $text-color;
+    padding: 10px 40px;
+    background-color: white;
+}
+
+
 
 ::-webkit-calendar-picker-indicator { 
     background-color: orange; }

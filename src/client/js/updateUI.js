@@ -1,7 +1,8 @@
-function updateUI(geonamesCityObject, inputFieldToCheck) {
+const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
+// function updateUI(geonamesCityObject, inputFieldToCheck) {
     console.log("updateUI says...", geonamesCityObject, inputFieldToCheck);
     const geoObj = {[inputFieldToCheck+"GeoObj"]: geonamesCityObject};
-    Client.currentTripObject(geoObj);
+    Client.currentTripObject(geoObj);//update current trip object 
     Client.getPixaBay(geonamesCityObject.name, geonamesCityObject.countryCode)
     .then( function(data) {
         if(data.total == 0 ){
@@ -16,13 +17,51 @@ function updateUI(geonamesCityObject, inputFieldToCheck) {
         
     })
     .then( function(data) {
+        const tripObj = {[inputFieldToCheck+"PixaURL"]: data};
+        Client.currentTripObject(tripObj);
         setBackgroundImage(data, inputFieldToCheck);
         const property = inputFieldToCheck+"PixaURL";
         // console.log("updateUI property ", property);
-        const tripObj = {[inputFieldToCheck+"PixaURL"]: data};
-        Client.currentTripObject(tripObj);
-
     });
+
+    // const wbitStuff = Client.getWeatherbit(Client.getCurrentTrip())
+    Client.getWeatherbit(geonamesCityObject,inputFieldToCheck)
+    .then( function(data) {
+        if(data.total == 0 ){
+            console.log("Data was not returned");
+            // Client.getPixaBay(geonamesCityObject.countryCode, geonamesCityObject.countryCode)
+            // .then( function(data){
+            //     return data;
+            // })
+        }
+        console.log("WBIT Data was returned", data);
+            return data;
+    })
+    .then( function(data){
+        console.log("inputfieldfor WBit", inputFieldToCheck);
+    const wbitObj = {[inputFieldToCheck+"WbitForecastObj"]: data};
+    console.log("updateUI wbit data", data);
+    Client.currentTripObject(wbitObj);
+    })
+    // await Client.getWeatherbit(Client.getCurrentTrip())
+    // .then( function(data) {
+    //     if(status != 200){
+    //         alert("API error, no data recieved. Please try later!")
+    //     }
+    //     console.log("weatherbit data recieved,",data);
+    //     return data;
+    // })
+    // .then ( function(data){
+    //     const wbitObj = {[inputFieldToCheck+"WbitForecastObj"]: data};
+    //     Client.currentTripObject(wbitObj);
+    // })
+    // .catch( (error) => {
+    //     alert("Weatherbit API error-try again later");
+    // });
+
+
+
+    
     const inputLocation = document.getElementById(inputFieldToCheck);
     const countryLocation = inputFieldToCheck+"Country";
     const inputCountry = document.getElementById(countryLocation);
@@ -36,13 +75,14 @@ function updateUI(geonamesCityObject, inputFieldToCheck) {
     
     //Save city data to object.
     function setBackgroundImage(url, inputFieldToCheck) {
-        // console.log("setBackgrounImage Line 36", url);
-        // const imageBackground = url;
         const inputForm = document.getElementById('background');
-        // console.log("setBackgroundImage ", inputForm);
         // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
         inputForm.setAttribute("style","background: url("+url+")"+ "center center / cover  no-repeat;overflow: hidden;");
     }// Get pixabay infos
+
+
+
+
 }
 
     
