@@ -7,6 +7,7 @@
     </head>
     <body id="background">
         <main>
+        <button id="openTrips" class="button plannedTrips" onClick="Client.openAllTrips()">Planned Trips</button>
             <section class="headerTitle">
                 <h1 class="introTitle" >Trip Manager</h1>
                 <section class="introText">
@@ -90,7 +91,7 @@
 <!-- TODO: Add units button                                <button class="units" -->
                                 
                             <div class="buttonHolder">
-                                <button id="submitButton" class="button" type="button" value="submit" name="">Submit Trip</button>
+                                <button id="submitButton" class="button" type="button" value="submit" name="">Add New Trip</button>
                             </div>
                             </section>
                         </form>
@@ -116,17 +117,29 @@
             </a>
             <p class="author">All Other Content Copyright T. Smith</p>
         </footer>
-        <section id="plannedTrips" class="tripOverlay">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeTrips()">&times;</a>
+        <section  >
 
-            <div class="tripsSummary">
+            <div id="plannedTrips" class="tripOverlay">
+                <a href="javascript:void(0)" class="closebtn" label="Close All Trips" onclick="Client.closeAllTrips()">&times;  Close</a>
+                <button class="eraseData button" label="Erase All Trips" onclick="Client.eraseAllTrips()">Erase Trip Data</button>
+
+                <div>
+                    <h1 class="tripTitle">Current Trip Summary</h1>
+                    <!-- <h2 class="tripTitle">We currently have the following trips planned for you:</h2> -->
+                    <div id="tripsSummary" class="tripsSummary">
+                        
+                    </div>
+                </div>
             </div>
-            
         </section>
 
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+         if(Client.getAllTripData()){
+         Client.createAllTripFrag();
+        //display the stored data
+    }
             // document.getElementById("inputAreaType").checked = false
 
             //Clears input form on reload
@@ -164,3 +177,4 @@
 <!-- Image storage code modified from https://hacks.mozilla.org/2012/02/saving-images-and-files-in-localstorage/ -->
 <!-- main page image attribution <a href="https://www.vecteezy.com/free-vector/holiday">Holiday Vectors by Vecteezy</a> -->
 <!-- main page image attribution <a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a> -->
+<!-- Pure CSS accordian adapted from https://supfort.com/pure-css-accordion-without-javascript -->

@@ -5,28 +5,49 @@ const getGeonames = async (activeElement) => {
         data: {},
         headers: {}
     };
-    // console.log("idOfCurrentElement is", idOfCurrentElement);
-    // let searchLocation = idOfCurrentElement;
-    // console.log("searchLocation is", searchLocation);
+    
     let searchRef="tooltipSL";
     if(activeElement.id != "startLocation") {
         searchRef = "tooltipFL";
     } 
-    // searchLocation = 
     addLoadingGraphic(activeElement);
     suggestedCities = await getGeoNamesCitySuggestions(activeElement.value);
-    console.log("getGeonames suggestedCities", suggestedCities);
+    console.log("getGeoNames.j SuggestedCities", suggestedCities);
     showSuggestedCities(suggestedCities, activeElement.id);
 }
 
 const getGeoNamesCitySuggestions = async (cityName) => {
     let returnedData = await Client.axiosPost('/getCityName', {location: cityName});
-    console.log("getGeoNamesCitySuggestions in getGeoNames data from Server revieved", returnedData);
+    if(returnedData.data.geonames.length == 0){
+        console.log("Yes! returnedData.data.geonames.length does equal zero");
+        let returnedData = new Object();
+        returnedData = {
+            data:
+            { geonames:[{
+                name: "No data.",
+                countryCode: " Please search again.",
+                toponymName: " The search term was not recognised.",
+                adminName1: ""
+            }] }
+        }
+        // returnedData.data.geonames[0].name = "No data.";
+        // returnedData.data.geonames[0].countryCode = " Please search again.";
+        // returnedData.data.geonames[0].toponymName = " The search term was not recognised.";
+        // returnedData.data.geonames[0].adminName1 = "";
+        
+        // return "No data, please search again."
+    }
+    //TODO: if returneData.data.geonames.length = 0 set li as 'No data'
     return returnedData;
 }
 
+
 function showSuggestedCities (returnedData, inputFieldToShowList) {
-    console.log("in showsuggestedcities", inputFieldToShowList, returnedData);
+    // if(returnedData == "No data, please search again."){
+
+    // }
+    console.log("showSuggestedCities, returnedData",returnedData);
+    // console.log("in showsuggestedcities", inputFieldToShowList, returnedData);
     const searchResponse = document.createDocumentFragment();
     const searchList = document.getElementById(inputFieldToShowList+"-searchList");
     //creates list items in a fragrment of cities found beginning with user search
@@ -45,7 +66,7 @@ function showSuggestedCities (returnedData, inputFieldToShowList) {
         }
         removeLoadingGraphic(inputFieldToShowList);
         searchList.appendChild(searchResponse);
-        searchList.setAttribute('style', 'width: 350px; position: absolute; display: block; background-color: white; outline: 1px;');
+        searchList.setAttribute('style', 'width: 350px; position: absolute; display: block; background-color: white; outline: 1px; z-index: 2;');
 }
 
 function addLoadingGraphic (location) {

@@ -59,15 +59,6 @@ app.post('/getPix', getPixaBayImage);
 
 
 
-
-// wbit example URLs
-// const country = '&country=ch';
-// const country = '';
-// const city = 'city=winterthur';
-// const wbit16URL = `${wbit16dayPrefixURL}${city}${country}&key=${wbit_key}`;
-// console.log("16day", wbit16URL);
-
-
 //gets weather for 16days, current weatehr, historical weather, daily weather?
 //uses axiosGet as three seperate requests
 //gets weather at current location

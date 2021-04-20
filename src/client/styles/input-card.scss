@@ -55,7 +55,7 @@ label {
 .loadingIcon {
     background: white url("../views/img/loading.gif") right no-repeat;
     background-size: 33%;
-    z-index: 1000;
+    z-index: 1;
 
 //     padding-right: 17px;
 }
@@ -67,7 +67,7 @@ input, label {
     padding: 5px;
     width: calc(50%-40px);
     // min-width: 300px;
-    max-width: 800px;
+    // max-width: 800px;
     height: 60px;
     font-size: 18px;
     &:focus {
@@ -96,7 +96,7 @@ input, label {
     margin-bottom: -29px;
     margin-left: 13px;
     // font-size: ;
-    z-index: 10;
+    z-index: 1;
 }
 .dateField {
     display: flex;
@@ -124,14 +124,6 @@ input, label {
 
 .inputDep, .inputRet {
     align-items: center;
-    // justify-content: space-between;
-    
-    // label {
-    //     font-size: 18px;
-    // }
-    // width: 300px;
-    // display: flex;
-    // justify-content: space-between;
     margin-top: 30px;;
     input {
         width: 200px;
@@ -193,7 +185,7 @@ input, label {
 }
 
 .button {
-    margin-top: 20px;
+    // margin-top: 20px;
     width: 250px;
     height: 100px;
     border: none;
@@ -214,4 +206,6 @@ input, label {
     font-size: 1.5em;
 }
 
-
+.plannedTrips {
+    margin-top: 20px;
+}

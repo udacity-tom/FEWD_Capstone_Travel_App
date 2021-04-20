@@ -16,11 +16,12 @@ import { addTrip } from './js/addTrip';
 import { getCurrentTrip } from './js/getCurrentTrip';
 import { onDateChange } from './js/onDateChange';
 import { getAllTripData } from './js/getAllTripData';
-
-// import { crs } from './js/crs';
+import { createAllTripFrag } from './js/createAllTripFrag';
+import { closeAllTrips } from './js/closeAllTrips';
+import { openAllTrips } from './js/openAllTrips';
+import { eraseAllTrips } from './js/eraseAllTrips';
 import { createPopper } from "@popperjs/core";
 import { keypressed } from "./js/keypressed";
-// import { main } from "./js/main";
 import { currentTripObject } from "./js/currentTripObject";
 import { getPixaBay } from './js/getPixabay';
 // import { updateCityName } from './js/updateCityName'
@@ -36,7 +37,7 @@ import './styles/input-card.scss'
 import './styles/footer.scss'
 import './styles/popup.scss'
 import './styles/tripSummary.scss'
-
+import './styles/accordian.scss'
 
 // import meaning-cloud-logo from './meaning-cloud-logo.png';
 // import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
@@ -66,7 +67,10 @@ export {
     currentTripObject,
     onDateChange,
     getAllTripData,
-    // main, 
+    createAllTripFrag,
+    closeAllTrips,
+    openAllTrips,
+    eraseAllTrips,
     getPixaBay
     // postData
 }

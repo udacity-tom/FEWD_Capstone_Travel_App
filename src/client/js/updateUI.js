@@ -1,6 +1,6 @@
 const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
 // function updateUI(geonamesCityObject, inputFieldToCheck) {
-    console.log("updateUI says...", geonamesCityObject, inputFieldToCheck);
+    // console.log("updateUI says...", geonamesCityObject, inputFieldToCheck);
     const geoObj = {[inputFieldToCheck+"GeoObj"]: geonamesCityObject};
     Client.currentTripObject(geoObj);//update current trip object 
     Client.getPixaBay(geonamesCityObject.name, geonamesCityObject.countryCode)
@@ -28,19 +28,19 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     Client.getWeatherbit(geonamesCityObject,inputFieldToCheck)
     .then( function(data) {
         if(data.total == 0 ){
-            console.log("Data was not returned");
+            console.log("WBit Data was not returned");
             // Client.getPixaBay(geonamesCityObject.countryCode, geonamesCityObject.countryCode)
             // .then( function(data){
             //     return data;
             // })
         }
-        console.log("WBIT Data was returned", data);
+        console.log("WBIT Data was returned");
             return data;
     })
     .then( function(data){
         console.log("inputfieldfor WBit", inputFieldToCheck);
     const wbitObj = {[inputFieldToCheck+"WbitForecastObj"]: data};
-    console.log("updateUI wbit data", data);
+    // console.log("updateUI wbit data", data);
     Client.currentTripObject(wbitObj);
     })
     // await Client.getWeatherbit(Client.getCurrentTrip())
@@ -61,24 +61,24 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
 
 
 
-    
+    //TODo: tidy/eliminate/DRY stuff below
     const inputLocation = document.getElementById(inputFieldToCheck);
     const countryLocation = inputFieldToCheck+"Country";
     const inputCountry = document.getElementById(countryLocation);
     inputLocation.value = geonamesCityObject.name;
     inputCountry.value = geonamesCityObject.countryName+", "+geonamesCityObject.countryCode;
-    inputLocation.classList.remove("inputIncomplete");
-    inputCountry.classList.remove("inputIncomplete");
+    // inputLocation.classList.remove("inputIncomplete");
+    // inputCountry.classList.remove("inputIncomplete");
     inputLocation.classList.add("inputComplete");
     inputCountry.classList.add("inputComplete");
     // hideSuggestedCities(inputFieldToCheck);
     
-    //Save city data to object.
+    //TODO Add dissolve effect to make it more 'agreeable' when image changed.
     function setBackgroundImage(url, inputFieldToCheck) {
         const inputForm = document.getElementById('background');
         // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
         inputForm.setAttribute("style","background: url("+url+")"+ "center center / cover  no-repeat;overflow: hidden;");
-    }// Get pixabay infos
+    }
 
 
 

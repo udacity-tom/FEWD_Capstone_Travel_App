@@ -1,10 +1,10 @@
 function formHandler(event) {
-    if(Client.getAllTripData()){
-//TODO: get all trips, pass to function to add overlay of existing trips & funcitonality.
-        
-        //display the stored data
-    }
-    console.log("Line 9 formHandler.js Current allTrips object array is", Client.getAllTripData());
+//     if(Client.getAllTripData()){
+// //TODO: get all trips, pass to function to add overlay of existing trips & funcitonality.
+//         Client.createAllTripFrag();
+//         //display the stored data
+//     }
+    // console.log("Line 9 formHandler.js Current allTrips object array is", Client.getAllTripData());
 
     //INFO: collects form click event. returns event
     // console.log("FormHandler event", ev);
@@ -20,11 +20,14 @@ function formHandler(event) {
             console.log("Submit button pressed");
             Client.checkError();
             Client.addTrip(Client.getCurrentTrip()); //processSubmitData()
+            Client.createAllTripFrag();
+            Client.openAllTrips();
         }
         // else if (clickValue == "citySearch") processCitySearch();
         else if (activeElement.value == "addTrip") addTrip();//button adds a new trip
         else if (activeElement.value == "deleteTrip") deleteTrip();//button deletes trip from store
-    } else if (clickNodeName == "LI") {
+    } else if (clickNodeName == "LI" && clickTarget.parentNode.id != "tripsPlannedUL") {
+        console.log("Line 30 formhandler.js, clickTarget id, element parent ", clickTarget.id, clickTarget.parentNode, clickTarget.parentNode.id);
         Client.updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");

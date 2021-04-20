@@ -8,7 +8,7 @@ function onDateChange (activeElementID) {
                 dateInput.classList.remove("inputIncomplete");
                 dateInput.classList.add("inputComplete");
                 // Client.
-                Client.currentTripObject({[activeElementID]: dateInput.value});
+                Client.currentTripObject({[activeElementID]: dateInput.valueAsDate});
                 }
             console.log("Date is active!!");
             // dateInput.onblur(Client.currentTripObject({[activeElementID]: dateInput.value}));
