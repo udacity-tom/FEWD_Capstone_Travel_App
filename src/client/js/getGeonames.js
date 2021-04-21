@@ -20,16 +20,20 @@ const getGeoNamesCitySuggestions = async (cityName) => {
     let returnedData = await Client.axiosPost('/getCityName', {location: cityName});
     if(returnedData.data.geonames.length == 0){
         console.log("Yes! returnedData.data.geonames.length does equal zero");
-        let returnedData = new Object();
+        // let returnedData = new Object();
         returnedData = {
             data:
-            { geonames:[{
-                name: "No data.",
+            { geonames:
+            [
+                {
+                name: "No data",
                 countryCode: " Please search again.",
-                toponymName: " The search term was not recognised.",
+                toponymName: "The search term was not recognised",
                 adminName1: ""
-            }] }
+            }
+            ] }
         }
+        console.log( "Returned data is now->", returnedData);
         // returnedData.data.geonames[0].name = "No data.";
         // returnedData.data.geonames[0].countryCode = " Please search again.";
         // returnedData.data.geonames[0].toponymName = " The search term was not recognised.";

@@ -16,23 +16,23 @@ import { addTrip } from './js/addTrip';
 import { getCurrentTrip } from './js/getCurrentTrip';
 import { onDateChange } from './js/onDateChange';
 import { getAllTripData } from './js/getAllTripData';
+import { setAllTripData } from './js/setAllTripData';
 import { createAllTripFrag } from './js/createAllTripFrag';
 import { closeAllTrips } from './js/closeAllTrips';
 import { openAllTrips } from './js/openAllTrips';
+import { sortAllTrips } from './js/sortAllTrips';
 import { eraseAllTrips } from './js/eraseAllTrips';
 import { createPopper } from "@popperjs/core";
 import { keypressed } from "./js/keypressed";
 import { currentTripObject } from "./js/currentTripObject";
 import { getPixaBay } from './js/getPixabay';
-// import { updateCityName } from './js/updateCityName'
-// import { processInput } from './js/processInput'
-// import { postData } from './js/postData'
+import { daysUntilDep } from './js/daysUntilDep';
+
 
 //import saas styles
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/header.scss'
-// import './styles/nav.scss'
 import './styles/input-card.scss'
 import './styles/footer.scss'
 import './styles/popup.scss'
@@ -67,15 +67,18 @@ export {
     currentTripObject,
     onDateChange,
     getAllTripData,
+    setAllTripData,
     createAllTripFrag,
     closeAllTrips,
     openAllTrips,
     eraseAllTrips,
+    sortAllTrips,
+    daysUntilDep,
     getPixaBay
     // postData
 }
 
-//Function to run main.js
+//Function to run app.js
 
 (function () {
 

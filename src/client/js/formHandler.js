@@ -16,10 +16,11 @@ function formHandler(event) {
     const clickNodeName = clickTarget.nodeName;
     const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
     if (clickNodeName == "BUTTON") {
-        if (clickTarget.value == "submit") {
+        if (clickTarget.value == "submit" && Client.checkError(Client.getCurrentTrip()) == true) {
             console.log("Submit button pressed");
-            Client.checkError();
+            // Client.checkError(Client.getCurrentTrip());
             Client.addTrip(Client.getCurrentTrip()); //processSubmitData()
+            Client.sortAllTrips();
             Client.createAllTripFrag();
             Client.openAllTrips();
         }
@@ -34,10 +35,9 @@ function formHandler(event) {
         //Put update current object here? Client.currentTripObject(geoObj);//update current trip object 
         //handles 'click' search of city name on geonames
     } else if ( activeElement.value != undefined && activeElement.value != null && (activeElement.id == "startLocation" || activeElement.id == "finalLocation")) {
-        console.log("Line 51 formHandler.js current activeElement is", activeElement.id, "and it has a length of ", activeElement.value.length);
+        console.log("formHandler.js current activeElement is", activeElement.id, "and it has a length of ", activeElement.value.length);
         if (activeElement.value.length >= 3) { 
-            Client.getGeonames(document.activeElement
-                )};        
+            Client.getGeonames(document.activeElement)};        
         return true;
     } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") { 
         Client.onDateChange(activeElement.id);

@@ -9,6 +9,7 @@ function onDateChange (activeElementID) {
                 dateInput.classList.add("inputComplete");
                 // Client.
                 Client.currentTripObject({[activeElementID]: dateInput.valueAsDate});
+                Client.currentTripObject({[activeElementID+"UTC"]: dateInput.valueAs});
                 }
             console.log("Date is active!!");
             // dateInput.onblur(Client.currentTripObject({[activeElementID]: dateInput.value}));

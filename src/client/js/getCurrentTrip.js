@@ -1,5 +1,7 @@
 function getCurrentTrip() {
-    return JSON.parse(sessionStorage.currentTrip);
+    if(sessionStorage.currentTrip) {
+        return JSON.parse(sessionStorage.currentTrip);
+    }
 }
 
 export { getCurrentTrip }

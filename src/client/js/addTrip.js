@@ -13,4 +13,4 @@ function addTrip(currentTripObject) {
 
 }
 
-export { addTrip}
+export { addTrip }
