@@ -1,4 +1,5 @@
 function formHandler(event) {
+    // Client.clearUI();
 //     if(Client.getAllTripData()){
 // //TODO: get all trips, pass to function to add overlay of existing trips & funcitonality.
 //         Client.createAllTripFrag();
@@ -17,9 +18,10 @@ function formHandler(event) {
     const inputId = (clickNodeName == "INPUT" ? clickTarget.id : undefined);
     if (clickNodeName == "BUTTON") {
         if (clickTarget.value == "submit" && Client.checkError(Client.getCurrentTrip()) == true) {
-            console.log("Submit button pressed");
+            console.log("Submit button pressed, ", activeElement.value);
             // Client.checkError(Client.getCurrentTrip());
             Client.addTrip(Client.getCurrentTrip()); //processSubmitData()
+            Client.clearUI();
             Client.sortAllTrips();
             Client.createAllTripFrag();
             Client.openAllTrips();

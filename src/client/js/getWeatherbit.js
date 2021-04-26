@@ -1,7 +1,7 @@
 // Get weatherdata infos
 const getWeatherbit = async (object, inputFieldToCheck) => {
     let forecastObj = await getWeatherBitForecast(object);
-    console.log("getWeatherbit() Wbit 16 Day ", forecastObj );
+    // console.log("getWeatherbit() Wbit 16 Day ", forecastObj );
         return forecastObj;        
     }
 

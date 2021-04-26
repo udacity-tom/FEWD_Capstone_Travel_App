@@ -6,11 +6,6 @@ function keypressed(ev) {
     // event.preventDefault();
     const keypressValue = ev;
     let delay;
-    // const clickTarget = event.target;
-    // const userActiveElementId = document.activeElement.id;
-    // const userActiveElementId = clickTarget.id;
-    // console.log("FormHandler.js: Current activeElement.id:'", userActiveElementId, "', Current event.target:", clickTarget.nodeName, ", and its value is: ",clickTarget.value);
-    // console.log("keypress handler value", keypressValue.key);
     if ( ev.key === "Enter") {
         //for debouncing
         // clearTimeout(delay);    

@@ -21,7 +21,8 @@
                     <div id="inputForm" class="inputform" >
                         <form class="form">
                             <section id="inputArea">
-                                <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Starting Location"  autocomplete="off"></input>
+                                <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" value="" placeholder="  Starting Location"  autocomplete="off"></input>
+                                <!-- <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Starting Location"  autocomplete="off"></input> -->
                                 <div id="tooltipSL" role="tooltip" style="display: none;">
                                     <div>
                                         <div>Search for a city.</div>
@@ -37,12 +38,13 @@
                                     <ul id="startLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
-                                <input id="startLocationCountry"  rows="5" cols="60" value="" class= "inputIncomplete" placeholder="  Country of Start Location" autocomplete="off"></input>
+                                <input id="startLocationCountry"  rows="5" cols="60" value="" class= "inputStart inputIncomplete" placeholder="  Country of Start Location" autocomplete="off"></input>
                                 <!-- <label for="startCountry-select">Please Select Country</label>
     <select id="startCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
     <select  id="not-shown"></select> -->
 
-                                <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Final Location" autocomplete="off"></input>
+                                <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" value="" placeholder="  Final Location" autocomplete="off"></input>
+                                <!-- <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Final Location" autocomplete="off"></input> -->
                                 <div id="tooltipFL" role="tooltip" style="display: none;">
                                     <div>Search for a city. Type at least 3 characters.</div>
                                     <div>Please input at least 3 characters</div>
@@ -57,7 +59,7 @@
                                 </div>
                               
                                 <!-- <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input> -->
-                                <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" class= "inputIncomplete" placeholder="  Country of Final Location" autocomplete="off"></input>
+                                <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" class= "inputFinal inputIncomplete" placeholder="  Country of Final Location" autocomplete="off"></input>
 
                             <div class="dateField">
                                 <div class="inputDep">
@@ -65,7 +67,7 @@
                                         <span>Date of Departure</span>
                                     </label> -->
                                     <div class="dateLabel">Date of Departure</div>
-                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput1" autocomplete="off" class= "inputIncomplete" onChange="Client.onDateChange">
+                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput1" autocomplete="off" class= "dateDep inputIncomplete" onChange="Client.onDateChange">
                                     <div id="tooltipD1" role="tooltip" style="display: none;">
                                         <div>Set Date for departure.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>
@@ -77,7 +79,7 @@
                                         <span  >Date of Return</span>
                                     </label> -->
                                     <div class="dateLabel">Date of Return</div>
-                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "inputIncomplete">
+                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
                                     <div id="tooltipD2" role="tooltip" style="display: none;">
                                         <div>Set Date for return.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>
@@ -110,18 +112,24 @@
         </main>
         <footer>
             <p class="footerText">This website uses APIs from: </p>
-            <p class="footerText">PixaBay, GeoNames and Weatherbit. </p>
-            <a href="https://www.meaningcloud.com/">
-                <!-- <img src={meaningCloudLogo} alt="meaning cloud logo"> -->
-                <!-- <img class="logo" src='./img/meaning-cloud-logo.png' alt="meaning cloud logo"> -->
-            </a>
+            <div class="logoContainer">
+                <a href="https://www.pixabay.com/" target="_blank" rel="noreferrer">
+                    <img class="logo" src='./img/pixabay.png' alt="pixabay logo">
+                </a>
+                <a href="https://www.geonames.org/"  target="_blank" rel="noreferrer">
+                    <img class="logo" src='./img/geonames.png' alt="geonames logo">
+                </a>
+                <a href="https://www.weatherbit.io/"  target="_blank" rel="noreferrer">
+                    <img class="logo" src='./img/weatherbit.png' alt="weatherbit.io logo">
+                </a>
+            </div>
             <p class="author">All Other Content Copyright T. Smith</p>
         </footer>
         <section  >
 
             <div id="plannedTrips" class="tripOverlay">
                 <a href="javascript:void(0)" class="closebtn" label="Close All Trips" onclick="Client.closeAllTrips()">&times;  Close</a>
-                <button class="eraseData button" label="Erase All Trips" onclick="Client.eraseAllTrips()">Erase Trip Data</button>
+                
 
                 <div>
                     <h1 class="tripTitle">Current Trip Summary</h1>
@@ -130,6 +138,7 @@
                         
                     </div>
                 </div>
+                <button class="eraseData button" label="Erase All Trips" onclick="Client.eraseAllTrips()">Erase Trip Data</button>
             </div>
         </section>
 

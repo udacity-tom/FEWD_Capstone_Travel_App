@@ -67,8 +67,8 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     const inputCountry = document.getElementById(countryLocation);
     inputLocation.value = geonamesCityObject.name;
     inputCountry.value = geonamesCityObject.countryName+", "+geonamesCityObject.countryCode;
-    // inputLocation.classList.remove("inputIncomplete");
-    // inputCountry.classList.remove("inputIncomplete");
+    inputLocation.classList.remove("inputIncomplete");
+    inputCountry.classList.remove("inputIncomplete");
     inputLocation.classList.add("inputComplete");
     inputCountry.classList.add("inputComplete");
     // hideSuggestedCities(inputFieldToCheck);
@@ -77,7 +77,7 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     function setBackgroundImage(url, inputFieldToCheck) {
         const inputForm = document.getElementById('background');
         // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
-        inputForm.setAttribute("style","background: url("+url+")"+ "center center / cover  no-repeat;overflow: hidden;");
+        inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover  no-repeat;overflow: hidden; transition: 1s");
     }
 
 

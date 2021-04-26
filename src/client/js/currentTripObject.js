@@ -25,7 +25,7 @@ function currentTripObject(tripObject) {
     // sessionStorage.currentTrip = JSON.stringify(sessionStorage.currentTrip[Object.keys(tripObject)]= tripObject[Object.keys(tripObject)]);
     // console.log("Current Value of passed object",currentObjt[Object.keys(tripObject)]);
     sessionStorage.currentTrip = JSON.stringify(currentObjt);
-    console.log("sessionStorage currentTrip value after save is ", JSON.parse(sessionStorage.currentTrip));
+    // console.log("sessionStorage currentTrip value after save is ", JSON.parse(sessionStorage.currentTrip));
     return; 
     }
     

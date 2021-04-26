@@ -21,26 +21,46 @@ function createAllTripFrag() {
         const inputElement = document.createElement('input');
         const labelElement = document.createElement('label');
         const divElement = document.createElement('div');
-        const divElement2 = document.createElement('div');
+        const container = document.createElement('div');
+        const container2 = document.createElement('div');
+        const titleElement = document.createElement('h2');
         const paraElement = document.createElement('p');
         const paraElement2 = document.createElement('p');
-        const imageOne = document.createElement('img');
+        
         const imageTwo = document.createElement('img');
         const delButton = document.createElement('button');
         
-        listElement.value = i;
+        const wbitLogoCurrent = document.createElement('img');
 
+        listElement.value = i;
         inputElement.type = "checkbox";
         inputElement.id = "trip"+i;
         inputElement.className = "tripInput";
         labelElement.className = "tripLabel";
         // labelElement.className = "tripLabel";
         labelElement.setAttribute("for", "trip"+i);
-        // const tripFrom = displayDate(allTripData[i].dateDep)+" from "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryCode;
-        // const tripTo = displayDate(allTripData[i].dateRet)+" from "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryCode;
-
-        labelElement.innerText = "Trip "+(i+1)+" Depart "+displayDate(allTripData[i].dateDep)+" To "+allTripData[i].finalLocationGeoObj.toponymName+"\nDeparture "+Client.daysUntilDep(allTripData[i].dateDep);
         
+        delButton.innerText = "Remove Trip";
+        delButton.className = "removeTrip";
+        delButton.setAttribute("value", "deleteTrip");
+        delButton.setAttribute("type", "button");
+        delButton.id = "removeTrip";
+
+
+
+        const labelDiv = document.createElement('div');
+        labelDiv.className = "labelDiv";
+        const labelPara1 = document.createElement('p');
+        const labelPara2 = document.createElement('p');
+        labelPara1.innerText = "Trip "+(i+1)+" Depart "+displayDate(allTripData[i].dateDep)+" To "+allTripData[i].finalLocationGeoObj.toponymName+"\nDeparture "+Client.daysUntilDep(allTripData[i].dateDep);
+        labelPara2.innerText = "Click for more details";
+        labelPara2.className = "clickText";
+
+        // labelElement.innerText = "Trip "+(i+1)+" Depart "+displayDate(allTripData[i].dateDep)+" To "+allTripData[i].finalLocationGeoObj.toponymName+"\nDeparture "+Client.daysUntilDep(allTripData[i].dateDep);
+        labelDiv.appendChild(labelPara1);
+        labelDiv.appendChild(labelPara2);
+        labelDiv.appendChild(delButton);//labelDiv.appendChild(labelPara2);
+        labelElement.appendChild(labelDiv);
         
         // labelElement.innerText = "You have planned to depart on "+tripFrom+" and have scheduled to return on "+tripTo+"\nDeparture "+daysUntilDep(allTripData[i].dateDep);
         // displayDate(allTripData[i].dateRet, allTripData[i].dateDep);
@@ -50,36 +70,62 @@ function createAllTripFrag() {
         
         
         
-        imageOne.src = allTripData[i].startLocationPixaURL;
-        imageOne.alt = allTripData[i].startLocationGeoObj.toponymName;
+        wbitLogoCurrent.src = allTripData[i].startLocationPixaURL;
+        wbitLogoCurrent.alt = allTripData[i].startLocationGeoObj.toponymName;
+        wbitLogoCurrent.className = "pixaImg";
+
         imageTwo.src = allTripData[i].finalLocationPixaURL;
         imageTwo.alt = allTripData[i].finalLocationGeoObj.toponymName;
-        const paraText1 = "Your trip is planned to begin "+Client.daysUntilDep(allTripData[i].dateDep)+"\n";
-        const paraText2 = "Departing "+allTripData[i].startLocationGeoObj.toponymName+"\nDate "+displayDate(allTripData[i].dateDep);
-        const paraText12 = "Your return trip is planned to begin "+Client.daysUntilDep(allTripData[i].dateRet)+"\n";
-        const paraText22 = "Departing "+allTripData[i].finalLocationGeoObj.toponymName+"\nDate "+displayDate(allTripData[i].dateRet);
-
+        imageTwo.className = "pixaImg";
+        titleElement.innerText = "Your trip planned for: "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" ("+displayDate(allTripData[i].dateDep)+")"+"\n";
+        titleElement.className = "tripDetails";
+        const paraText1 = "Your trip planned to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" will begin "+Client.daysUntilDep(allTripData[i].dateDep)+"\n";
+        const paraText2 = "Departing: "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryName+". Departure Date: "+displayDate(allTripData[i].dateDep)+"\n";
+        
+        
+        const paraText12 = "Current weather in "+allTripData[i].startLocationGeoObj.toponymName+" is: "+allTripData[i].startLocationWbitForecastObj.data.data[0].weather.description+" High: "+allTripData[i].startLocationWbitForecastObj.data.data[0].high_temp+" Low: "+allTripData[i].startLocationWbitForecastObj.data.data[0].low_temp +" (Degrees Centigrade)\n";
+        // const paraText22 = weatherFinal1
+        
         // const tripFrom = displayDate(allTripData[i].dateDep)+" from "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryCode;
         // const tripTo = displayDate(allTripData[i].dateRet)+" from "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryCode;
         // labelElement.innerText = "You have planned to depart on "+tripFrom+" and have scheduled to return on "+tripTo+"\nDeparture "+daysUntilDep(allTripData[i].dateDep);
+        const paraWbit1 = document.createElement('p');
+        const paraWbit2 = document.createElement('p');
+        
+        
+        const weatherFinal1 = "Today's weather in "+allTripData[i].finalLocationGeoObj.toponymName+" is: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].weather.description+" High: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].high_temp+" Low: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].low_temp +" (Degrees Centigrade)\n"
+        paraWbit1.innerText = weatherFinal1;
+        paraWbit1.className = "paraWbit11";
+        const paraText22 = weatherFinal1;
 
+        //ToDo 22-4-21: text title to describe, with weather icons for next seven days 
+        const weatherfinal2 =
+        
 
-
+        
+        
         // inputElement.type = "checkbox";
-        paraElement.className = "tripText";
-        paraElement.innerText = paraText1+paraText2;
-        paraElement2.className = "tripText";
+        
+        paraElement.className = "tripText1";
+        
+        paraElement2.className = "tripText2";
         paraElement2.innerText = paraText12+paraText22;
-        divElement2.className = "container";
-        divElement2.appendChild(paraElement);
-        divElement2.appendChild(imageOne);
-        divElement2.appendChild(paraElement2);
-        divElement2.appendChild(imageTwo);
+        paraElement.innerText = paraText1+paraText2+paraText12+paraText22;
+        container.className = "container";
+        container.appendChild(titleElement);
+        container2.className = "container2";
+        container2.appendChild(imageTwo);
+        container2.appendChild(paraElement);
+
+        // container.appendChild(wbitLogoCurrent);
+        // container.appendChild(paraElement2);
         
         
         divElement.className = "tripContent";
-        divElement.appendChild(divElement2);
-        // divElement.appendChild(divElement2);
+        divElement.appendChild(container);
+        divElement.appendChild(container2);
+
+        // divElement.appendChild(container);
 
         listElement.appendChild(inputElement);
         listElement.appendChild(labelElement);

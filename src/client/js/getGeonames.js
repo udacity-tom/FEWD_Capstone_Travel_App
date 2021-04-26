@@ -47,16 +47,11 @@ const getGeoNamesCitySuggestions = async (cityName) => {
 
 
 function showSuggestedCities (returnedData, inputFieldToShowList) {
-    // if(returnedData == "No data, please search again."){
-
-    // }
-    console.log("showSuggestedCities, returnedData",returnedData);
-    // console.log("in showsuggestedcities", inputFieldToShowList, returnedData);
     const searchResponse = document.createDocumentFragment();
     const searchList = document.getElementById(inputFieldToShowList+"-searchList");
     //creates list items in a fragrment of cities found beginning with user search
     for (let i = 0; i < returnedData.data.geonames.length; i++) {
-        const listElement = document.createElement('li');                   
+        const listElement = document.createElement('li');
         listElement.value = i;
         listElement.innerText = returnedData.data.geonames[i].name+", "+returnedData.data.geonames[i].countryCode+" ("+returnedData.data.geonames[i].toponymName+") "+returnedData.data.geonames[i].adminName1+".";
         listElement.className = "searchList";
@@ -70,7 +65,8 @@ function showSuggestedCities (returnedData, inputFieldToShowList) {
         }
         removeLoadingGraphic(inputFieldToShowList);
         searchList.appendChild(searchResponse);
-        searchList.setAttribute('style', 'width: 350px; position: absolute; display: block; background-color: white; outline: 1px; z-index: 2;');
+        // searchList.className = "searchList";
+        searchList.setAttribute('style', 'max-width: 400px; position: absolute; display: block;margin-left: -20px; background-color: white;font-size: 1.2em;line-height: 120%;z-index: 2;');
 }
 
 function addLoadingGraphic (location) {

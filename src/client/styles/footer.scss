@@ -3,23 +3,37 @@
 }
 
 footer {
-    flex-shrink: 0;
+    flex-shrink: 0;//keeps footer at base
     justify-content: center;
     background-color: white;
     margin-top: auto;
 }
 
+.logoContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    // flex: 1,1,1;
+}
+
+.order {
+    // display: flex;
+    // flex: 1 1 1;
+    // justify-content: space-evenly;
+}
+
 .logo {
-    padding: 40px;
+    padding: 5px;
+    height: 80px;
+    width: auto;
 }
 
 .footerText {
-    padding: 20px;
+    padding: 10px;
     font-size: 1.5em;
     text-align: center;
     word-wrap: normal;
 }
 .author {
-    // justify-content: center;
-    padding: 20px;
+    padding: 10px;
 }

@@ -10,6 +10,11 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    devServer: {
+    host: '192.168.0.78',//your ip address
+    port: 8080,
+    disableHostCheck: true,
+},
     output: {
         crossOriginLoading: 'anonymous',
         libraryTarget: 'var', 
@@ -60,5 +65,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.scss', '.gif', '.png', '.jpg', 'jpeg', '.svg']
     },
+    
     
 }
