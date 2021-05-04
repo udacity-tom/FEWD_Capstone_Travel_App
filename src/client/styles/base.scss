@@ -4,14 +4,27 @@ $input-form: #eed595;
 $white-color: #000000;
 $fontSize: 16px;
 
-body, main, section,form, footer {
+body, main, section, form,  footer {
     display: flex;
     flex-direction: column;
+    // flex-wrap: wrap;
 }
+// body, main, section, form, footer {
+//     display: flex;
+//     flex-direction: column;
+//     // flex-wrap: wrap;
+// }
+
+form {
+    flex-flow: column wrap;
+}
+
+
 
 main, section {
     flex: 1 0 auto;
-    justify-content: center;
+    // justify-content: center;
+    justify-content: space-evenly;
 }
 section {
     // max-width: 800px;
@@ -31,7 +44,7 @@ main {
     // width: 80%;
     outline: #000000;
     // margin-top: 50px;
-    display: flex;
+    // display: flex;
     // flex-direction: column ;
     // max-width: auto;
     flex-flow: column wrap;

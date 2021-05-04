@@ -42,7 +42,7 @@ function createAllTripFrag() {
         
         delButton.innerText = "Remove Trip";
         delButton.className = "removeTrip";
-        delButton.setAttribute("value", "deleteTrip");
+        delButton.setAttribute("value", "deleteTrip-"+listElement.value);
         delButton.setAttribute("type", "button");
         delButton.id = "removeTrip";
 
@@ -52,13 +52,14 @@ function createAllTripFrag() {
         labelDiv.className = "labelDiv";
         const labelPara1 = document.createElement('p');
         const labelPara2 = document.createElement('p');
+        // const closeLabel = ""
         labelPara1.innerText = "Trip "+(i+1)+" Depart "+displayDate(allTripData[i].dateDep)+" To "+allTripData[i].finalLocationGeoObj.toponymName+"\nDeparture "+Client.daysUntilDep(allTripData[i].dateDep);
-        labelPara2.innerText = "Click for more details";
-        labelPara2.className = "clickText";
+        // labelPara2.innerText = "Click for more details";
+        // labelPara2.className = "clickText";
 
         // labelElement.innerText = "Trip "+(i+1)+" Depart "+displayDate(allTripData[i].dateDep)+" To "+allTripData[i].finalLocationGeoObj.toponymName+"\nDeparture "+Client.daysUntilDep(allTripData[i].dateDep);
         labelDiv.appendChild(labelPara1);
-        labelDiv.appendChild(labelPara2);
+        // labelDiv.appendChild(labelPara2);
         labelDiv.appendChild(delButton);//labelDiv.appendChild(labelPara2);
         labelElement.appendChild(labelDiv);
         

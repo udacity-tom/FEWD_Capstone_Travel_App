@@ -25,10 +25,17 @@ function formHandler(event) {
             Client.sortAllTrips();
             Client.createAllTripFrag();
             Client.openAllTrips();
+            //TODO 3-5-21: add clear currentTrip values from local storage
         }
         // else if (clickValue == "citySearch") processCitySearch();
-        else if (activeElement.value == "addTrip") addTrip();//button adds a new trip
-        else if (activeElement.value == "deleteTrip") deleteTrip();//button deletes trip from store
+        else if (activeElement.value == "addTrip") Client.addTrip();//button adds a new trip
+        else if (activeElement.value.slice(0,10) == "deleteTrip") 
+        {
+            console.log("Value of slice(11)", activeElement.value.slice(11));
+            Client.deleteTrip(activeElement.value.slice(11));//button deletes trip from store
+            Client.createAllTripFrag();
+            Client.openAllTrips();
+        }
     } else if (clickNodeName == "LI" && clickTarget.parentNode.id != "tripsPlannedUL") {
         console.log("Line 30 formhandler.js, clickTarget id, element parent ", clickTarget.id, clickTarget.parentNode, clickTarget.parentNode.id);
         Client.updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
