@@ -11,7 +11,7 @@ function createAllTripFrag() {
     }
     Client.sortAllTrips();
     const allTripData = Client.getAllTripData();// create local var with array of trips.
-    console.log("from createAllTripFrag, all trip data", allTripData);
+    // console.log("from createAllTripFrag, all trip data", allTripData);
     // allTripUL.className("tripsPlannedUL");
     allTripUL.id = "tripsPlannedUL";
     addAllTrips.appendChild(allTripUL);
@@ -78,9 +78,12 @@ function createAllTripFrag() {
         imageTwo.src = allTripData[i].finalLocationPixaURL;
         imageTwo.alt = allTripData[i].finalLocationGeoObj.toponymName;
         imageTwo.className = "pixaImg";
-        titleElement.innerText = "Your trip planned for: "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" ("+displayDate(allTripData[i].dateDep)+")"+"\n";
+        titleElement.innerText = "Your trip planned for "+new Date(allTripData[i].dateDep).toDateString()+" to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" \n";
+        // titleElement.innerText = "Your trip planned for: "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" ("+displayDate(allTripData[i].dateDep)+")"+"\n";
+        // console.log("todate string, type of ", new Date(allTripData[i].dateDep).toDateString(),typeof(Date(allTripData[i].dateDep)));
         titleElement.className = "tripDetails";
-        const paraText1 = "Your trip planned to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" will begin "+Client.daysUntilDep(allTripData[i].dateDep)+"\n";
+        // console.log("Date without feedback",displayDate(allTripData[i].dateDep,"n"));
+        const paraText1 = "Your trip planned to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" "+(Client.daysUntilDep(allTripData[i].dateDep,"n") < 0 ? "has already passed!" : "will begin "+Client.daysUntilDep(allTripData[i].dateDep))+"\n";
         const paraText2 = "Departing: "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryName+". Departure Date: "+displayDate(allTripData[i].dateDep)+"\n";
         
         
@@ -100,8 +103,8 @@ function createAllTripFrag() {
         const paraText22 = weatherFinal1;
 
         //ToDo 22-4-21: text title to describe, with weather icons for next seven days 
-        const weatherfinal2 =
-        
+        // const weatherfinal2 =
+        //ToDo 04-5-21: forecast for next seven days. weatherbitArrayForecast.forEach(), then add each logo, with high/low temps
 
         
         
@@ -172,7 +175,7 @@ function displayDate(value) {
     const month = value.slice(5,7);
     const day = value.slice(8,10);
     // const dateUTC = Date.parse(value);
-    return day+"-"+month+"-"+year;
+    return day+"/"+month+"/"+year;
 }
 
 export { createAllTripFrag }

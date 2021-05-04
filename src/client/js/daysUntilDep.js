@@ -1,11 +1,18 @@
 function daysUntilDep( dateDep, returntype ) {
-    let currentDate = new Date()
+    
+    let currentDate = new Date(new Date().toDateString() ).setHours(0,0,0,0);
     // currentDate =(currentDate.getYear()+"-"+currentDate.getMonth()+"-"+currentDate.getDate());
-    const dateUTC = Date.parse(dateDep);
-    const daysTillDep = (Math.abs(currentDate-dateUTC)/(24*60*60*1000));
-    console.log("dateDep, CurrentDate, Date.parse(currentDate), dateUTC ", dateDep, currentDate,Date.parse(currentDate), dateUTC);
+    const dateUTC = new Date(dateDep).setHours(0,0,0,0);
+    // const currentDateUTC = Date.parse(currentDate);
+    // console.log("Current Date, dateDep ", dateUTC, dateDep);
+    const daysTillDep = ((dateUTC-currentDate)/(24*60*60*1000));
+    // console.log("daysTillDep", daysTillDep);
+    // console.log("dateDep, CurrentDate, Date.parse(currentDate), dateUTC, currentDateUTC ", dateDep, currentDate, Date.parse(currentDate), dateUTC, currentDateUTC);
     if(returntype != "n"){
         switch (true)  {
+            case currentDate > dateUTC:
+                return " date has passed!"
+                break;            
             case currentDate == dateUTC:
                 return " today!"
                 break;            

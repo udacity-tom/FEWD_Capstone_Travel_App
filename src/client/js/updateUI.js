@@ -6,13 +6,13 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     Client.getPixaBay(geonamesCityObject.name, geonamesCityObject.countryCode)
     .then( function(data) {
         if(data.total == 0 ){
-            console.log("Data was not returned");
+            // console.log("Data was not returned");
             // Client.getPixaBay(geonamesCityObject.countryCode, geonamesCityObject.countryCode)
             // .then( function(data){
             //     return data;
             // })
         }
-        console.log("Data was returned", data);
+        // console.log("Data was returned", data);
             return data;
         
     })
@@ -28,17 +28,17 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     Client.getWeatherbit(geonamesCityObject,inputFieldToCheck)
     .then( function(data) {
         if(data.total == 0 ){
-            console.log("WBit Data was not returned");
+            // console.log("WBit Data was not returned");
             // Client.getPixaBay(geonamesCityObject.countryCode, geonamesCityObject.countryCode)
             // .then( function(data){
             //     return data;
             // })
         }
-        console.log("WBIT Data was returned");
+        // console.log("WBIT Data was returned");
             return data;
     })
     .then( function(data){
-        console.log("inputfieldfor WBit", inputFieldToCheck);
+        // console.log("inputfieldfor WBit", inputFieldToCheck);
     const wbitObj = {[inputFieldToCheck+"WbitForecastObj"]: data};
     // console.log("updateUI wbit data", data);
     Client.currentTripObject(wbitObj);

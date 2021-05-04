@@ -9,7 +9,7 @@ const getPixaBay = async (cityName, countryName) => {
     //TODO: potentially omit any portrait pictures by looking at the height vs width
     // skip to next (to first landscape image)
     // if(returnedData.data.imageHeight > returnedData.data.imageWidth
-    console.log("getpixaimage image link", returnedData.data.hits[rndInt].largeImageURL);
+    // console.log("getpixaimage image link", returnedData.data.hits[rndInt].largeImageURL);
     //return random URL for image and save 
     
     return returnedData.data.hits[rndInt].largeImageURL;
