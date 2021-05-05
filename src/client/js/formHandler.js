@@ -56,19 +56,7 @@ function formHandler(event) {
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
         return false;
-    } 
-    // else if (activeElement == "INPUT" && )
-    // else if (clickNodeName == "INPUT") {
-    //     if(getClickTarget().type == "#startLocation") {
-    //         if(keypressed(ev) === "Enter")getPossibleCities();
-    //     }
-
-    //     if(getClickTarget().type == "date") {
-    //         // console.log("Yes, we're in teh date clause");
-    //         showDateInput();//automatically shows the calendar on the date input)
-    //         }
-    //     }
-    // console.log("In formHandler(), clickTarget",clickTarget);
+    }
     return event;
 }
 

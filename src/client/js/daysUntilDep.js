@@ -1,5 +1,4 @@
-function daysUntilDep( dateDep, returntype ) {
-    
+function daysUntilDep( dateDep, returntype) {
     let currentDate = new Date(new Date().toDateString() ).setHours(0,0,0,0);
     // currentDate =(currentDate.getYear()+"-"+currentDate.getMonth()+"-"+currentDate.getDate());
     const dateUTC = new Date(dateDep).setHours(0,0,0,0);

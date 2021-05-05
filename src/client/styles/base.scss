@@ -2,6 +2,7 @@ $background-color: rgba(0,0,0, 0.7); //was #E76A4B;FFFFFF
 $text-color: #023047;
 $input-form: #eed595;
 $white-color: #000000;
+$header-text-color: #219ebc;
 $fontSize: 16px;
 
 body, main, section, form,  footer {
@@ -18,8 +19,6 @@ body, main, section, form,  footer {
 form {
     flex-flow: column wrap;
 }
-
-
 
 main, section {
     flex: 1 0 auto;
@@ -57,13 +56,10 @@ main {
 h1 {
     font-size: 4em;
     padding-left: 15px;
-    // background-color: $background-color;
-
 }
 
 .page_title {
     text-align: center;
-    
 }
 
 .author {
@@ -79,8 +75,6 @@ h1 {
     // padding-left: 20px;
     text-shadow: 13px 5px 12px rgba(0,0,0, 1);
     overflow: hidden;
-
-    // background-color: $background-color;
 }
 
 .introTitle {
@@ -101,43 +95,38 @@ h1 {
     margin-right: 10px;
     margin-left: 10px;
     max-height: 160px;
-    // justify-content: center;
-    
-    // align-content: center;
-    // align-items: center;
     background-color: rgba(0,0,0, 0.4);
-    // background-color: rgba(255,255,255, 0.2);
-    // display: inline-block;
     border-radius: 10px;
-    // width: 500px;
-    // max-width: 700px;s
     font-size: .75em;
     color: $text-color;
     margin-top: 10px;
-
-    // margin: 100% auto;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0, 0.3);
 }
-$text-color: #219ebc;
+
 
 header {
     display: flex;
     justify-content: center;
     // grid-template-columns: 50% auto 10%;
     // justify-content: space-between;
-    color: $text-color;
+    color: $header-text-color;
     padding: 10px 40px;
     background-color: white;
 }
 
-
-
-::-webkit-calendar-picker-indicator { 
-    background-color: orange; }
+// ::-webkit-calendar-picker-indicator { 
+//     background-color: orange; }
 
 #background {
     background:  url("../views/img/envio-30.jpg") center / cover no-repeat ;
 }
 
+// @keyframes fadeIn {
+//     from { opacity: 0; }
+//     to { opacity: 1; }
+// }
 
-// background: white url("../views/img/loading.gif") right no-repeat;
+// .fadeBackground {
+//     animation-name: fadeIn;
+//     animation-duration: 0.5s;
+// }

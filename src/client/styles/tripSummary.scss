@@ -48,7 +48,7 @@ $button-backg: #4caf50;
     position: absolue;
     top: 20px;
     right: 45px;
-    font-size: 60px;
+    font-size: 2.5em;
 }
 .tripOverlay a {
     padding: 8px;
@@ -57,7 +57,7 @@ $button-backg: #4caf50;
     color: white;
     padding-top: 50px;
     display: block;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .tripLabel {
@@ -172,9 +172,35 @@ $button-backg: #4caf50;
 .forecastTitle {
     font-size: 1.2em;
 }
-
 .iconFormat {
-    max-width: 120px;
+    position: relative;
+    // max-width: 120px;
+    width: 120px;
+    height: 120px;
+    // &:hover figcaption {
+    //     opacity: 1;
+    //     // display: block;
+    // }
+}
+
+.iconFormat figcaption {
+    // display: none;
+    // position: relative;
+    text-align: center;
+    border-radius: 9px;
+    opacity: 0;
+    transition: opacity .5s ease-in;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right:0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    background-color: rgba(255,255,255, 0.4);
+}
+.iconFormat:hover figcaption {
+    opacity: 1;
 }
 
 .iconDetails {
@@ -182,4 +208,8 @@ $button-backg: #4caf50;
     flex-flow: column nowrap;
     justify-content: center;
     
+}
+
+.weatherStats {
+    text-align: center;
 }
