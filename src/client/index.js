@@ -43,14 +43,62 @@ import './styles/accordian.scss'
 
 // import meaning-cloud-logo from './meaning-cloud-logo.png';
 // import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
-import loadingGif from './views/img/loading.gif';
-import background from './views/img/envio-30.jpg';
-import background2 from './views/img/envio-10.jpg';
+// import background from './views/img/envio-30.jpg';
 
-import pixabay from './views/img/pixabay.png';
-import geonames from './views/img/geonames.png';
-import weatherbit from './views/img/weatherbit.png';
+// import background2 from './views/img/envio-10.jpg';
+// import loadingGif from './views/img/loading.gif';
+// import pixabay from './views/img/pixabay.png';
+// import geonames from './views/img/geonames.png';
+// import weatherbit from './views/img/weatherbit.png';
+// import icona01d from './views/img/c03d.png';
+// import iconc01n from './views/img/c03d.png';
+// import iconc03d from './views/img/c03d.png';
+// import iconc03d from './views/img/c03d.png';
+// import './icons/a01d.png'
+// import './icons/a02d.png'
+// import './icons/a03d.png'
+// import './icons/a04d.png'
+// import './icons/a05d.png'
+// import './icons/a06d.png'
+// import './icons/c01d.png'
+// import './icons/c02d.png'
+// import './icons/c03d.png'
+// import './icons/c04d.png'
+// import './icons/d01d.png'
+// import './icons/d02d.png'
+// import './icons/d03d.png'
+// import './icons/f01d.png'
+// import './icons/r01d.png'
+// import './icons/r02d.png'
+// import './icons/r03d.png'
+// import './icons/r04d.png'
+// import './icons/r05d.png'
+// import './icons/r06d.png'
+// import './icons/s01d.png'
+// import './icons/s02d.png'
+// import './icons/s03d.png'
+// import './icons/s04d.png'
+// import './icons/s05d.png'
+// import './icons/s06d.png'
+// import './icons/t01d.png'
+// import './icons/t02d.png'
+// import './icons/t03d.png'
+// import './icons/t04d.png'
+// import './icons/t05d.png'
+// import './icons/u00d.png'
 
+
+function importAllImages(image) {
+    let images = {};
+    image.keys().map( (item,index) => {
+            images[item.replace('./', '') ] = image(item);
+        })
+    return images;
+}
+
+const images = importAllImages(require.context('./views/img', false, /\.(png|jpe?g|svg)$/));
+// images importAllImages(require.context('./views/icons', false, /\.(png|jpe?g|svg)$/));
+console.log("images", images);
 console.log("Entry point reloaded! Site was re-loaded.");
 
 //export js files for use in app
@@ -83,7 +131,8 @@ export {
     sortAllTrips,
     daysUntilDep,
     getTripDuration,
-    getPixaBay
+    getPixaBay,
+    images
     // postData
 }
 

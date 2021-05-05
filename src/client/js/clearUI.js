@@ -35,13 +35,13 @@ function clearUI() {
     //     item.id.slice(0,4) != "trip";        
     //     }));
         const url = "../img/envio-30.jpg";
-        console.log("About to run setBackground function");
+        // console.log("About to run setBackground function");
         setBackgroundImage(url);
 
     function setBackgroundImage(url) {
-        console.log("inside setBackground function");
+        // console.log("inside setBackground function");
         const inputForm = document.getElementById('background');
-        console.log("inputform is, ",inputForm )
+        // console.log("inputform is, ",inputForm )
         // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
         inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover  no-repeat;overflow: hidden; transition: 1s");
     }    

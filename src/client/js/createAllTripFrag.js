@@ -76,7 +76,7 @@ function createAllTripFrag() {
         wbitLogoCurrent.className = "pixaImg";
 
         imageTwo.src = allTripData[i].finalLocationPixaURL;
-        imageTwo.alt = allTripData[i].finalLocationGeoObj.toponymName;
+        imageTwo.alt = "Image of "+allTripData[i].finalLocationGeoObj.toponymName;
         imageTwo.className = "pixaImg";
         titleElement.innerText = "Your trip planned for "+new Date(allTripData[i].dateDep).toDateString()+" to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" \n";
         // titleElement.innerText = "Your trip planned for: "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" ("+displayDate(allTripData[i].dateDep)+")"+"\n";
@@ -103,23 +103,50 @@ function createAllTripFrag() {
         const paraText22 = weatherFinal1;
 
         //ToDo 22-4-21: text title to describe, with weather icons for next seven days 
-        // const weatherfinal2 =
-        //ToDo 04-5-21: forecast for next seven days. weatherbitArrayForecast.forEach(), then add each logo, with high/low temps
-
         
+        //ToDo 04-5-21: forecast for next seven days. weatherbitArrayForecast.forEach(), then add each logo, with high/low temps
+        const weatherForecastDiv = document.createElement('div');
+        weatherForecastDiv.className = "weatherForecast";
+
+        const weatherForecastPara = document.createElement('p');
+        const weatherForecastDivDaily = document.createElement('div');
+        // for(let j = 0; j< allTripData.length; j++){
+        // )
+        const currentItem = allTripData[i].finalLocationWbitForecastObj.data;
+        currentItem.data.slice(0,7).forEach( (item) => {
+        
+        // allTripData[i].finalLocationWbitForecastObj.data.data[i].
+            // const weatherForecastPara = document.createElement('p');
+            // console.log("current 'item'", item);
+            const weatherForecastImg = document.createElement('img');
+            // console.log("weatherForecastImg", weatherForecastImg);
+            // weatherForecastImg.src = images[item.weather.icon+".png"];
+            weatherForecastImg.src = "./img/"+item.weather.icon+".png";
+            weatherForecastImg.alt = item.weather.description;
+            // console.log("weatherForecastImg", weatherForecastImg);
+            // weatherForecastPara.appendChild(weatherForecastImg);
+            // console.log("weatherForecastImg", weatherForecastPara);
+            weatherForecastDiv.appendChild(weatherForecastImg);
+            // console.log("weatherForecastDivDaily", weatherForecastDiv);
+        })
+        // weatherForecastDiv.appendChild(weatherForecastDivDaily);
+        // console.log("    weatherForecastDiv", weatherForecastDiv)
         
         // inputElement.type = "checkbox";
         
         paraElement.className = "tripText1";
         
         paraElement2.className = "tripText2";
-        paraElement2.innerText = paraText12+paraText22;
+        paraElement2.innerText = paraText12+paraText22+weatherForecastDiv;
         paraElement.innerText = paraText1+paraText2+paraText12+paraText22;
         container.className = "container";
         container.appendChild(titleElement);
+        // console.log("container ", container);
         container2.className = "container2";
         container2.appendChild(imageTwo);
         container2.appendChild(paraElement);
+        container2.appendChild(weatherForecastDiv);
+        // container2.appendChild(paraElement2);
 
         // container.appendChild(wbitLogoCurrent);
         // container.appendChild(paraElement2);
