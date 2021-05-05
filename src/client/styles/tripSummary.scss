@@ -103,10 +103,6 @@ $button-backg: #4caf50;
 
 .eraseData {
     padding: 20px;
-    // font-size: 2em;
-    // height: 100px;
-    // width: 250px;
-    // padding: 10px;
 
 }
 
@@ -129,6 +125,7 @@ $button-backg: #4caf50;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+    margin: 20px;
     padding: 20px;
 }
 
@@ -141,6 +138,7 @@ $button-backg: #4caf50;
 
 .tripText1 {
     line-height: 1.5em;
+    height: auto;
     // font-size: 2em;
 }
 
@@ -158,4 +156,30 @@ $button-backg: #4caf50;
     height: auto;
     max-width: 600px;
     border-radius: 12px;
+}
+
+.weatherForecastDiv {
+    margin: 20px;
+    padding: 20px;
+}
+
+.weatherForecast, .forecastTitle {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.forecastTitle {
+    font-size: 1.2em;
+}
+
+.iconFormat {
+    max-width: 120px;
+}
+
+.iconDetails {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    
 }

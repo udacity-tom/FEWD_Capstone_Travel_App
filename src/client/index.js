@@ -98,7 +98,7 @@ function importAllImages(image) {
 
 const images = importAllImages(require.context('./views/img', false, /\.(png|jpe?g|svg)$/));
 // images importAllImages(require.context('./views/icons', false, /\.(png|jpe?g|svg)$/));
-console.log("images", images);
+// console.log("images", images);
 console.log("Entry point reloaded! Site was re-loaded.");
 
 //export js files for use in app
