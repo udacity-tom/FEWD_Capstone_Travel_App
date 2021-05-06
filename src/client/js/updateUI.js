@@ -1,8 +1,6 @@
 const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
-// function updateUI(geonamesCityObject, inputFieldToCheck) {
-    // console.log("updateUI says...", geonamesCityObject, inputFieldToCheck);
     const geoObj = {[inputFieldToCheck+"GeoObj"]: geonamesCityObject};
-    Client.currentTripObject(geoObj);//update current trip object 
+    Client.currentTripObject({[inputFieldToCheck+"GeoObj"]: geonamesCityObject});//update current trip object 
     Client.getPixaBay(geonamesCityObject.name, geonamesCityObject.countryCode)
     .then( function(data) {
         if(data.total == 0 ){
@@ -78,7 +76,7 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
         const inputForm = document.getElementById('background');
         // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
         // inputFieldToCheck.classList.add("fadeBackground");
-        inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover  no-repeat;overflow: hidden; transition: 1s");
+        inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover  no-repeat;overflow: hidden; transition: 0.5s");
     }
 
 
