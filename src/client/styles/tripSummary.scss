@@ -96,7 +96,6 @@ $button-backg: #4caf50;
         font-size: 1em;
         color: $button-backg;
         background-color: $button-text;
-        // @include displayShadow(10px);
     }
 }
 
@@ -110,10 +109,6 @@ $button-backg: #4caf50;
     // padding: 20px;
 }
 
-.tripContent {
-    // display
-}
-
 .container {
     display: flex;
     flex-flow: row wrap;
@@ -125,8 +120,8 @@ $button-backg: #4caf50;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .tripDetails {
@@ -136,31 +131,22 @@ $button-backg: #4caf50;
 }
 
 
-.tripText1 {
+.tripText {
     line-height: 1.5em;
     height: auto;
-    // font-size: 2em;
-}
-
-.tripText2 {
-    // display: flex;
-    // flex: 1 1 100px;
-    // align-content: space-between;
 }
 
 .pixaImg {
-    // display: flex;
-    // flex: 1 1 100px;
-    // align-content: space-between;
     padding: 5px;
     height: auto;
     max-width: 600px;
-    border-radius: 12px;
+    border-radius: 14px;
 }
 
-.weatherForecastDiv {
-    margin: 20px;
-    padding: 20px;
+.weatherForecastDiv, .tripText {
+    margin: 10px;
+    margin-top: 20px;
+    padding: 5px
 }
 
 .weatherForecast, .forecastTitle {
@@ -174,29 +160,19 @@ $button-backg: #4caf50;
 }
 .iconFormat {
     position: relative;
-    // max-width: 120px;
     width: 120px;
     height: 120px;
-    // &:hover figcaption {
-    //     opacity: 1;
-    //     // display: block;
-    // }
 }
 
 .iconFormat figcaption {
-    // display: none;
-    // position: relative;
     text-align: center;
-    border-radius: 9px;
+    border-radius: 11px;
     opacity: 0;
     transition: opacity .5s ease-in;
     position: absolute;
     top: 30%;
     left: 0;
     right:0;
-    // bottom: 0;
-    // left: 0;
-    // right: 0;
     background-color: rgba(255,255,255, 0.4);
 }
 .iconFormat:hover figcaption {

@@ -4,8 +4,8 @@
 import { formHandler } from './js/formHandler';
 import { getGeonames } from './js/getGeonames';
 import { updateUI } from './js/updateUI';
-import { storeTrips } from './js/storeTrips';
-import { todoList } from './js/todoList';
+// import { storeTrips } from './js/storeTrips';
+// import { todoList } from './js/todoList';
 import { clearUI } from './js/clearUI';
 import { checkError } from './js/checkError';
 import { clearError } from './js/clearError';
@@ -41,52 +41,6 @@ import './styles/popup.scss'
 import './styles/tripSummary.scss'
 import './styles/accordian.scss'
 
-// import meaning-cloud-logo from './meaning-cloud-logo.png';
-// import meaningCloudLogo from './views/img/meaning-cloud-logo.png'
-// import background from './views/img/envio-30.jpg';
-
-// import background2 from './views/img/envio-10.jpg';
-// import loadingGif from './views/img/loading.gif';
-// import pixabay from './views/img/pixabay.png';
-// import geonames from './views/img/geonames.png';
-// import weatherbit from './views/img/weatherbit.png';
-// import icona01d from './views/img/c03d.png';
-// import iconc01n from './views/img/c03d.png';
-// import iconc03d from './views/img/c03d.png';
-// import iconc03d from './views/img/c03d.png';
-// import './icons/a01d.png'
-// import './icons/a02d.png'
-// import './icons/a03d.png'
-// import './icons/a04d.png'
-// import './icons/a05d.png'
-// import './icons/a06d.png'
-// import './icons/c01d.png'
-// import './icons/c02d.png'
-// import './icons/c03d.png'
-// import './icons/c04d.png'
-// import './icons/d01d.png'
-// import './icons/d02d.png'
-// import './icons/d03d.png'
-// import './icons/f01d.png'
-// import './icons/r01d.png'
-// import './icons/r02d.png'
-// import './icons/r03d.png'
-// import './icons/r04d.png'
-// import './icons/r05d.png'
-// import './icons/r06d.png'
-// import './icons/s01d.png'
-// import './icons/s02d.png'
-// import './icons/s03d.png'
-// import './icons/s04d.png'
-// import './icons/s05d.png'
-// import './icons/s06d.png'
-// import './icons/t01d.png'
-// import './icons/t02d.png'
-// import './icons/t03d.png'
-// import './icons/t04d.png'
-// import './icons/t05d.png'
-// import './icons/u00d.png'
-
 
 function importAllImages(image) {
     let images = {};
@@ -107,8 +61,8 @@ export {
     formHandler,
     getGeonames,
     updateUI,
-    storeTrips,
-    todoList,
+    // storeTrips,
+    // todoList,
     clearUI,
     clearError,
     checkError,

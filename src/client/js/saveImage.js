@@ -1,3 +1,0 @@
-function saveImage(url){
-    return
-}

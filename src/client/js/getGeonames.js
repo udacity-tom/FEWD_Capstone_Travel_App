@@ -12,15 +12,12 @@ const getGeonames = async (activeElement) => {
     } 
     addLoadingGraphic(activeElement);
     suggestedCities = await getGeoNamesCitySuggestions(activeElement.value);
-    console.log("getGeoNames.j SuggestedCities", suggestedCities);
     showSuggestedCities(suggestedCities, activeElement.id);
 }
-
+//Uses axiosPost to get geonames endpoint on server
 const getGeoNamesCitySuggestions = async (cityName) => {
     let returnedData = await Client.axiosPost('/getCityName', {location: cityName});
     if(returnedData.data.geonames.length == 0){
-        // console.log("Yes! returnedData.data.geonames.length does equal zero");
-        // let returnedData = new Object();
         returnedData = {
             data:
             { geonames:
@@ -37,7 +34,6 @@ const getGeoNamesCitySuggestions = async (cityName) => {
     }
     return returnedData;
 }
-
 
 function showSuggestedCities (returnedData, inputFieldToShowList) {
     const searchResponse = document.createDocumentFragment();
@@ -58,19 +54,18 @@ function showSuggestedCities (returnedData, inputFieldToShowList) {
         }
         removeLoadingGraphic(inputFieldToShowList);
         searchList.appendChild(searchResponse);
-        // searchList.className = "searchList";
         searchList.setAttribute('style', 'max-width: 400px; position: absolute; display: block;margin-left: -20px; background-color: white;font-size: 1.2em;line-height: 120%;z-index: 2;');
 }
 
+//Adds loading graphic to user input field whilst we wait for the GeoNames API to respond
 function addLoadingGraphic (location) {
     const loadingIcon = document.getElementById(location.id);
     loadingIcon.classList.add("loadingIcon");
 }
-//removes loading graphic in user input fields when GeoNames API responds and city list is created 
+//removes loading graphic in user input fields once GeoNames API responds and city list is created 
 function removeLoadingGraphic (location) {
 const loadingIcon = document.getElementById(location);
 loadingIcon.classList.remove("loadingIcon")
 }
-
 
 export { getGeonames }

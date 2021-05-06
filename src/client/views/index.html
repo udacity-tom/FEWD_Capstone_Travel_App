@@ -14,7 +14,6 @@
                     <p class="introText">Plan & manage your trips-simply, with ease.</p>
                 </section>
             </section>
-            <!-- <section class="input-card"> -->
                 <div id="errors">
                     <!-- Shows errors if they occur -->
                 </div>
@@ -22,7 +21,6 @@
                         <form class="form">
                             <section id="inputArea">
                                 <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" value="" placeholder="  Starting Location"  autocomplete="off"></input>
-                                <!-- <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Starting Location"  autocomplete="off"></input> -->
                                 <div id="tooltipSL" role="tooltip" style="display: none;">
                                     <div>
                                         <div>Search for a city.</div>
@@ -31,41 +29,24 @@
                                     </div>
                                     <div id="arrowSL" data-popper-arrow></div>
                                 </div>
-                                <!-- <section id="loading-startLocation"> -->
-                                    <!-- show loading gif when loading data from API -->
-                                <!-- </section> -->
                                 <div class=searchResults">
                                     <ul id="startLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
                                 <input id="startLocationCountry"  rows="5" cols="60" value="" class= "inputStart inputIncomplete" placeholder="  Country of Start Location" autocomplete="off"></input>
-                                <!-- <label for="startCountry-select">Please Select Country</label>
-    <select id="startCountry-select" class="crs-country" data-default-value="Switzerland" data-region-id="not-shown"  data-preferred="CH,DE,US,GB,FR,SE" data-show-default-option="false" data-value="shortcode"></select>
-    <select  id="not-shown"></select> -->
-
                                 <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" value="" placeholder="  Final Location" autocomplete="off"></input>
-                                <!-- <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" rows="5" cols="60" value="" placeholder="  Final Location" autocomplete="off"></input> -->
                                 <div id="tooltipFL" role="tooltip" style="display: none;">
                                     <div>Search for a city. Type at least 3 characters.</div>
                                     <div>Please input at least 3 characters</div>
                                     <div id="arrowFL" data-popper-arrow></div>
                                 </div>
-                                <!-- <section id="loading-finalLocation"> -->
-                                    <!-- show loading gif when loading data from API -->
-                                <!-- </section> -->
                                 <div class=searchResults">
                                     <ul id="finalLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
-                              
-                                <!-- <input id="startLocationCountry"  rows="5" cols="60" value="" placeholder="  Country of Starting Location" autocomplete="off"></input> -->
                                 <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" class= "inputFinal inputIncomplete" placeholder="  Country of Final Location" autocomplete="off"></input>
-
                             <div class="dateField">
                                 <div class="inputDep">
-                                    <!-- <label for="dateInput1" class="fieldLabel">
-                                        <span>Date of Departure</span>
-                                    </label> -->
                                     <div class="dateLabel">Date of Departure</div>
                                     <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput1" autocomplete="off" class= "dateDep inputIncomplete" onChange="Client.onDateChange">
                                     <div id="tooltipD1" role="tooltip" style="display: none;">
@@ -75,9 +56,6 @@
                                     </div>
                                 </div>
                                 <div class="inputRet" id="inputRet" aria-describedby="tooltipD2">
-                                    <!-- <label for="dateInput2" class="fieldLabel" >
-                                        <span  >Date of Return</span>
-                                    </label> -->
                                     <div class="dateLabel">Date of Return</div>
                                     <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
                                     <div id="tooltipD2" role="tooltip" style="display: none;">
@@ -89,9 +67,7 @@
                                 
                                 
                             </div>
-                                <!-- <input id="country" type="text" name="input" -->
 <!-- TODO: Add units button                                <button class="units" -->
-                                
                             <div class="buttonHolder">
                                 <button id="submitButton" class="button" type="button" value="submit" name="">Add New Trip</button>
                             </div>
@@ -99,15 +75,7 @@
                         </form>
                     </div > <!--close input form-->
             </section>
-            <section class="results">
-                <!-- <strong>Sentiment Analysis:</strong>
-                <p>The Meaning Cloud API returned the following summary results for the submitted text/URL</p>
-           
-                <p></p> -->
-                <button id="error" class="error"></button>
-            </section>
             <section id="tripsPlanned">
-
             </section>
         </main>
         <footer>
@@ -126,22 +94,16 @@
             <p class="author">All Other Content Copyright T. Smith</p>
         </footer>
         <section  >
-
             <div id="plannedTrips" class="tripOverlay">
                 <a href="javascript:void(0)" class="closebtn" label="Close All Trips" onclick="Client.closeAllTrips()">&times;  Close</a>
-                
-
                 <div>
                     <h1 class="tripTitle">Current Trip Summary</h1>
-                    <!-- <h2 class="tripTitle">We currently have the following trips planned for you:</h2> -->
                     <div id="tripsSummary" class="tripsSummary">
-                        
                     </div>
                 </div>
                 <button class="eraseData button" label="Erase All Trips" onclick="Client.eraseAllTrips()">Erase Trip Data</button>
             </div>
         </section>
-
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
