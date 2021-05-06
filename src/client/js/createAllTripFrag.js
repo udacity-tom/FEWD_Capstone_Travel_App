@@ -6,13 +6,10 @@ function createAllTripFrag() {
     
     if(!localStorage.allTrips || localStorage.allTrips == undefined) {
         tripsSummary.innerText =  "NO PLANNED TRIPS!";
-        // tripsSummary.
         return;
     }
     Client.sortAllTrips();
     const allTripData = Client.getAllTripData();// create local var with array of trips.
-    // console.log("from createAllTripFrag, all trip data", allTripData);
-    // allTripUL.className("tripsPlannedUL");
     allTripUL.id = "tripsPlannedUL";
     addAllTrips.appendChild(allTripUL);
 
@@ -25,12 +22,8 @@ function createAllTripFrag() {
         const container2 = document.createElement('div');//Trip details and Wbit forecast
         const titleElement = document.createElement('h2');
         const tripText1 = document.createElement('p');//Summary trip details
-        // const paraElement2 = document.createElement('p');
-        
         const finalDestImage = document.createElement('img');//pixabay image of finaldestination
         const delButton = document.createElement('button');
-        
-        // const wbitLogoCurrent = document.createElement('img');
 
         listElement.value = i;
         inputElement.type = "checkbox";
@@ -80,7 +73,7 @@ function createAllTripFrag() {
         const summaryText1 = "Your trip to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" "+(daysTillDep < 0 ? "has already passed!" : "will begin "+Client.daysUntilDep(allTripData[i].dateDep))+"\n";
         const summaryText2 = "Departing: "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryName+". Departure Date: "+displayDate(allTripData[i].dateDep)+"\n";
         const tripDur = Client.getTripDuration(allTripData[i].dateRet, allTripData[i].dateDep);
-        const tripDuration = "Returning on "+getDateFormat(allTripData[i].dateRet)+" the trip duration "+(daysTillDep < 0 ? "was " : "is ")+(tripDur == 0 ? "a single day" : tripDur+" day"+(tripDur > 1 ? "s. " : ". "))+"\n";
+        const tripDuration = "Returning on "+(tripDur == 0 ? "the same day" : getDateFormat(allTripData[i].dateRet)) +", the trip "+(daysTillDep < 0 ? "was " : "is going to be ")+(tripDur == 0 ? "a day trip." : tripDur+" day"+(tripDur > 1 ? "s long. " : " long. "))+"\n";
         
         //Creates summary weather at current and final destination
         const summaryText12 = "Current weather in "+allTripData[i].startLocationGeoObj.toponymName+" is: "+allTripData[i].startLocationWbitForecastObj.data.data[0].weather.description+" High: "+allTripData[i].startLocationWbitForecastObj.data.data[0].high_temp+" Low: "+allTripData[i].startLocationWbitForecastObj.data.data[0].low_temp +" (Degrees Centigrade)\n";
@@ -181,34 +174,13 @@ function createAllTripFrag() {
     while(tripsSummary.firstChild){
         tripsSummary.removeChild(tripsSummary.firstChild);
     }
-    tripsSummary.appendChild(allTripUL);
+    allTripList.appendChild(allTripUL)
+    tripsSummary.appendChild(allTripList);
     tripsSummary.setAttribute('style', "display: block; color: white;");
     
     // const addAllTripList = document.
 
 }
-
-// function daysUntilDep( dateDep, returntype ) {
-//     const currentDate = new Date();
-//     const dateUTC = Date.parse(dateDep);
-//     const daysTillDep = (Math.abs(currentDate-dateUTC)/(24*60*60*1000));
-//     if(returntype != "n"){
-//         switch (true)  {
-//             case daysTillDep < 1:
-//                 return "in less than a day!";
-//                 break;
-//             case daysTillDep == 1:
-//                 return "in "+Math.round(daysTillDep)+" day.";
-//                 break;
-//             case daysTillDep == 0:
-//                 return " today!"
-//                 break;
-//             default:
-//                 return "in "+Math.round(daysTillDep)+" days.";
-//         } 
-//     }
-//     return daysTillDep;  
-// }
 
 function displayDate(value) {
 
