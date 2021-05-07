@@ -1,11 +1,8 @@
 // storeimport 'regenerator-runtime/runtime';
 //import Js functions used in app
-// import { clickHandler } from './js/clickHandler';
 import { formHandler } from './js/formHandler';
 import { getGeonames } from './js/getGeonames';
 import { updateUI } from './js/updateUI';
-// import { storeTrips } from './js/storeTrips';
-// import { todoList } from './js/todoList';
 import { clearUI } from './js/clearUI';
 import { checkError } from './js/checkError';
 import { clearError } from './js/clearError';
@@ -40,6 +37,7 @@ import './styles/footer.scss'
 import './styles/popup.scss'
 import './styles/tripSummary.scss'
 import './styles/accordian.scss'
+import './styles/mediaq.scss'
 
 
 function importAllImages(image) {
@@ -57,12 +55,9 @@ console.log("Entry point reloaded! Site was re-loaded.");
 
 //export js files for use in app
 export {
-    // clickHandler,
     formHandler,
     getGeonames,
     updateUI,
-    // storeTrips,
-    // todoList,
     clearUI,
     clearError,
     checkError,

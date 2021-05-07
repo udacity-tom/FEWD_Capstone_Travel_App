@@ -6,7 +6,7 @@ footer {
     flex-shrink: 0;//keeps footer at base
     justify-content: center;
     background-color: white;
-    margin-top: auto;
+    margin-top: 10%;
 }
 
 .logoContainer {
@@ -23,8 +23,10 @@ footer {
 }
 
 .logo {
+    max-width: 100%;
     padding: 5px;
-    height: 80px;
+    max-height: 80px;
+    // min-height: 40px;
     width: auto;
 }
 

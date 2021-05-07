@@ -6,10 +6,10 @@ const getGeonames = async (activeElement) => {
         headers: {}
     };
     
-    let searchRef="tooltipSL";
-    if(activeElement.id != "startLocation") {
-        searchRef = "tooltipFL";
-    } 
+    // let searchRef="tooltipSL";
+    // if(activeElement.id != "startLocation") {
+    //     searchRef = "tooltipFL";
+    // } 
     addLoadingGraphic(activeElement);
     suggestedCities = await getGeoNamesCitySuggestions(activeElement.value);
     showSuggestedCities(suggestedCities, activeElement.id);

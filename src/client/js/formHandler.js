@@ -34,6 +34,7 @@ function formHandler(event) {
             Client.getGeonames(document.activeElement)};        
         return true;
     } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") { 
+     //TODO: 6.5.21 add onChange event listener for changes on date inputs and run onDateChange
         Client.onDateChange(activeElement.id);
     }
     else {

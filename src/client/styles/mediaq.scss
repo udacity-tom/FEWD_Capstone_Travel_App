@@ -1,0 +1,110 @@
+@media (max-width: 480px) {
+    .tripContent {
+        padding: 5px 5px;
+    }
+
+    .container2 {
+        margin: 5px;
+        padding: 5px;
+    }
+    .closebtn {
+        font-size: 1.9em;
+    }
+    
+    .labelDiv {
+        font-size: 18px;
+        margin: 3px;
+    }
+
+    .removeTrip {
+        // padding: 4px;
+        height: 100%;
+    }
+    .tripTitle {
+        font-size: 1.7em;
+        font-weight: 600;
+    }
+
+    .tripDetails {
+        font-size: 1em;
+        font-weight: 600;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .weatherDetails {
+        text-align: center;
+        background-color: rgba(49, 200, 238, 0.25);;
+    }
+
+    .weatherForecastDiv>figure {
+        width: 130px;
+    }
+    .weatherForecastDiv, .tripText {
+        margin: 5px;
+        padding: 2px;
+    }
+
+    .tripText {
+        line-height: 1.4em;
+        height: auto;
+    }
+    .forecastTitle {
+        text-align: center;
+        font-size: 1.1em;
+        margin-top: 40px;
+    }
+    .iconFormat figcaption {
+        opacity: 1;
+        display: block;
+        // padding: 5px;
+        width: 100%;
+        // bottom: 0;
+        // top: 80%;
+        word-break: break-word;
+        background-color: rgba(255,255,255, 0.3);
+    }
+    
+
+    .iconFormat {
+        width: 130px;
+    }
+
+
+    #background {
+        // min-height: 960px;
+        // width: auto;
+        // background-repeat: repeat;
+    }
+    // .card-container {
+    //   display: grid;
+    //   grid-template-columns: 1fr;
+    //   grid-gap: 20px;
+    //   padding: 5px;
+    // }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    // .card-container {
+    //   display: grid;
+    //   grid-template-columns: 1fr 1fr;
+    //   grid-gap: 20px;
+    //   padding: 10px;
+    // }
+    .tripDetails {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+
+
+  }
+  
+//   @media (min-width: 1000px) {
+//     .card-container {
+//       display: grid;
+//       grid-template-columns: 1fr 1fr 1fr;
+//       grid-gap: 20px;
+//       margin: 50px auto;
+//     }
+// }

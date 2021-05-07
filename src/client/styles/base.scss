@@ -118,7 +118,8 @@ header {
 //     background-color: orange; }
 
 #background {
-    background:  url("../views/img/envio-30.jpg") center / cover no-repeat ;
+    background:  url("../views/img/envio-30.jpg") center / cover  ;
+    min-height: 960px;
 }
 
 // @keyframes fadeIn {

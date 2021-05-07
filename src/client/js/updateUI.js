@@ -76,7 +76,8 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
         const inputForm = document.getElementById('background');
         // inputForm.setAttribute("style","background: url("+url+")"+ (inputFieldToCheck =='startLocation'? "left ": "right ")+" center no-repeat;");
         // inputFieldToCheck.classList.add("fadeBackground");
-        inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover  no-repeat;overflow: hidden; transition: 0.5s");
+        // inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover  no-repeat;overflow: hidden; transition: 0.5s");
+        inputForm.setAttribute("style","background: url("+url+")"+ " center center / cover ");
     }
 
 

@@ -1,5 +1,11 @@
 function onDateChange (activeElementID) {
     console.log("onDateChange was run.");
+    if(activeElementID == "dateDep" || activeElementID == "dateRet") { 
+
+
+    //if date input is valid date change class
+//TODO: 6.5.21 add onChange event listener for changes on date inputs and run onDateChange
+
     // const dateInputID = activeElementID;
             const dateInput = document.getElementById(activeElementID);
             console.log("Current dateinput that is active is", dateInput, "The ID of that date is ", activeElementID);
@@ -15,5 +21,7 @@ function onDateChange (activeElementID) {
             // dateInput.onblur(Client.currentTripObject({[activeElementID]: dateInput.value}));
                 return;
         }
-
+        return;
+    }
+document.body.addEventListener('change', onDateChange);
 export { onDateChange }

@@ -69,14 +69,20 @@ function createAllTripFrag() {
         finalDestImage.className = "pixaImg";
         titleElement.innerText = "Your trip for "+new Date(allTripData[i].dateDep).toDateString()+" to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" \n";
         titleElement.className = "tripDetails";
-        const tripSummary = "Your trip to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" "+(daysTillDep < 0 ? "has already passed!" : "will begin "+Client.daysUntilDep(allTripData[i].dateDep))+"\n";
-        const departureInfo = "Departing: "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryName+". Departure Date: "+displayDate(allTripData[i].dateDep)+"\n";
-        const tripDurationNum = Client.getTripDuration(allTripData[i].dateRet, allTripData[i].dateDep);
-        const tripDuration = "Returning on "+(tripDurationNum == 0 ? "the same day" : getDateFormat(allTripData[i].dateRet)) +", the trip "+(daysTillDep < 0 ? "was " : "is going to be ")+(tripDurationNum == 0 ? "a day trip." : tripDurationNum+" day"+(tripDurationNum > 1 ? "s long. " : " long. "))+"\n";
+        //Trp text creation
+        const tripSummary = document.createElement('p');
+        tripSummary.innerText = "Your trip to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" "+(daysTillDep < 0 ? "has already passed!" : "will begin "+Client.daysUntilDep(allTripData[i].dateDep))+"\n";
+        const departureInfo = document.createElement('p');
+        departureInfo.innerText = "Departing: "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryName+". Departure Date: "+displayDate(allTripData[i].dateDep)+"\n";
+        const tripDurationNum =  Client.getTripDuration(allTripData[i].dateRet, allTripData[i].dateDep);
+        const tripDuration = document.createElement('p');
+        tripDuration.innerText = "Returning on "+(tripDurationNum == 0 ? "the same day" : getDateFormat(allTripData[i].dateRet)) +", the trip "+(daysTillDep < 0 ? "was " : "is going to be ")+(tripDurationNum == 0 ? "a day trip." : tripDurationNum+" day"+(tripDurationNum > 1 ? "s long. " : " long. "))+"\n";
         
         //Creates summary weather at current and final destination
-        const weatherStartLocation = "Current weather in "+allTripData[i].startLocationGeoObj.toponymName+" is: "+allTripData[i].startLocationWbitForecastObj.data.data[0].weather.description+" High: "+allTripData[i].startLocationWbitForecastObj.data.data[0].high_temp+" Low: "+allTripData[i].startLocationWbitForecastObj.data.data[0].low_temp +" (Degrees Centigrade)\n";
-        const weatherFinalLocation = "Today's weather in "+allTripData[i].finalLocationGeoObj.toponymName+" is: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].weather.description+" High: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].high_temp+" Low: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].low_temp +" (Degrees Centigrade)\n"
+        const weatherStartLocation = document.createElement('p');
+        weatherStartLocation.innerText = "Current weather in "+allTripData[i].startLocationGeoObj.toponymName+" is: "+allTripData[i].startLocationWbitForecastObj.data.data[0].weather.description+", High: "+allTripData[i].startLocationWbitForecastObj.data.data[0].high_temp+"°C Low: "+allTripData[i].startLocationWbitForecastObj.data.data[0].low_temp +"°C\n";
+        const weatherFinalLocation = document.createElement('p');
+        weatherFinalLocation.innerText = "Today's weather in "+allTripData[i].finalLocationGeoObj.toponymName+" is: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].weather.description+", High: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].high_temp+"°C Low: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].low_temp +"°C\n"
         
         // Povides date format for weather forcast icons
         function getDateFormat(date) {
@@ -135,11 +141,19 @@ function createAllTripFrag() {
         
         //Main TripText description: start and finish locations/dates/ Current weather in both locations
         tripText.className = "tripText";
-        tripText.innerText = tripSummary+tripDuration+departureInfo+weatherStartLocation+weatherFinalLocation;
+        // tripText.appendChild(tripSummary);
+        tripText.innerText = tripDuration+departureInfo+weatherStartLocation+weatherFinalLocation;
 
         //creating the final document fragment before updating the view
         const weatherDetails = document.createElement('div');
-        weatherDetails.appendChild(tripText);
+        weatherDetails.className = "weatherDetails";
+        
+        weatherDetails.appendChild(tripSummary);
+        weatherDetails.appendChild(tripDuration);
+        weatherDetails.appendChild(departureInfo);
+        weatherDetails.appendChild(weatherStartLocation);
+        weatherDetails.appendChild(weatherFinalLocation);
+        // weatherDetails.appendChild(tripText);
         weatherDetails.appendChild(weatherForecastDiv);
 
         container.className = "container";

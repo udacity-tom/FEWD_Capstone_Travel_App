@@ -57,11 +57,7 @@ app.post('/getCityName', getCityName);
 
 app.post('/getPix', getPixaBayImage);
 
-
-
-//gets weather for 16days, current weatehr, historical weather, daily weather?
-//uses axiosGet as three seperate requests
-//gets weather at current location
+//gets weather at current input location
 function getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep) {
     const wbitDailyPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
     const wbitCurrentPrefixURL = "https://api.weatherbit.io/v2.0/current/city?"; //current->city 
@@ -94,10 +90,8 @@ function getPixaURL(city, country) {
     return pixaURL+pixExtraParam;
 
 }
-// https://pixabay.com/api/?key={ KEY }&q=yellow+flowers&image_type=photo
 
 const axiosGet = async (req, res, getRequestType) => {
-    //TODO: CLEAR THE UI INPUT
     res = await axios.get(req)
     try {
         const response = await res;
@@ -110,24 +104,18 @@ const axiosGet = async (req, res, getRequestType) => {
     }
 }
 
-// function getWeatherbitInfo(finalLocation){
     const weatherAtFinalLoc = async (finalLocation) => {
         const response = await axiosGet(wbit16URL);
         // console.log("wbit response", response);
         console.log("wbit response for objects", response.data.data[0])
         return response.data;
     }
-// }
-// https://api.weatherbit.io/v2.0/current?city=london&country=uk&units=S&key=303a4822c70643128b8e41ecf09670f0
 
 //Processes the request from the client for all data submitted for trip
 function getWbit(req, res) {
-    // console.log("(Server:Line 155)Request for new Travel Plans recieved, in the form of:", typeof(req.body), req.body);
     const {longtitude, lattitude, cityName, countryCode, dateDep} = req.body;
-    // const {req.startLocationGeoObj.lng, req.startLocationGeoObj.lat, req.startLocationGeoObj.name,req.startLocation.countryCode, req.dateDep}  = req.body;
     console.log("(Server:Line 157)Destructured req.body", "long:",longtitude, "lattitude:", lattitude, "city name:",cityName, "Country Name:", countryCode, "dateDep", dateDep);
     const wbit16URL = getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep);
-    // const response = await weatherAtFinalLoc();
     req = wbit16URL;
     axiosGet(req, res, String(req))
     .then(function(data) {
@@ -135,25 +123,10 @@ function getWbit(req, res) {
     })
 }
 
-//Will create the data set to send to the three APIs
-
-function getWbitCurret(req, res) {
-
-}
-
-function getWbitForecast(req, res) {
-    
-}
-
-
 //function to query current city location uses geonames API
 function getCityName(req, res) {
-    // console.log("(Server: Line 184) City name request for", req.body.location );
-    // console.log("(Server: Line 185)req.body is: ", req.body);
     const {location}  = req.body;
-    // if(location.length < 3) return;
     req = getGeoURL(location);
-    // console.log("req before axios function is",req);
     axiosGet(req, res, String(req))
     .then(function(data) {
         res.send(data);
@@ -162,29 +135,26 @@ function getCityName(req, res) {
 }
 
 async function getPixaBayImage(req, res) {
-    // console.log("(Server: line 198) data submitted", req.body);
     let {city, country} = req.body;
     req = await getPixaURL(city, country);
-    // console.log("URL Submittied",req);
     axiosGet(req, res, String(req))
     .then(function(data) {
-        // console.log("(server: line209)getPixBayImage() res.send");
         res.send(data);
     })
 }
 
 
 function createDataSet(dataRecieved){
-
+//TODO: Store browser created data on server
 
 }
 
 //Gets the data from the APIs based on the data set created.
 function getAllData(dataService, dataSet) {
-
+//TODO: Retrieve browser created data on server
 }
 
 function returnDataToClient(dataToReturn){
-
+//TODO: Send browser created data on server back to browser
 }
 
