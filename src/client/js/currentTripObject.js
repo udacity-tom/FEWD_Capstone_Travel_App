@@ -3,8 +3,8 @@ function currentTripObject(tripObject) {
         let currentTripObj = {
             startLocationGeoObj: {},
             finalLocationGeoObj: {},
-            dateDep: new Date(),
-            dateRet: new Date(),
+            dateDep: "",
+            dateRet: "",
             startLocationPixaURL: "",
             finalLocationPixaURL: "",
             startLocationWbitForecastObj: {},

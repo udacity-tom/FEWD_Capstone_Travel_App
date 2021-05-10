@@ -6,14 +6,15 @@ function formHandler(event) {
     const clickNodeName = clickTarget.nodeName;
     if (clickNodeName == "BUTTON") {
         if (clickTarget.value == "submit" && Client.checkError(Client.getCurrentTrip()) == true) {
-            console.log("Submit button pressed, ", activeElement.value);
-            // Client.checkError();
-            Client.addTrip(Client.getCurrentTrip());
-            Client.clearUI();
-            Client.sortAllTrips();
-            Client.createAllTripFrag();
-            Client.openAllTrips();
-            // Client.clearCurrentTrip();
+            console.log("Submit button pressed (activeElement.value), ", activeElement.value);
+            if(Client.checkError()){ //activate once everything is working
+                Client.addTrip(Client.getCurrentTrip());
+                Client.clearUI();
+                Client.sortAllTrips();
+                Client.createAllTripFrag();
+                Client.openAllTrips();
+                Client.clearCurrentTrip(); //activate once everything is working
+            }
         }
         else if (activeElement.value.slice(0,10) == "deleteTrip") {
             // console.log("Value of slice(11)", activeElement.value.slice(11));
@@ -21,23 +22,18 @@ function formHandler(event) {
             Client.createAllTripFrag();
             Client.openAllTrips();
         }
-    // } else if(clickTarget.parentNode.id != "tripsPlannedUL") {
-    //     console.log("Line 25 formhandler.js, clickTarget id, element parent ", clickTarget.id, clickTarget.parentNode, clickTarget.parentNode.id);
-    //Note: 6-5-21 thinking about making overlay UL more obvious which is open. JS arrow 
+    //Note: 6-5-21 thinking about making overlay UL more obvious for each trip so user knows which trip is open. arrow change for open or close/color background, etc
     } else if (clickNodeName == "LI" && clickTarget.parentNode.id != "tripsPlannedUL") {
         Client.updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
     } else if ( activeElement.value != undefined && activeElement.value != null && (activeElement.id == "startLocation" || activeElement.id == "finalLocation")) {
-        // console.log("formHandler.js current activeElement is", activeElement.id, "and it has a length of ", activeElement.value.length);
         if (activeElement.value.length >= 3) { 
-            Client.getGeonames(document.activeElement)};        
+            Client.getGeonames(activeElement)};        
         return true;
     } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") { 
-     //TODO: 6.5.21 add onChange event listener for changes on date inputs and run onDateChange
-        Client.onDateChange(activeElement.id);
-    }
-    else {
+        Client.onDateChange(activeElement);
+    } else {
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
         return false;

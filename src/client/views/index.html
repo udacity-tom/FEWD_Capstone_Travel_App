@@ -45,7 +45,7 @@
                                     </ul>
                                 </div>
                                 <input id="finalLocationCountry" readonly="readonly" rows="5" cols="60" value="" class= "inputFinal inputIncomplete" placeholder="  Country of Final Location" autocomplete="off"></input>
-                            <div class="dateField">
+                            <div id="dateField" class="dateField">
                                 <div class="inputDep">
                                     <div class="dateLabel">Date of Departure</div>
                                     <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput1" autocomplete="off" class= "dateDep inputIncomplete" onChange="Client.onDateChange">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="inputRet" id="inputRet" aria-describedby="tooltipD2">
                                     <div class="dateLabel">Date of Return</div>
-                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
+                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" value="" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
                                     <div id="tooltipD2" role="tooltip" style="display: none;">
                                         <div>Set Date for return.</div>
                                         <div>Press the 'Enter' key to open Calander view</div>

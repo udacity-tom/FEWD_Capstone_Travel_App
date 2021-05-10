@@ -1,5 +1,5 @@
 function daysUntilDep( dateDep, returntype) {
-    let currentDate = new Date(new Date().toDateString() ).setHours(0,0,0,0);
+    let currentDate = new Date(new Date().toDateString()).setHours(0,0,0,0);
     const dateUTC = new Date(dateDep).setHours(0,0,0,0);
     const daysTillDep = ((dateUTC-currentDate)/(24*60*60*1000));
     if(returntype != "n"){

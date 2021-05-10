@@ -11,6 +11,7 @@ import { axiosPost } from './js/axiosPost';
 import { getWeatherbit } from './js/getWeatherbit';
 import { addTrip } from './js/addTrip';
 import { getCurrentTrip } from './js/getCurrentTrip';
+import { clearCurrentTrip } from './js/clearCurrentTrip';
 import { deleteTrip } from './js/deleteTrip';
 import { onDateChange } from './js/onDateChange';
 import { getAllTripData } from './js/getAllTripData';
@@ -66,6 +67,7 @@ export {
     getWeatherbit,
     addTrip,
     getCurrentTrip,
+    clearCurrentTrip,
     deleteTrip,
     createPopper,
     keypressed,
