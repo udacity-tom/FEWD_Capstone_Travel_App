@@ -1,7 +1,7 @@
 const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     const geoObj = {[inputFieldToCheck+"GeoObj"]: geonamesCityObject};
     Client.currentTripObject({[inputFieldToCheck+"GeoObj"]: geonamesCityObject});//update current trip object 
-    Client.getPixaBay(geonamesCityObject.name, geonamesCityObject.countryCode)
+    Client.getPixaBay(geonamesCityObject.name, geonamesCityObject.countryName)
     .then( function(data) {
         if(data.total == 0 ){
             // console.log("Data was not returned");

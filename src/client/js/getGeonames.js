@@ -54,7 +54,7 @@ function showSuggestedCities (returnedData, inputFieldToShowList) {
         }
         removeLoadingGraphic(inputFieldToShowList);
         searchList.appendChild(searchResponse);
-        searchList.setAttribute('style', 'max-width: 400px; position: absolute; display: block;margin-left: -20px; background-color: white;font-size: 1.2em;line-height: 120%;z-index: 2;');
+        searchList.setAttribute('style', 'max-width: 400px; position: absolute; display: block; background-color: white;font-size: 1.2em;line-height: 120%;z-index: 2;');
 }
 
 //Adds loading graphic to user input field whilst we wait for the GeoNames API to respond
