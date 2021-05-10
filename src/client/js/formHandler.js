@@ -31,9 +31,11 @@ function formHandler(event) {
         if (activeElement.value.length >= 3) { 
             Client.getGeonames(activeElement)};        
         return true;
-    } else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") { 
-        Client.onDateChange(activeElement);
-    } else {
+    } 
+    // else if(activeElement.id == "dateDep" || activeElement.id == "dateRet") { 
+    //     Client.onDateChange(activeElement);
+    // }
+     else {
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
         return false;
@@ -47,5 +49,14 @@ function hideSuggestedCities(inputFieldToCheck) {
 }
 
 document.body.addEventListener('click', formHandler);
+
+// const dateInput = document.getElementById(event.target.id);
+const dateField = document.getElementById("dateField");
+dateField.addEventListener('change', (event) => {
+    const dateInput = document.getElementById(event.target.id);
+    dateInput.classList.remove("inputIncomplete");
+    dateInput.classList.add("inputComplete");
+    Client.currentTripObject({[dateInput.id]: dateInput.value});
+});
 
 export { formHandler }
