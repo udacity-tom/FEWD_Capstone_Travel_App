@@ -20,27 +20,14 @@
                     <div id="inputForm" class="inputform" >
                         <form class="form">
                             <section id="inputArea">
-                                <input id="startLocation" tooltip="Search for a city." aria-describedby="tooltipSL" class="inputStart inputIncomplete" name="input" value="" placeholder="  Starting Location"  autocomplete="off"></input>
-                                <div id="tooltipSL" role="tooltip" style="display: none;">
-                                    <div>
-                                        <div>Search for a city.</div>
-                                        <div>Type the first 3 or more characters.</div>
-                                        <div>Hit 'Enter' to search</div>
-                                    </div>
-                                    <div id="arrowSL" data-popper-arrow></div>
-                                </div>
-                                <div class=searchResults">
+                                <input id="startLocation" tooltip="Search for a city."  class="inputStart inputIncomplete" name="input" value="" placeholder="  Starting Location"  autocomplete="off"></input>
+                                <div>
                                     <ul id="startLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
                                 <input id="startLocationCountry"  rows="5" cols="60" value="" class= "inputStart inputIncomplete" placeholder="  Country of Start Location" autocomplete="off"></input>
-                                <input id ="finalLocation" aria-describedby="tooltipFL" class="inputFinal inputIncomplete" name="input" value="" placeholder="  Final Location" autocomplete="off"></input>
-                                <div id="tooltipFL" role="tooltip" style="display: none;">
-                                    <div>Search for a city. Type at least 3 characters.</div>
-                                    <div>Please input at least 3 characters</div>
-                                    <div id="arrowFL" data-popper-arrow></div>
-                                </div>
-                                <div class=searchResults">
+                                <input id ="finalLocation" class="inputFinal inputIncomplete" name="input" value="" placeholder="  Final Location" autocomplete="off"></input>
+                                <div>
                                     <ul id="finalLocation-searchList"  style="display: none;" value="none">
                                     </ul>
                                 </div>
@@ -48,24 +35,12 @@
                             <div id="dateField" class="dateField">
                                 <div class="inputDep">
                                     <div class="dateLabel">Date of Departure</div>
-                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value="" aria-describedby="tooltipD1" name="dateInput1" autocomplete="off" class= "dateDep inputIncomplete" onChange="Client.onDateChange">
-                                    <div id="tooltipD1" role="tooltip" style="display: none;">
-                                        <div>Set Date for departure.</div>
-                                        <div>Press the 'Enter' key to open Calander view</div>
-                                        <div id="arrowD1" data-popper-arrow></div>
-                                    </div>
+                                    <input id="dateDep" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY"" value=""  name="dateInput1" autocomplete="off" class= "dateDep inputIncomplete">
                                 </div>
-                                <div class="inputRet" id="inputRet" aria-describedby="tooltipD2">
+                                <div class="inputRet" id="inputRet">
                                     <div class="dateLabel">Date of Return</div>
-                                    <input id="dateRet" type="date" required placeholder="DD/MM/YYYY" value="" aria-describedby="tooltipD2" name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
-                                    <div id="tooltipD2" role="tooltip" style="display: none;">
-                                        <div>Set Date for return.</div>
-                                        <div>Press the 'Enter' key to open Calander view</div>
-                                        <div id="arrowD2" data-popper-arrow></div>
-                                    </div>
+                                    <input id="dateRet" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY" value=""  name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
                                 </div>
-                                
-                                
                             </div>
 <!-- TODO: Add units button                                <button class="units" -->
                             <div class="buttonHolder">
@@ -95,60 +70,45 @@
         </footer>
         <section  >
             <div id="plannedTrips" class="tripOverlay">
-                <a href="javascript:void(0)" class="closebtn" label="Close All Trips" onclick="Client.closeAllTrips()">&times;  Close</a>
+                <a href="javascript:void(0)" class="closebtn" label="Close All Trips">&times;  Close</a>
                 <div>
                     <h1 class="tripTitle">Current Trip Summary</h1>
                     <div id="tripsSummary" class="tripsSummary">
                     </div>
                 </div>
-                <button class="eraseData button" label="Erase All Trips" onclick="Client.eraseAllTrips()">Erase Trip Data</button>
+                <button class="eraseData button" value="eraseAllData" label="Erase All Trips">Erase Trip Data</button>
             </div>
         </section>
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-         if(Client.getAllTripData()){
-            Client.createAllTripFrag();
-        //display the stored data
-        }
-            // document.getElementById("inputAreaType").checked = false
-
-            //Clears input form on reload
-            //TODO: UNCOMMENT AFTER TESTING
-            const errors = document.getElementById("errors").innerHTML = "";
-            // const startLocation = document.getElementById("startLocation").innerHTML = "";
-            // const finalLocation = document.getElementById("finalLocation").innerHTML = "";
-            // const date = document.getElementById("date").value = "";
-            // document.main; 
+         
+             if(Client.getAllTripData()){
+                Client.createAllTripFrag();
+                //display the stored data
+            }
+            Client.formHandler();
         })
     </script>
     <script>
-        // if('serviceWorker' in navigator){
-        //     //Use the window load event to keep the page load performant
-        //     window.addEventListener('load', () => {
-        //         navigator.serviceWorker.register('/service-worker.js');
-        //     });
-        // }
-        // function formHandler(event) {
-        //     event.preventDefault();
-        //     const clickTarget = event.target;
-        //     console.log("current event.target", clickTarget.nodeName);
-        // }
-
+        if('serviceWorker' in navigator){
+            //Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
         // document.body.addEventListener('click', formHandler);
     </script>
     <!-- <script src="/src/client/js/crs.js" type="text/javascript"></script> -->
     <!-- <script src="./js/formHandler.js" type="text/javascript"></script> -->
 </html>
 
-<!-- For popup support the library popper.js from https://popper.js.org has been used -->
 <!-- For date support 12/01/21 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->
 <!-- Additional Date Support 13/01/21 https://www.smashingmagazine.com/printed-books/form-design-patterns/ -->
 <!-- Loading gif from 10/02/21 https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif as 10-02-21 -->
-<!-- Image storage code, 20/02/21 modified from https://hacks.mozilla.org/2012/02/saving-images-and-files-in-localstorage/ -->
-<!-- main page image attribution 07/01/21 <a href="https://www.vecteezy.com/free-vector/holiday">Holiday Vectors by Vecteezy</a> -->
-<!-- main page image attribution 07/01/21 <a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a> -->
+<!-- home page image attribution 07/01/21 <a href="https://www.vecteezy.com/free-vector/holiday">Holiday Vectors by Vecteezy</a> -->
+<!-- home page image attribution 07/01/21 <a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a> -->
 <!-- Pure CSS accordian, 22/03/21, adapted from https://supfort.com/pure-css-accordion-without-javascript -->
-<!-- import all images, 05/05/21, into to index.js from https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack -->
+<!-- import all images, 05/05/21, into index.js from https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack -->
 <!-- Full screen overlay navigation menu, 23/03/21, adapted from  https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp -->
 <!-- hover tooltip concept for weather icons modified from-+ CSS The Missing Manual p441-443 -->

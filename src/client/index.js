@@ -5,8 +5,6 @@ import { getGeonames } from './js/getGeonames';
 import { updateUI } from './js/updateUI';
 import { clearUI } from './js/clearUI';
 import { checkError } from './js/checkError';
-import { clearError } from './js/clearError';
-import { errorHandling } from './js/errorHandling';
 import { axiosPost } from './js/axiosPost';
 import { getWeatherbit } from './js/getWeatherbit';
 import { addTrip } from './js/addTrip';
@@ -60,9 +58,7 @@ export {
     getGeonames,
     updateUI,
     clearUI,
-    clearError,
     checkError,
-    errorHandling,
     axiosPost,
     getWeatherbit,
     addTrip,
