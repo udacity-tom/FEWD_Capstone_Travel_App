@@ -1,15 +1,15 @@
-function keypressed(ev) {
-    const keypressValue = ev;
-    let delay;
-    if ( ev.key === "Enter") {
+function keypressed(event) {
+    if( event.key === "Escape"){
+        Client.closeAllTrips();
+    } else if ( event.key === "Enter") {
         if(document.activeElement.name == "input" && document.activeElement.value.length >=3){
         Client.getGeonames(document.activeElement);    
     }
-        return ev.key;
+        return event.key;
     }
-    return ev.key
+    return event.key
 }
 
-document.body.addEventListener('keypress', keypressed);
+document.body.addEventListener('keydown', keypressed);
 
 export { keypressed }

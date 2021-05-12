@@ -11,7 +11,7 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     devServer: {
-    host: '0.0.0.0',
+    host: '192.168.0.78',
     port: 8080,
     disableHostCheck: true,
 },

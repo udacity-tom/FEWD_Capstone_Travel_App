@@ -5,11 +5,6 @@ const getGeonames = async (activeElement) => {
         data: {},
         headers: {}
     };
-    
-    // let searchRef="tooltipSL";
-    // if(activeElement.id != "startLocation") {
-    //     searchRef = "tooltipFL";
-    // } 
     addLoadingGraphic(activeElement);
     suggestedCities = await getGeoNamesCitySuggestions(activeElement.value);
     showSuggestedCities(suggestedCities, activeElement.id);
@@ -26,11 +21,11 @@ const getGeoNamesCitySuggestions = async (cityName) => {
                 name: "No data",
                 countryCode: " Please search again.",
                 toponymName: "The search term was not recognised",
-                adminName1: " sorry!"
+                adminName1: " Please try another seach term Tom"
             }
             ] }
         }
-        console.log( "Returned data is now->", returnedData);
+        // console.log( "Returned data is now->", returnedData);
     }
     return returnedData;
 }
