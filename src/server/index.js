@@ -26,7 +26,7 @@ const port = 8081;
 app.get('/', function(req, res) {
     // res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
     res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
-    console.log('Homepage delivered');
+    console.log('Server Homepage delivered');
 })
 
 //set server port to liten to
@@ -47,7 +47,7 @@ function getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep, time)
     const lon = 'lon='+longtitude;
     const lat = 'lat='+lattitude;
     let wbit16URL = `${wbit16dayPrefixURL}${lat}&${lon}&key=${wbit_key}`;    
-    console.log("Wbit 16day URL", wbit16URL);
+    // console.log("Wbit 16day URL", wbit16URL);
     return wbit16URL;
 };
 
@@ -81,12 +81,6 @@ const axiosGet = async (req, res, getRequestType) => {
     }
 }
 
-    const weatherAtFinalLoc = async (finalLocation) => {
-        const response = await axiosGet(wbit16URL);
-        console.log("wbit response for objects", response.data.data[0])
-        return response.data;
-    }
-
 //Processes the request from the client for all data submitted for trip
 function getWbit(req, res) {
     const {longtitude, lattitude, cityName, countryCode, dateDep} = req.body;
@@ -109,7 +103,7 @@ function getCityName(req, res) {
     })
 
 }
-
+//function gets random pixabay image from first ten hits
 async function getPixaBayImage(req, res) {
     let {city, country} = req.body;
     req = await getPixaURL(city, country);
@@ -121,16 +115,15 @@ async function getPixaBayImage(req, res) {
 
 
 function createDataSet(dataRecieved){
-//TODO: Store browser created data on server
+//TODO: Store user created data on server
 
 }
 
-//Gets the data from the APIs based on the data set created.
 function getAllData(dataService, dataSet) {
-//TODO: Retrieve browser created data on server
+//TODO: Retrieve user created data on server
 }
 
 function returnDataToClient(dataToReturn){
-//TODO: Send browser created data on server back to browser
+//TODO: Send user created data on server back to front-end
 }
 

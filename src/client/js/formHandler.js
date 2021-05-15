@@ -18,9 +18,15 @@ function formHandler(event) {
             }
         } else if (activeElement.value.slice(0,10) == "deleteTrip") {
             // console.log("Value of slice(11)", activeElement.value.slice(11));
-            Client.deleteTrip(activeElement.value.slice(11));//button deletes trip from store
-            Client.createAllTripFrag();
-            Client.openAllTrips();
+            //button deletes trip from store
+            if(Client.deleteTrip(activeElement.value.slice(11))){
+                Client.createAllTripFrag();
+                Client.openAllTrips();
+                //TODO: notify deletion
+            } else {
+                //TODO: notify non-deletion
+            }
+            
         } else if (activeElement.value=="eraseAllData" ){
             Client.eraseAllTrips();
         } else if (activeElement.id=="openTrips" ){

@@ -13,7 +13,7 @@ function sortAllTrips() {
         return array;
     }
     const allTrips =sortTrips(Client.getAllTripData());
-    Client.eraseAllTrips();
+    Client.eraseAllTrips(true);
     Client.setAllTripData(allTrips);
     
     return; 
