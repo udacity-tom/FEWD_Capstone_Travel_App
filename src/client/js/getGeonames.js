@@ -1,3 +1,4 @@
+import { axiosPost } from './axiosPost';
 // Get geonames infos
 const getGeonames = async (activeElement) => {
     let suggestedCities = {
@@ -11,8 +12,8 @@ const getGeonames = async (activeElement) => {
 }
 //Uses axiosPost to get geonames endpoint on server
 const getGeoNamesCitySuggestions = async (cityName) => {
-    let returnedData = await Client.axiosPost('/getCityName', {location: cityName});
-    if(returnedData.data.geonames.length == 0){
+    let returnedData = await axiosPost('/getCityName', {location: cityName});
+    if(returnedData.data.geonames.length == 0){//no data!
         returnedData = {
             data:
             { geonames:
@@ -25,7 +26,6 @@ const getGeoNamesCitySuggestions = async (cityName) => {
             }
             ] }
         }
-        // console.log( "Returned data is now->", returnedData);
     }
     return returnedData;
 }
@@ -59,8 +59,8 @@ function addLoadingGraphic (location) {
 }
 //removes loading graphic in user input fields once GeoNames API responds and city list is created 
 function removeLoadingGraphic (location) {
-const loadingIcon = document.getElementById(location);
-loadingIcon.classList.remove("loadingIcon")
+    const loadingIcon = document.getElementById(location);
+    loadingIcon.classList.remove("loadingIcon")
 }
 
 export { getGeonames }

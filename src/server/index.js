@@ -24,12 +24,12 @@ app.use(bodyParser.json());
 //setup home page
 const port = 8081;
 app.get('/', function(req, res) {
-    // res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
+    // res.sendFile(path.resolve('dist/index.html')); //TODO:need to change path to dist when ready
     res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
     console.log('Server Homepage delivered');
 })
 
-//set server port to liten to
+//set server port to listen to
 app.listen(port, function() {
     console.log(new Date().getTime()+`Travel App listening on ${port}`);
 })
@@ -39,7 +39,7 @@ app.post('/getWbit', getWbit);
 app.post('/getCityName', getCityName);
 app.post('/getPix', getPixaBayImage);
 
-//gets weather at current input location
+//gets weatherbit URL for 16 day forecast at current input location (starting/final location)
 function getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep, time) {
     const wbit16dayPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
     // TODO: 26-4-21 setup the results as eitehr SI Units or Imperiel ->const units = SI or Imperial;
@@ -47,10 +47,9 @@ function getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep, time)
     const lon = 'lon='+longtitude;
     const lat = 'lat='+lattitude;
     let wbit16URL = `${wbit16dayPrefixURL}${lat}&${lon}&key=${wbit_key}`;    
-    // console.log("Wbit 16day URL", wbit16URL);
     return wbit16URL;
 };
-
+//gets Geonames URL data (starting/final location)
 function getGeoURL(location){
     const geoPrefixURL = "http://api.geonames.org/searchJSON?";
     const geoSuffixURL = "&maxRows=10";
@@ -58,7 +57,7 @@ function getGeoURL(location){
     const geoURLStart = `${geoPrefixURL}${geoExtraParam}${location}&username=${geo_key}${geoSuffixURL}`;
     return geoURLStart;
 }
-
+//gets Pixabay URL for images for city, country location
 function getPixaURL(city, country) {
     const pixPrefixURL = "https://pixabay.com/api?";
     const pixSuffixURL = "&q=";
@@ -67,12 +66,13 @@ function getPixaURL(city, country) {
     return pixaURL+pixExtraParam;
 
 }
-
+//Axios function for different APIs
 const axiosGet = async (req, res, getRequestType) => {
+    console.log(`(server) API Request sent to ${getRequestType}`)
     res = await axios.get(req)
     try {
         const response = await res;
-        console.log(`(server) API ${getRequestType} Response received!`)
+        console.log(`(server) API Response received!  ${getRequestType} `)
         // console.log("(server) axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
@@ -84,30 +84,29 @@ const axiosGet = async (req, res, getRequestType) => {
 //Processes the request from the client for all data submitted for trip
 function getWbit(req, res) {
     const {longtitude, lattitude, cityName, countryCode, dateDep} = req.body;
-    // console.log("(Server:Line 157)Destructured req.body", "long:",longtitude, "lattitude:", lattitude, "city name:",cityName, "Country Name:", countryCode, "dateDep", dateDep);
     const wbit16URL = getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep);
     req = wbit16URL;
-    axiosGet(req, res, String(req))
+    axiosGet(req, res, String("Weatherbit"))
     .then(function(data) {
         res.send(data);
     })
 }
 
-//function to query current city location uses geonames API
+//function to query current client city location uses geonames API
 function getCityName(req, res) {
     const {location}  = req.body;
     req = getGeoURL(location);
-    axiosGet(req, res, String(req))
+    axiosGet(req, res, String("GeoNames"))
     .then(function(data) {
         res.send(data);
     })
 
 }
-//function gets random pixabay image from first ten hits
+//function gets pixabay image, ten hits
 async function getPixaBayImage(req, res) {
     let {city, country} = req.body;
     req = await getPixaURL(city, country);
-    axiosGet(req, res, String(req))
+    axiosGet(req, res, String("Pixabay"))
     .then(function(data) {
         res.send(data);
     })
@@ -127,3 +126,4 @@ function returnDataToClient(dataToReturn){
 //TODO: Send user created data on server back to front-end
 }
 
+module.exports = app;//for jest testing

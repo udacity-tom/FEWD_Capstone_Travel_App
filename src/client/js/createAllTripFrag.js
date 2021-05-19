@@ -1,16 +1,19 @@
+import { getAllTripData } from './getAllTripData';
+import { sortAllTrips } from './sortAllTrips';
+import { daysUntilDep } from './daysUntilDep';
+import { getTripDuration } from './getTripDuration';
 function createAllTripFrag() {
     const allTripList = document.createDocumentFragment();
     const allTripUL = document.createElement('ul');
     const addAllTrips = document.getElementById("tripsPlanned");
     const tripsSummary = document.getElementById("tripsSummary");
-    // const tripcolors = 
     
-    if(!localStorage.allTrips || localStorage.allTrips == undefined) {
+    if(!localStorage.allTrips || localStorage.allTrips == undefined || null) {
         tripsSummary.innerText =  "NO PLANNED TRIPS!";
         return;
     }
-    Client.sortAllTrips(); //Sort trips in date order
-    const allTripData = Client.getAllTripData();// create local var with array of trips.
+    sortAllTrips(); //Sort trips in date order
+    const allTripData = getAllTripData();// create local var with array of trips.
     allTripUL.id = "tripsPlannedUL";
     addAllTrips.appendChild(allTripUL);
 
@@ -33,7 +36,7 @@ function createAllTripFrag() {
         inputElement.className = "tripInput";
         labelElement.className = "tripLabel";
 
-        const daysTillDep = Client.daysUntilDep(allTripData[i].dateDep,"n");
+        const daysTillDep = daysUntilDep(allTripData[i].dateDep,"n");
         if (daysTillDep < 0) {
             labelElement.setAttribute("style", "background: #4ca8af;");
         }
@@ -58,7 +61,7 @@ function createAllTripFrag() {
         labelDiv.setAttribute
         const labelPara1 = document.createElement('p');
         const labelPara2 = document.createElement('p');
-        labelPara1.innerText = "Trip "+(i+1)+" Depart "+displayDate(allTripData[i].dateDep)+" To "+allTripData[i].finalLocationGeoObj.toponymName+"\nDeparture "+Client.daysUntilDep(allTripData[i].dateDep);
+        labelPara1.innerText = `Trip ${i+1} Depart ${displayDate(allTripData[i].dateDep)} To ${allTripData[i].finalLocationGeoObj.toponymName}\nDeparture ${daysUntilDep(allTripData[i].dateDep)}`;
         labelDiv.appendChild(labelPara1);
         labelDiv.appendChild(delButton);
         labelElement.appendChild(labelDiv);
@@ -67,22 +70,22 @@ function createAllTripFrag() {
         finalDestImage.src = allTripData[i].finalLocationPixaURL;
         finalDestImage.alt = "Image of "+allTripData[i].finalLocationGeoObj.toponymName;
         finalDestImage.className = "pixaImg";
-        titleElement.innerText = "Your trip for "+new Date(allTripData[i].dateDep).toDateString()+" to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" \n";
+        titleElement.innerText = `Your trip for ${new Date(allTripData[i].dateDep).toDateString()} to ${allTripData[i].finalLocationGeoObj.toponymName}, ${allTripData[i].finalLocationGeoObj.countryName} \n`;
         titleElement.className = "tripDetails";
         //Trp text creation
         const tripSummary = document.createElement('p');
-        tripSummary.innerText = "Your trip to "+allTripData[i].finalLocationGeoObj.toponymName+", "+allTripData[i].finalLocationGeoObj.countryName+" "+(daysTillDep < 0 ? "has already passed!" : "will begin "+Client.daysUntilDep(allTripData[i].dateDep))+"\n";
+        tripSummary.innerText = `Your trip to ${allTripData[i].finalLocationGeoObj.toponymName}, ${allTripData[i].finalLocationGeoObj.countryName} ${(daysTillDep < 0 ? "has already passed!" : "will begin "+daysUntilDep(allTripData[i].dateDep))}\n`;
         const departureInfo = document.createElement('p');
-        departureInfo.innerText = "Departing: "+allTripData[i].startLocationGeoObj.toponymName+", "+allTripData[i].startLocationGeoObj.countryName+". Departure Date: "+displayDate(allTripData[i].dateDep)+"\n";
-        const tripDurationNum =  Client.getTripDuration(allTripData[i].dateRet, allTripData[i].dateDep);
+        departureInfo.innerText = `Departing: ${allTripData[i].startLocationGeoObj.toponymName}, ${allTripData[i].startLocationGeoObj.countryName}. Departure Date: ${displayDate(allTripData[i].dateDep)}\n`;
+        const tripDurationNum =  getTripDuration(allTripData[i].dateRet, allTripData[i].dateDep);
         const tripDuration = document.createElement('p');
-        tripDuration.innerText = "Returning on "+(tripDurationNum == 0 ? "the same day" : getDateFormat(allTripData[i].dateRet)) +", the trip "+(daysTillDep < 0 ? "was " : "is going to be ")+(tripDurationNum == 0 ? "a day trip." : tripDurationNum+" day"+(tripDurationNum > 1 ? "s long. " : " long. "))+"\n";
+        tripDuration.innerText = `Returning on ${(tripDurationNum == 0 ? "the same day" : getDateFormat(allTripData[i].dateRet))}, the trip ${(daysTillDep < 0 ? "was " : "is going to be ")}${(tripDurationNum == 0 ? "a day trip." : tripDurationNum+" day"+(tripDurationNum > 1 ? "s long. " : " long. "))}\n`;
         
         //Creates summary weather at current and final destination
         const weatherStartLocation = document.createElement('p');
-        weatherStartLocation.innerText = "Current weather in "+allTripData[i].startLocationGeoObj.toponymName+" is: "+allTripData[i].startLocationWbitForecastObj.data.data[0].weather.description+", High: "+allTripData[i].startLocationWbitForecastObj.data.data[0].high_temp+"°C Low: "+allTripData[i].startLocationWbitForecastObj.data.data[0].low_temp +"°C\n";
+        weatherStartLocation.innerText = `Current weather in ${allTripData[i].startLocationGeoObj.toponymName} is: ${allTripData[i].startLocationWbitForecastObj.data.data[0].weather.description}, High: ${allTripData[i].startLocationWbitForecastObj.data.data[0].high_temp}°C Low: ${allTripData[i].startLocationWbitForecastObj.data.data[0].low_temp}°C\n`;
         const weatherFinalLocation = document.createElement('p');
-        weatherFinalLocation.innerText = "Today's weather in "+allTripData[i].finalLocationGeoObj.toponymName+" is: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].weather.description+", High: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].high_temp+"°C Low: "+allTripData[i].finalLocationWbitForecastObj.data.data[0].low_temp +"°C\n"
+        weatherFinalLocation.innerText = `Today's weather in ${allTripData[i].finalLocationGeoObj.toponymName} is: ${allTripData[i].finalLocationWbitForecastObj.data.data[0].weather.description}, High: ${allTripData[i].finalLocationWbitForecastObj.data.data[0].high_temp}°C Low: ${allTripData[i].finalLocationWbitForecastObj.data.data[0].low_temp}°C\n`
         
         // Povides date format for weather forcast icons
         function getDateFormat(date) {
@@ -153,7 +156,6 @@ function createAllTripFrag() {
         weatherDetails.appendChild(departureInfo);
         weatherDetails.appendChild(weatherStartLocation);
         weatherDetails.appendChild(weatherFinalLocation);
-        // weatherDetails.appendChild(tripText);
         weatherDetails.appendChild(weatherForecastDiv);
 
         container.className = "container";
@@ -164,8 +166,6 @@ function createAllTripFrag() {
         divElement.className = "tripContent";
         divElement.appendChild(container);
         divElement.appendChild(container2);
-
-        // divElement.appendChild(container);
 
         listElement.appendChild(inputElement);
         listElement.appendChild(labelElement);
@@ -179,17 +179,12 @@ function createAllTripFrag() {
     allTripList.appendChild(allTripUL)
     tripsSummary.appendChild(allTripList);
     tripsSummary.setAttribute('style', "display: block; color: white;");
-    
-    // const addAllTripList = document.
-
 }
 
 function displayDate(value) {
-
     const year = value.slice(0,4);
     const month = value.slice(5,7);
     const day = value.slice(8,10);
-    // const dateUTC = Date.parse(value);
     return day+"/"+month+"/"+year;
 }
 

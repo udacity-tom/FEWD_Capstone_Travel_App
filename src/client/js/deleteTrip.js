@@ -1,9 +1,12 @@
+import { getAllTripData } from './getAllTripData';
+import { eraseAllTrips } from './eraseAllTrips';
+import { setAllTripData } from './setAllTripData';
 function deleteTrip(item) {
-    let currentAllTrips = Client.getAllTripData();
+    let currentAllTrips = getAllTripData();
     if(confirmDelete(currentAllTrips[item])){
         currentAllTrips.splice(item, 1);
-        Client.eraseAllTrips(true);
-        Client.setAllTripData(currentAllTrips);
+        eraseAllTrips(true);
+        setAllTripData(currentAllTrips);
         return true
     }
     return false

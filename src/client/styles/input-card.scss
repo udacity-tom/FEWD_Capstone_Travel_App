@@ -4,14 +4,8 @@ $text-color: #219ebc;
 $button-text: #ffffff;
 $button-backg: #4caf50;
 
-@mixin displayShadow($dispersion) {
-    box-shadow: 0 10px 10px $dispersion black;
-}
-
 form {
     border-radius: 3px;
-    // padding: 40px;
-    // margin-top: 6em;
     margin: 0 auto;
 }
 
@@ -45,19 +39,15 @@ label {
   input:valid+span::after {
     content: '✓';
   }
+
 @mixin displayShadow($dispersion) {
     box-shadow: 10px 5px $dispersion rgba(0,0,0, 1.2);
 }
-// $nav-color: #219ebc;
-// $nav-backg: #ffffff;
-// $nav-hover:#ffffff;
-// $nav-hover-backg:#219ebc;
+
 .loadingIcon {
     background: white url("../views/img/loading.gif") right no-repeat;
     background-size: 33%;
     z-index: 1;
-
-//     padding-right: 17px;
 }
 
 
@@ -65,23 +55,6 @@ label {
     display: flex;
     flex-flow: column wrap;
 }
-
-// input, label {
-//     width: 300px;
-//     height: 70px;
-//     padding: 5px;
-//     margin: 10px;
-
-//     // min-width: 300px;
-//     // max-width: 800px;
-//     // height: 60px;
-//     border-radius: 5px;
-//     font-size: 18px;
-//     &:focus {
-//         @include displayShadow(40px);
-    
-//     }
-// }
 
 .inputStart, .inputFinal, .dateDep, .dateRet {
     width: 300px;
@@ -102,10 +75,6 @@ label {
         text-align: baseline;
         padding-top: 5px;
     }
-}
-
-.fieldLabel {
-    // background-color: rgba(0,0,0, 1);
 }
 
 .dateLabel {
@@ -130,16 +99,12 @@ label {
 }
 
 .inputComplete {
-    background: rgba(11, 156, 49, 1);
+    background: rgba(11, 156, 49, 0.85);
+    font-weight: 500;
 }
 
 .inputIncomplete {
     // background: rgba(156, 11, 49, 1);
-}
-
-#date {
-    // display: block;
-    
 }
 
 .buttonHolder {
@@ -149,9 +114,6 @@ label {
 
 ::-webkit-calendar-picker-indicator {
     color: black;
-}
-.error {
-    display: none;
 }
 
 #text, #url {
@@ -168,12 +130,10 @@ label {
 }
 
 .searchList {
-    
     margin: 5px;
     width: 100%;
     line-height: 120%;
     font-size: 1.1em;
-    // z-index: 2;s
     color: black; //$button-backg;
     background-color: white;//$button-text;
     &:hover {
@@ -186,6 +146,9 @@ label {
 }
 
 .button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
     width: 250px;
     height: 100px;
     border: none;

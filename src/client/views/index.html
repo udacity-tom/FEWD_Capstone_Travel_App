@@ -39,7 +39,7 @@
                                 <input id="dateRet" type="date" required pattern="\d{1,2}/\d{1,2}/\d{4)" placeholder="DD/MM/YYYY" value=""  name="dateInput2" autocomplete="off" class= "dateRet inputIncomplete">
                             </div>
                         </div>
-<!-- TODO: Add units button                                <button class="units" -->
+<!-- TODO: Add units button -->
                         <div class="buttonHolder">
                             <button id="submitButton" class="button" type="button" value="submit" name="">Add New Trip</button>
                         </div>
@@ -79,25 +79,17 @@
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-         
-             if(Client.getAllTripData()){
-                Client.createAllTripFrag();
-                //display the stored data
-            }
             Client.formHandler(event);
         })
     </script>
     <script>
-        // if('serviceWorker' in navigator){
-        //     //Use the window load event to keep the page load performant
-        //     window.addEventListener('load', () => {
-        //         navigator.serviceWorker.register('/service-worker.js');
-        //     });
-        // }
-        // document.body.addEventListener('click', formHandler);
+        if('serviceWorker' in navigator){
+            //Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
     </script>
-    <!-- <script src="/src/client/js/crs.js" type="text/javascript"></script> -->
-    <!-- <script src="./js/formHandler.js" type="text/javascript"></script> -->
 </html>
 
 <!-- For date support 12/01/21 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date -->

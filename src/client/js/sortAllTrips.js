@@ -1,3 +1,6 @@
+import { eraseAllTrips } from './eraseAllTrips';
+import { getAllTripData } from './getAllTripData';
+import { setAllTripData } from './setAllTripData';
 function sortAllTrips() {
 
     if(!localStorage.allTrips){
@@ -12,9 +15,9 @@ function sortAllTrips() {
         });
         return array;
     }
-    const allTrips =sortTrips(Client.getAllTripData());
-    Client.eraseAllTrips(true);
-    Client.setAllTripData(allTrips);
+    const allTrips =sortTrips(getAllTripData());
+    eraseAllTrips(true);
+    setAllTripData(allTrips);
     
     return; 
 }

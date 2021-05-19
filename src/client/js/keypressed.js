@@ -1,9 +1,11 @@
+import { closeAllTrips } from './closeAllTrips';
+import { getGeonames } from './getGeonames';
 function keypressed(event) {
     if( event.key === "Escape"){
-        Client.closeAllTrips();
+        closeAllTrips();
     } else if ( event.key === "Enter") {
         if(document.activeElement.name == "input" && document.activeElement.value.length >=3){
-        Client.getGeonames(document.activeElement);    
+        getGeonames(document.activeElement);    
     }
         return event.key;
     }

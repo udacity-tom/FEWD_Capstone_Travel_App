@@ -1,5 +1,5 @@
 function currentTripObject(tripObject) {
-    if (sessionStorage.currentTrip == undefined){
+    if (sessionStorage.currentTrip == undefined || null){
         let currentTripObj = {
             startLocationGeoObj: {},
             finalLocationGeoObj: {},

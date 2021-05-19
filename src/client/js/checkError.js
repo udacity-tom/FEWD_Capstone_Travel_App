@@ -1,6 +1,7 @@
+import { getCurrentTrip } from './getCurrentTrip';
 function checkError() {
-    const submittedTripData = Client.getCurrentTrip();
-    if(!Client.getCurrentTrip()){
+    const submittedTripData = getCurrentTrip();
+    if(!submittedTripData){
         alert("Please complete the starting and final location and the departure and return dates.")
         return false;
     } else if(submittedTripData.startLocationGeoObj != {} && submittedTripData.finalLocationGeoObj != {} && submittedTripData.dateDep != "" && submittedTripData.dateRet != "" ){
