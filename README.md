@@ -8,7 +8,7 @@ Front End Web Developer Nanodegree, Create an App To Collate and Manage Trips
 This project had a higher level of complexity than previous projects, more challenging in scope, app operation and project expectations and outcomes This was the capstone project of the Udacity Front End Web Developer Nanodegree. All the skills taught during the course (Javascript, Node, web development skills, etc) are utilised to create a functional Web App which creates a catalogue of 'trips'. The web app uses asynchronoous node based API calls to feed search results to the front-end and integrate the display of the information in a simple, clear display.
 
 
-![Image of Summary Screen with two trips open](/udacity-tom/FEWD_Capstone_Travel_App/raw/master/readme-media/2021-05-07_Trip_Summary.png)
+![Image of Summary Screen with two trips open](/master/readme-media/2021-05-07_Trip_Summary.png)
 
 
 
