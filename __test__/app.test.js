@@ -33,9 +33,9 @@ describe("Checks daysUntilDep", () => {
     test("trip countdown calculation", () => {
         const dateDep = "2021-06-17";
         let countdown = daysUntilDep(dateDep, "n");
-        expect(countdown).toBeLessThan(30);
+        expect(countdown).toBeLessThan(25);
         countdown = daysUntilDep(dateDep);
-        expect(countdown).toEqual("in 29 days.");
+        expect(countdown).toEqual("in 24 days.");
     });
 })
 
