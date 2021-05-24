@@ -25,8 +25,6 @@ $button-backg: #4caf50;
 .tripOverlay {
     height: 100%;
     width: 0%;
-    // padding-left: 2em;
-    // padding-right: 2em;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -76,7 +74,6 @@ $button-backg: #4caf50;
         font-size: 1em;
         color: $button-backg;
         background-color: $button-text;
-        // @include displayShadow(10px);
     }
 }
 
@@ -86,16 +83,15 @@ $button-backg: #4caf50;
 }
 
 .removeTrip {
-    width: 150px;
+    width: 160px;
     height: 42px;
     border: none;
     border-radius: 25px;
-    font-size: 1em;
+    font-size: 0.8em;
     color: $button-text;
     background-color: $button-backg;
 
     &:hover {
-        font-size: 1em;
         color: $button-backg;
         background-color: $button-text;
     }
@@ -105,10 +101,6 @@ $button-backg: #4caf50;
 .eraseData {
     padding: 20px;
 
-}
-
-.closebtn {
-    // padding: 20px;
 }
 
 .container {

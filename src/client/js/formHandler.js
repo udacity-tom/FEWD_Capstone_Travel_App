@@ -15,13 +15,12 @@ import { currentTripObject } from './currentTripObject';
 
 function formHandler(event) {
     //INFO: collects form click event. 
-    //TODO: change this into a switch/case function? 
     //TODO: add C/F temperatures switch
     const clickTarget = event.target;
     const activeElement = document.activeElement;
     const clickNodeName = clickTarget.nodeName;
     if (clickNodeName == "BUTTON") {
-        if (clickTarget.value == "submit" && checkError(getCurrentTrip()) == true) {
+        if (clickTarget.value == "submit") {
             if(checkError()){ //activate once everything is working
                 addTrip(getCurrentTrip());
                 clearUI();
@@ -30,7 +29,7 @@ function formHandler(event) {
                 clearCurrentTrip();
             }
         } else if (activeElement.value.slice(0,10) == "deleteTrip") {
-            //button, deletes trip from store
+            //INFO: button, deletes trip from store
             if(deleteTrip(activeElement.value.slice(11))){
                 createAllTripFrag();
                 openAllTrips();
@@ -46,12 +45,12 @@ function formHandler(event) {
          }
             openAllTrips();
         }
-    //Note: 6-5-21 thinking about making overlay UL more obvious for each trip so user knows which trip is open. arrow change for open or close/color background, etc
+    //INFO: Make overlay UL obvious which trip is open
     } else if (clickNodeName == "LI" && clickTarget.parentNode.id != "tripsPlannedUL") {
         updateUI(JSON.parse(clickTarget.dataset.obj), clickTarget.id.slice(0,13));
         hideSuggestedCities("startLocation");
         hideSuggestedCities("finalLocation");
-        //This handler interprets the mobile version functionality for city name searching
+        //INFO: This handler interprets the mobile version functionality for city name searching
     } else if ( activeElement.value != undefined && activeElement.value != null && (activeElement.id == "startLocation" || activeElement.id == "finalLocation")) {
         if (activeElement.value.length >= 3) { 
             getGeonames(activeElement)};        

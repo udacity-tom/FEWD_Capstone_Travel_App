@@ -8,13 +8,11 @@ $fontSize: 16px;
 body, main, section, form,  footer {
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
 }
-// body, main, section, form, footer {
-//     display: flex;
-//     flex-direction: column;
-//     // flex-wrap: wrap;
-// }
+
+p {
+    font-family: sans-serif, Arial, Helvetica, DejaVu Sans;
+}
 
 form {
     flex-flow: column wrap;
@@ -22,36 +20,21 @@ form {
 
 main, section {
     flex: 1 0 auto;
-    // justify-content: center;
     justify-content: space-evenly;
-}
-section {
-    // max-width: 800px;
-    // margin: 50px auto;
 }
 
 body, html {
     display: flex;
     flex-direction: column;
     height: 100%;
-    // background-color: $background-color;
-    // min-height: 100vh;
     font-size: $fontSize;
 }
 
 main {
-    // width: 80%;
     outline: #000000;
-    // margin-top: 50px;
-    // display: flex;
-    // flex-direction: column ;
-    // max-width: auto;
     flex-flow: column wrap;
-    // justify-content: center;
     align-items: center;   
 }
-
-
 
 h1 {
     font-size: 4em;
@@ -67,14 +50,9 @@ h1 {
 }
 
 .introText, .introTitle {
-    // max-width: 400px;
     text-align: center;
-    // color: #EEEEEE;
     color: rgba(255,255,255, 2);
-    // color:rgba(0,0,0, 1.4);
-    // padding-left: 20px;
     text-shadow: 13px 5px 12px rgba(0,0,0, 1);
-    // overflow: hidden;
 }
 
 .introTitle {
@@ -107,27 +85,12 @@ h1 {
 header {
     display: flex;
     justify-content: center;
-    // grid-template-columns: 50% auto 10%;
-    // justify-content: space-between;
     color: $header-text-color;
     padding: 10px 40px;
     background-color: white;
 }
 
-// ::-webkit-calendar-picker-indicator { 
-//     background-color: orange; }
-
 #background {
     background:  url("../views/img/envio-30.jpg") center / cover  ;
     min-height: 960px;
 }
-
-// @keyframes fadeIn {
-//     from { opacity: 0; }
-//     to { opacity: 1; }
-// }
-
-// .fadeBackground {
-//     animation-name: fadeIn;
-//     animation-duration: 0.5s;
-// }

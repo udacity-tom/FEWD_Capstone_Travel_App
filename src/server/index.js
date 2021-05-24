@@ -62,7 +62,7 @@ function getPixaURL(city, country) {
     const pixPrefixURL = "https://pixabay.com/api?";
     const pixSuffixURL = "&q=";
     const pixExtraParam = "&image_type=photo&per_page=10";
-    const pixaURL = `${pixPrefixURL}key=${pix_key}${pixSuffixURL}${city}`;
+    const pixaURL = `${pixPrefixURL}key=${pix_key}${pixSuffixURL}"${city}"`;
     return pixaURL+pixExtraParam;
 
 }

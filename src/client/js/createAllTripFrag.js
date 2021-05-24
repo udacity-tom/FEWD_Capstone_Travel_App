@@ -32,6 +32,7 @@ function createAllTripFrag() {
 
         listElement.value = i;
         inputElement.type = "checkbox";
+        inputElement.checked = true;
         inputElement.id = "trip"+i;
         inputElement.className = "tripInput";
         labelElement.className = "tripLabel";

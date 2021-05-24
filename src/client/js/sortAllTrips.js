@@ -6,7 +6,7 @@ function sortAllTrips() {
     if(!localStorage.allTrips){
         return;
     }
-    //INFO:Sort array seperated to allow sorting based on actual or archived trips
+    //INFO:Sort array seperated to allow sorting based on actual or archived trips using completed flag
     function sortTrips(array) {
         array.sort( (trip1, trip2) => {
             let date1 = new Date(trip1.dateDep),
@@ -15,10 +15,11 @@ function sortAllTrips() {
         });
         return array;
     }
+    //TODO: Sort trips into two categories: 1. Active/Open at top  2. completed == true at bottom
     const allTrips =sortTrips(getAllTripData());
     eraseAllTrips(true);
     setAllTripData(allTrips);
-    
+        
     return; 
 }
 
