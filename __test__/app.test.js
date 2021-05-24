@@ -12,7 +12,7 @@ import { eraseAllTrips } from '../src/client/js/eraseAllTrips';
 import { getAllTripData } from '../src/client/js/getAllTripData';
 import { getCurrentTrip } from '../src/client/js/getCurrentTrip';
 import { getGeonames } from '../src/client/js/getGeonames';
-import { getPixaBay } from '../src/client/js/getPixaBay';
+import { getPixaBay } from '../src/client/js/getPixabay';
 import { getTripDuration } from '../src/client/js/getTripDuration';
 import { getWeatherbit } from '../src/client/js/getWeatherbit';
 import { keypressed } from '../src/client/js/keypressed';

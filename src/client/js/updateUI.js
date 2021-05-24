@@ -1,5 +1,5 @@
 import { currentTripObject } from './currentTripObject';
-import { getPixaBay } from './getPixaBay';
+import { getPixaBay } from './getPixabay';
 import { getWeatherbit } from './getWeatherbit';
 const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     currentTripObject({[inputFieldToCheck+"GeoObj"]: geonamesCityObject});//update current trip object 
