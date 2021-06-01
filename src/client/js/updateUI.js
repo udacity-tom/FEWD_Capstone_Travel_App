@@ -41,5 +41,4 @@ const updateUI = async (geonamesCityObject, inputFieldToCheck) => {
     }
 }
 
-    
 export { updateUI }
