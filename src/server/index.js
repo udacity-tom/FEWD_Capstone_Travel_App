@@ -24,8 +24,8 @@ app.use(bodyParser.json());
 //setup home page
 const port = 8081;
 app.get('/', function(req, res) {
-    // res.sendFile(path.resolve('dist/index.html')); //TODO:need to change path to dist when ready
-    res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
+    res.sendFile(path.resolve('dist/index.html')); //TODO:need to change path to dist when ready
+    // res.sendFile(path.resolve('src/client/views/index.html')); //TODO:need to change path to dist when ready
     console.log('Server Homepage delivered');
 })
 
@@ -68,12 +68,13 @@ function getPixaURL(city, country) {
 }
 //Axios function for different APIs
 const axiosGet = async (req, res, getRequestType) => {
-    console.log(`(server) API Request sent to ${getRequestType}`)
+    console.log(`(server) API Request sent to ${getRequestType}`);
+    // console.log("request is",req);
     res = await axios.get(req)
     try {
         const response = await res;
         console.log(`(server) API Response received!  ${getRequestType} `)
-        // console.log("(server) axiosGet response is: ", response.data);
+        console.log("(server) axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
         console.log(`Data error on ${getRequestType} API request`, error);
