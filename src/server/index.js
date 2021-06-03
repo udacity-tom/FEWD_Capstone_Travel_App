@@ -3,9 +3,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 //API keys for axios requests
-const geo_key = process.env.API_KEY_GEO;
-const pix_key = process.env.API_KEY_PIX;
-const wbit_key = process.env.API_KEY_WBIT;
+// const geo_key = process.env.API_KEY_GEO;
+// const pix_key = process.env.API_KEY_PIX;
+// const wbit_key = process.env.API_KEY_WBIT;
 
 //Server configs 
 var path = require('path');
@@ -41,6 +41,7 @@ app.post('/getPix', getPixaBayImage);
 
 //gets weatherbit URL for 16 day forecast at current input location (starting/final location)
 function getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep, time) {
+    const wbit_key = process.env.API_KEY_WBIT;
     const wbit16dayPrefixURL = "https://api.weatherbit.io/v2.0/forecast/daily?";
     // TODO: 26-4-21 setup the results as eitehr SI Units or Imperiel ->const units = SI or Imperial;
     const country = '&country='+countryCode;
@@ -51,6 +52,7 @@ function getWbitURL(longtitude, lattitude, cityName, countryCode, dateDep, time)
 };
 //gets Geonames URL data (starting/final location)
 function getGeoURL(location){
+    const geo_key = process.env.API_KEY_GEO;
     const geoPrefixURL = "http://api.geonames.org/searchJSON?";
     const geoSuffixURL = "&maxRows=10";
     const geoExtraParam = "name_startsWith=";
@@ -59,6 +61,7 @@ function getGeoURL(location){
 }
 //gets Pixabay URL for images for city, country location
 function getPixaURL(city, country) {
+    const pix_key = process.env.API_KEY_PIX;
     const pixPrefixURL = "https://pixabay.com/api?";
     const pixSuffixURL = "&q=";
     const pixExtraParam = "&image_type=photo&per_page=10";
@@ -74,7 +77,7 @@ const axiosGet = async (req, res, getRequestType) => {
     try {
         const response = await res;
         console.log(`(server) API Response received!  ${getRequestType} `)
-        console.log("(server) axiosGet response is: ", response.data);
+        // console.log("(server) axiosGet response is: ", response.data);
         return response.data;
     } catch(error) {
         console.log(`Data error on ${getRequestType} API request`, error);

@@ -43,6 +43,7 @@ After installing the basic packages in a terminal run the following scripts from
 This will initiate the node server to run on the default port (Currently set at 8081)
 * `npm build-prod`
 Will build the distribution folders according to the webpack production configuration (/dist)
+The production build will be available on localhost:8081. 
 * `npm build-dev`
 A working copy of the development build will be run on the webpack dev server and opened in the default system browser
 
