@@ -95,7 +95,7 @@ function createAllTripFrag() {
             const month = date.getMonth()+1;
             const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
             const day = days[date.getDay()];
-            return day+" "+dateNum+"/"+month;
+            return `${day} ${dateNum}/${month}`;
         }
 
         //sets up pieces for 7 day weather forecast based on the Wbit data supplied for destination.
@@ -186,7 +186,7 @@ function displayDate(value) {
     const year = value.slice(0,4);
     const month = value.slice(5,7);
     const day = value.slice(8,10);
-    return day+"/"+month+"/"+year;
+    return `${day}/${month}/${year}`;
 }
 
 export { createAllTripFrag }
